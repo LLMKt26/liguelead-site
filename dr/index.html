@@ -309,11 +309,16 @@
   .how{display:flex;flex-direction:column;gap:22px}
   .how-nav{display:flex;flex-direction:column;gap:18px}
   /* 1) escolhe o tipo: dois botões grandes lado a lado */
-  .how-seg{display:inline-flex;align-self:flex-start;padding:5px;border-radius:99px;background:var(--black-2);border:1px solid var(--black-line)}
+  .how-seg{position:relative;display:inline-flex;align-self:flex-start;padding:5px;border-radius:99px;background:var(--black-2);border:1px solid var(--black-line)}
   .how-segb{font-family:inherit;font-size:15.5px;font-weight:700;line-height:1;color:var(--on-black-muted);background:none;border:none;border-radius:99px;padding:13px 24px;cursor:pointer;white-space:nowrap;transition:background-color .25s var(--ease),color .25s var(--ease)}
   .how-segb small{font-weight:300;opacity:.75;margin-left:6px}
   .how-segb:hover{color:#fff}
-  .how-segb.on{background:var(--teal);color:var(--black)}
+  .how-segb{position:relative;z-index:1}
+  .how-segb.on{color:var(--black)}
+  .how-thumb{position:absolute;top:5px;bottom:5px;left:0;width:0;border-radius:99px;background:var(--teal);pointer-events:none}
+  .how-thumb.anim{transition:transform .42s cubic-bezier(.3,.8,.2,1),width .42s cubic-bezier(.3,.8,.2,1)}
+  .how-card,.how-tabs{will-change:transform,opacity}
+  @media(prefers-reduced-motion:reduce){.how-thumb.anim{transition:none}}
   .how-segb:focus-visible,.how-tab:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(27,204,174,.35)}
   /* 2) escolhe a estratégia: linha de texto com sublinhado verde, sem caixas */
   .how-tabs{display:flex;gap:6px 30px;flex-wrap:wrap;border-bottom:1px solid var(--black-line)}
@@ -421,6 +426,7 @@
     /* 1) tipo: dois botões iguais, ocupando a largura toda */
     .how-seg{display:grid;grid-template-columns:1fr 1fr;align-self:stretch;border-radius:14px;padding:4px;gap:4px}
     .how-segb{min-width:0;white-space:normal;text-align:center;line-height:1.2;font-size:14px;padding:12px 8px;border-radius:10px}
+    .how-thumb{top:4px;bottom:4px;border-radius:10px}
     .how-segb small{display:none}
     /* 2) estratégia: grade de duas colunas, todas à vista */
     .how-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-bottom:none}
@@ -1181,18 +1187,49 @@ document.documentElement.className='js';
       [].forEach.call(nav.querySelectorAll('.how-tab'),function(b){var on=+b.getAttribute('data-k')===k;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');});
       [].forEach.call(nav.querySelectorAll('.how-segb'),function(b){b.classList.toggle('on',b.getAttribute('data-g')===s.g);});
       [].forEach.call(nav.querySelectorAll('.how-tabs'),function(t){t.hidden=t.getAttribute('data-g')!==s.g;});
+      cur=k;place();
+    }
+    /* troca com sensação de "arrastar": o que sai vai para um lado, o que entra vem do outro */
+    var cur=0,busy=false,calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function place(){
+      var th=nav.querySelector('.how-thumb'),on=nav.querySelector('.how-segb.on');if(!th||!on)return;
+      th.style.width=on.offsetWidth+'px';th.style.transform='translateX('+on.offsetLeft+'px)';
+    }
+    var pending=null;
+    function go(k){
+      if(busy){pending=k;return;}
+      if(k===cur)return;
+      if(calm||!card.animate){render(k);return;}
+      var dir=k>cur?1:-1,sameGroup=STRATS[k].g===STRATS[cur].g,D=44,done=false;
+      busy=true;
+      var tabs=sameGroup?null:nav.querySelector('.how-tabs:not([hidden])');
+      var OUT=[{opacity:1,transform:'none'},{opacity:0,transform:'translateX('+(-D*dir)+'px)'}];
+      if(tabs)tabs.animate(OUT,{duration:170,easing:'ease-in',fill:'forwards'});
+      card.animate(OUT,{duration:190,easing:'ease-in',fill:'forwards'});
+      /* a troca acontece por tempo, não pelo fim da animação: assim nunca trava se a aba estiver em segundo plano */
+      setTimeout(function(){
+        if(done)return;done=true;
+        [card,tabs].forEach(function(el){if(el)el.getAnimations().forEach(function(a){a.cancel();});});
+        render(k);
+        var IN=[{opacity:0,transform:'translateX('+(D*dir)+'px)'},{opacity:1,transform:'none'}],O={duration:360,easing:'cubic-bezier(.2,.7,.2,1)'};
+        if(!sameGroup){var nt=nav.querySelector('.how-tabs:not([hidden])');if(nt)nt.animate(IN,O);}
+        card.animate(IN,O);
+        setTimeout(function(){busy=false;if(pending!==null){var n=pending;pending=null;go(n);}},370);
+      },195);
     }
     var groups=[],first={},count={};
     STRATS.forEach(function(s,i){if(groups.indexOf(s.g)<0){groups.push(s.g);first[s.g]=i;count[s.g]=0;}count[s.g]++;});
-    nav.innerHTML='<div class="how-seg" role="tablist" aria-label="Tipo de estratégia">'+groups.map(function(g){return '<button type="button" class="how-segb" data-g="'+g+'">'+g+'<small>'+count[g]+'</small></button>';}).join('')+'</div>'+
+    nav.innerHTML='<div class="how-seg" role="tablist" aria-label="Tipo de estratégia"><span class="how-thumb" aria-hidden="true"></span>'+groups.map(function(g){return '<button type="button" class="how-segb" data-g="'+g+'">'+g+'<small>'+count[g]+'</small></button>';}).join('')+'</div>'+
       groups.map(function(g){return '<div class="how-tabs" role="tablist" data-g="'+g+'">'+STRATS.map(function(s,i){return s.g===g?'<button type="button" class="how-tab" role="tab" data-k="'+i+'">'+s.t+'</button>':'';}).join('')+'</div>';}).join('');
     nav.addEventListener('click',function(e){
-      var b=e.target.closest('.how-tab');if(b){render(+b.getAttribute('data-k'));return;}
-      var g=e.target.closest('.how-segb');if(g)render(first[g.getAttribute('data-g')]);
+      var b=e.target.closest('.how-tab');if(b){go(+b.getAttribute('data-k'));return;}
+      var g=e.target.closest('.how-segb');if(g&&g.getAttribute('data-g')!==STRATS[cur].g)go(first[g.getAttribute('data-g')]);
     });
     /* o botão de destravar é criado depois do carregamento: leva ao formulário */
     card.addEventListener('click',function(e){var a=e.target.closest('[data-goform]');if(!a)return;e.preventDefault();var c=$('#quizCard'),head=($('header.top')||{}).offsetHeight||0;window.scrollTo({top:window.scrollY+c.getBoundingClientRect().top-head-16,behavior:'smooth'});});
     render(0);
+    requestAnimationFrame(function(){place();var th=nav.querySelector('.how-thumb');if(th)requestAnimationFrame(function(){th.classList.add('anim');});});
+    window.addEventListener('resize',place);
     if(FULL){var bar=document.createElement('div');bar.className='rev-bar';bar.innerHTML='<b>Modo revisão</b><span>Todas as réguas estão completas e destravadas. O visitante do site não vê assim.</span><a href="'+location.pathname+'#como-usar">Ver como o visitante vê</a>';nav.parentNode.parentNode.insertBefore(bar,nav.parentNode);}
   })();
 
