@@ -93,6 +93,10 @@
   .top-nav{display:flex;align-items:center;gap:28px;font-size:15px;font-weight:500;color:var(--navy)}
   .top-nav a{padding:6px 0;border-bottom:2px solid transparent;transition:border-color .3s var(--ease)}
   .top-nav a:hover{border-bottom-color:var(--teal)}
+  .top-nav{margin-left:auto}
+  .top-nav .nav-login{margin-left:6px;padding:9px 16px;border:1.5px solid var(--navy);border-radius:8px;font-weight:700;font-size:14px;line-height:1;transition:background-color .3s var(--ease),color .3s var(--ease)}
+  .top-nav .nav-login:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+  @media(max-width:1080px) and (min-width:901px){.top-nav{gap:20px;font-size:14.5px}}
   .menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-right:-10px;padding:0 10px;background:none;border:none;cursor:pointer}
   .menu-btn span{display:block;height:2px;border-radius:2px;background:var(--navy);transition:transform .25s var(--ease),opacity .25s var(--ease)}
   .menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -105,6 +109,9 @@
     .top-nav.open{display:flex}
     .top-nav a{padding:15px 0;border-bottom:1px solid var(--line)}
     .top-nav a:last-child{border-bottom:none}
+    .top-nav{margin-left:0}
+    .top-nav .nav-login{margin:12px 0 4px;padding:14px;text-align:center;font-size:16px;border:1.5px solid var(--navy)}
+    .top-nav .nav-login:last-child{border-bottom:1.5px solid var(--navy)}
     .top-nav a:hover{border-bottom-color:var(--line)}
   }
   @media(max-width:720px){.top .btn{display:none}.top .wrap{height:60px}.top .logo img{height:26px}}
@@ -309,15 +316,22 @@
   .how{display:flex;flex-direction:column;gap:22px}
   .how-nav{display:flex;flex-direction:column;gap:18px}
   /* 1) escolhe o tipo: dois botões grandes lado a lado */
-  .how-seg{display:inline-flex;align-self:flex-start;padding:5px;border-radius:99px;background:var(--black-2);border:1px solid var(--black-line)}
+  .how-seg{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;align-self:flex-start;padding:5px;border-radius:99px;background:var(--black-2);border:1px solid var(--black-line)}
   .how-segb{font-family:inherit;font-size:15.5px;font-weight:700;line-height:1;color:var(--on-black-muted);background:none;border:none;border-radius:99px;padding:13px 24px;cursor:pointer;white-space:nowrap;transition:background-color .25s var(--ease),color .25s var(--ease)}
   .how-segb small{font-weight:300;opacity:.75;margin-left:6px}
   .how-segb:hover{color:#fff}
-  .how-segb.on{background:var(--teal);color:var(--black)}
+  .how-segb{position:relative;z-index:1}
+  .how-segb.on{color:var(--black)}
+  .how-thumb{position:absolute;top:5px;bottom:5px;left:0;width:0;border-radius:99px;background:var(--teal);pointer-events:none}
+  .how-thumb.anim{transition:transform .42s cubic-bezier(.3,.8,.2,1),width .42s cubic-bezier(.3,.8,.2,1)}
+  .how-card,.how-tabs{will-change:transform,opacity}
+  @media(prefers-reduced-motion:reduce){.how-thumb.anim{transition:none}}
   .how-segb:focus-visible,.how-tab:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(27,204,174,.35)}
   /* 2) escolhe a estratégia: linha de texto com sublinhado verde, sem caixas */
   .how-tabs{display:flex;gap:6px 30px;flex-wrap:wrap;border-bottom:1px solid var(--black-line)}
-  .how-tabs[hidden]{display:none}
+  .how-tabsw{display:grid}
+  .how-tabsw>.how-tabs{grid-area:1 / 1;align-content:start}
+  .how-tabs.off{visibility:hidden;pointer-events:none}
   .how-tab{font-family:inherit;font-size:16.5px;font-weight:500;line-height:1.2;color:var(--on-black-muted);background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-1px;padding:10px 0 14px;cursor:pointer;white-space:nowrap;transition:color .2s var(--ease),border-color .2s var(--ease)}
   .how-tab:hover{color:#fff}
   .how-tab.on{color:#fff;font-weight:700;border-bottom-color:var(--teal)}
@@ -401,6 +415,9 @@
   .how-lock .lk{width:44px;height:44px;border-radius:50%;background:var(--black);color:var(--teal);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
   .how-lock .lk svg{width:20px;height:20px}
   .how-locked.side{margin-top:0;min-height:250px}
+  .how-note{display:flex;align-items:center;gap:16px;padding:16px 30px;background:var(--black);color:var(--on-black);font-size:16px;line-height:1.4}
+  .how-note b{color:var(--teal);font-size:clamp(26px,3vw,34px);line-height:1;white-space:nowrap;letter-spacing:-.02em}
+  @media(max-width:640px){.how-note{flex-direction:column;align-items:flex-start;gap:6px;padding:16px 18px;font-size:15px}}
   .how-alert{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding:18px 22px;border:1px solid var(--black-line);border-radius:var(--radius);background:var(--black-2);font-size:16.5px;color:var(--on-black)}
   .how-alert[hidden]{display:none}
   .how-alert b{color:var(--teal);font-size:clamp(26px,3vw,34px);line-height:1;white-space:nowrap;letter-spacing:-.02em}
@@ -422,6 +439,7 @@
     /* 1) tipo: dois botões iguais, ocupando a largura toda */
     .how-seg{display:grid;grid-template-columns:1fr 1fr;align-self:stretch;border-radius:14px;padding:4px;gap:4px}
     .how-segb{min-width:0;white-space:normal;text-align:center;line-height:1.2;font-size:14px;padding:12px 8px;border-radius:10px}
+    .how-thumb{top:4px;bottom:4px;border-radius:10px}
     .how-segb small{display:none}
     /* 2) estratégia: grade de duas colunas, todas à vista */
     .how-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-bottom:none}
@@ -521,6 +539,7 @@
   /* ---------- faixa de números abaixo do hero ---------- */
   .nums{background:#fff;border-bottom:1px solid var(--line)}
   .big4.light{margin-top:0;border-top:none}
+  @media(min-width:721px){.big4.light>div,.big4.light>div:first-child{text-align:center;padding-left:20px;padding-right:20px}}
   .big4.light>div{border-left-color:var(--line);padding-top:26px;padding-bottom:26px}
   .big4.light .n{color:var(--navy);white-space:nowrap}
   @media(max-width:480px){.big4.light .n{font-size:26px}}
@@ -593,6 +612,53 @@
   @media(max-width:1080px){.sec5{grid-template-columns:repeat(3,1fr)}}
   @media(max-width:640px){.sec5{grid-template-columns:1fr}}
 
+  /* ---------- ajustes de revisão: problema, posicionamento, canais ---------- */
+  .prob-list svg.x{color:#FF5A5F}
+  .prob .btn{margin-top:8px}
+  .prob-kicker{margin-top:22px;font-size:clamp(24px,2.7vw,32px);line-height:1.2;font-weight:300;color:#fff;letter-spacing:-.01em}
+  .prob-kicker span{color:var(--teal);font-weight:700}
+  .donut{position:relative;width:104px;height:104px;margin-bottom:18px}
+  .donut svg{width:100%;height:100%;transform:rotate(-90deg);margin:0 !important}
+  .donut circle{fill:none;stroke-width:11}
+  .donut .bg{stroke:#E9EAEF}
+  .donut .fg{stroke:var(--teal);stroke-linecap:round}
+  .donut b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:700;color:var(--navy);letter-spacing:-.02em}
+  .donut b span{font-size:15px;color:var(--teal-ink);margin-left:1px}
+  .trust .card.safe{background:var(--black);box-shadow:0 0 0 2px var(--teal),0 22px 44px -18px rgba(27,204,174,.5)}
+  .trust .card.safe h3{color:var(--teal);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+  .trust .card.safe .safe-q{font-size:21px;line-height:1.3;font-weight:700;color:#fff;margin-bottom:12px}
+  .trust .card.safe p{color:var(--on-black-muted)}
+  /* canais: palco escuro com o celular inteiro, lista com sinal de que é clicável */
+  .stage{flex:1;position:relative;background:radial-gradient(120% 80% at 50% 0%,#11463F 0%,#0B0B0F 64%);border-radius:24px;padding:44px 24px;display:flex;justify-content:center;align-items:center;overflow:hidden}
+  .phone{width:min(292px,70%);margin-bottom:0}
+  .chan-hint{display:inline-flex;align-items:center;gap:8px;margin:-8px 0 14px;font-size:14px;font-weight:500;color:var(--teal-ink)}
+  .chan-hint svg{width:18px;height:18px;flex:0 0 auto}
+  .chan{grid-template-columns:44px 1fr 22px}
+  .chan:hover{background:#FAFAFB}
+  .chan.on:hover{background:var(--teal-soft)}
+  .chan .cv{width:20px;height:20px;margin-top:5px;color:var(--muted);transition:transform .35s var(--ease),color .35s var(--ease)}
+  .chan.on .cv{transform:rotate(180deg);color:var(--teal-ink)}
+  .chan.on .cp{max-height:200px}
+  .ovl{position:absolute;left:8.5%;right:8.5%;top:17%;border-radius:5cqw;font-family:-apple-system,'SF Pro Text','Segoe UI',system-ui,sans-serif;color:#fff;background:rgba(28,28,32,.97);box-shadow:0 10px 30px rgba(0,0,0,.4);overflow:hidden}
+  .ovl-h{display:flex;align-items:center;gap:2.6cqw;padding:4.2cqw 4.6cqw;border-bottom:1px solid rgba(255,255,255,.12);font-size:4.6cqw;font-weight:600}
+  .ovl-h i{width:2.4cqw;height:2.4cqw;border-radius:50%;background:var(--teal);flex:0 0 auto}
+  .ovl-h small{margin-left:auto;font-size:3.8cqw;font-weight:400;color:#B9B9C2}
+  .ovl-b{padding:4cqw 4.4cqw 4.6cqw;display:flex;flex-direction:column;gap:2.6cqw}
+  .ovl-b p{font-size:4.5cqw;line-height:1.32;padding:3cqw 3.8cqw;border-radius:4cqw;max-width:90%}
+  .ovl-b .ia{background:var(--teal);color:#06231F;align-self:flex-start;border-bottom-left-radius:1cqw}
+  .ovl-b .me{background:#3A3A42;align-self:flex-end;border-bottom-right-radius:1cqw}
+  .ovl-n{padding:5cqw 4.4cqw 5.4cqw;text-align:center}
+  .ovl-n b{display:block;font-size:7.4cqw;font-weight:600;letter-spacing:.01em}
+  .ovl-n span{display:block;font-size:4.3cqw;color:#B9B9C2;margin-top:1.4cqw}
+  .ovl-n em{display:inline-block;margin-top:4cqw;font-style:normal;font-size:4.1cqw;font-weight:600;color:var(--teal);border:1px solid rgba(27,204,174,.5);border-radius:99px;padding:1.6cqw 3.6cqw}
+  .flowstrip{margin-top:28px;display:flex;align-items:center;gap:18px;padding:22px 26px;background:var(--bg);box-shadow:none;border:1px solid var(--line)}
+  .flowstrip .ic{width:48px;height:48px;border-radius:12px;background:var(--black);color:var(--teal);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .flowstrip .ic svg{width:24px;height:24px}
+  .flowstrip h3{font-size:19px;font-weight:700;color:var(--navy);margin-bottom:2px}
+  .flowstrip p{font-size:16px;color:var(--text)}
+  @media(max-width:920px){.chan-visual.inline .stage{padding:26px 16px}.chan-visual.inline .phone{width:min(210px,74%)}}
+  @media(max-width:640px){.chan{grid-template-columns:30px 1fr 20px}.flowstrip{align-items:flex-start;padding:20px}.trust .card.safe .safe-q{font-size:19px}}
+
   /* ---------- barra fixa no celular ---------- */
   .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;align-items:center;gap:14px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(38,38,85,.08);transform:translateY(110%);transition:transform .3s var(--ease)}
   .sticky-cta.on{transform:none}
@@ -614,21 +680,24 @@
   <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></symbol>
   <symbol id="i-rcs" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 5h16v14H4zM4 11h16M8 15h8"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 11V5.500a1.500 1.500 0 0 1 3 0V10m0-.500a1.500 1.500 0 0 1 3 0V11m0-.300a1.500 1.500 0 0 1 3 0V15a6 6 0 0 1-6 6h-.800a6 6 0 0 1-5-2.700L4.300 14.800a1.500 1.500 0 0 1 2.400-1.800L9 15.500M5 4l1.500 1.500M12 1.500V3M19 4l-1.500 1.500"/></symbol>
   <symbol id="i-ai" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3v3M12 18v3M3 12h3M18 12h3M7 7h10v10H7zM10 10.5v3M14 10.5v3"/></symbol>
   <symbol id="i-num" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
   <symbol id="i-flow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v5H4zM14 15h6v5h-6zM7 9v4a3 3 0 0 0 3 3h4M14 6.5h3a3 3 0 0 1 3 3V11"/></symbol>
 </svg>
 
 <!-- TOPO -->
-<header class="top">
+<header class="top" id="topo">
   <div class="wrap">
     <a class="logo" href="../" aria-label="LigueLead"><img src="../assets/logo-ll.webp" alt="LigueLead" width="93" height="30"></a>
     <nav class="top-nav" id="topNav" aria-label="Seções">
+      <a href="../">Home</a>
       <a href="#infraestrutura">Infraestrutura</a>
       <a href="#como-usar">Como usar</a>
       <a href="#metodologia">Metodologia</a>
       <a href="#seguranca">Segurança</a>
       <a href="#contato" data-goform>Contato</a>
+      <a class="nav-login" href="https://areadocliente.liguelead.app.br/login" target="_blank" rel="noopener">Acessar plataforma</a>
     </nav>
     <a class="btn btn-sm" href="#contato" data-goform>Fale com um especialista</a>
     <button type="button" class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="topNav"><span></span><span></span><span></span></button>
@@ -696,12 +765,12 @@
         <span class="label dark"><svg><use href="#i-check"/></svg>O problema real</span>
         <h2 class="h2">Falar com um cliente é fácil. <span class="t">Difícil é falar com milhões sem falhar.</span></h2>
         <p class="lead">Quando a base é grande, qualquer falha aparece: mensagem que não chega, fornecedor que cai no dia do pico, canal que bloqueia, dado que vaza. E cada área contrata uma ferramenta diferente.</p>
-        <a class="link-arrow" href="#metodologia">Conheça a Blindagem de Atenção<svg><use href="#i-arrow"/></svg></a>
+        <a class="btn" href="#metodologia">Conheça a Blindagem de Atenção</a>
       </div>
       <ul class="prob-list reveal">
-        <li><svg><use href="#i-x"/></svg><div><b>E-mail</b><span>Vai para o spam.</span></div></li>
-        <li><svg><use href="#i-x"/></svg><div><b>WhatsApp</b><span>Tem limite de envio e risco de bloqueio.</span></div></li>
-        <li><svg><use href="#i-x"/></svg><div><b>Vários fornecedores</b><span>Cada área contrata um, e ninguém enxerga o todo.</span></div></li>
+        <li><svg class="x"><use href="#i-x"/></svg><div><b>E-mail</b><span>Vai para o spam.</span></div></li>
+        <li><svg class="x"><use href="#i-x"/></svg><div><b>WhatsApp</b><span>Tem limite de envio e risco de bloqueio.</span></div></li>
+        <li><svg class="x"><use href="#i-x"/></svg><div><b>Vários fornecedores</b><span>Cada área contrata um, e ninguém enxerga o todo.</span></div></li>
         <li><svg><use href="#i-check"/></svg><div><b>Ligação e SMS</b><span>Chegam direto no celular, sem intermediário.</span></div></li>
       </ul>
     </div>
@@ -713,11 +782,11 @@
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="label"><svg><use href="#i-check"/></svg>Posicionamento</span>
-      <h2 class="h2">Não somos uma ferramenta de disparo. <b>Somos a infraestrutura</b> que aguenta o seu pico.</h2>
+      <h2 class="h2">Não somos uma ferramenta de disparo.<br><b>Somos a infraestrutura</b> que aguenta o seu pico.</h2>
     </div>
     <div class="trust">
-      <div class="card reveal"><img src="../assets/foguete-verde.svg" alt="" loading="lazy"><h3>Entregabilidade</h3><p>Sua mensagem chega em 85% da lista em minutos. Não em horas. Não no dia seguinte.</p></div>
-      <div class="card reveal"><img src="../assets/cadeado-verde.svg" alt="" loading="lazy"><h3>Segurança</h3><p>Tecnologia e operadora de telefonia próprias, homologação ANATEL e 5 camadas de segurança. Sua base nunca é revendida.</p></div>
+      <div class="card reveal"><div class="donut" role="img" aria-label="85% da lista alcançada em minutos"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fg" cx="50" cy="50" r="42" pathLength="100" stroke-dasharray="85 100"/></svg><b class="num">85<span>%</span></b></div><h3>Entregabilidade</h3><p>Sua mensagem chega em 85% da lista em minutos. Não em horas. Não no dia seguinte.</p></div>
+      <div class="card reveal safe"><img src="../assets/cadeado-verde.svg" alt="" loading="lazy"><h3>Segurança</h3><p class="safe-q">Aqui, seus leads e clientes estão seguros e sua base nunca será revendida.</p><p>Tecnologia e operadora de telefonia próprias, homologação ANATEL e 5 camadas de segurança.</p></div>
       <div class="card reveal"><img src="../assets/integracao-verde.svg" alt="" loading="lazy"><h3>Inteligência</h3><p>Dados em tempo real para decidir durante a operação, com suporte humano 7 dias por semana.</p></div>
     </div>
   </div>
@@ -729,9 +798,9 @@
     <div class="chan-grid">
       <div class="chan-visual reveal">
         <div class="stage"><div class="phone" id="phone">
-          <img class="scr on" data-ch="0" src="../assets/tela-ligacao.webp" alt="Ligação da LigueLead chegando no celular" width="526" height="1138">
+          <img class="scr on" data-ch="0" src="../assets/tela-ligacao-t.webp" alt="Ligação da LigueLead chegando no celular" width="526" height="1138">
           <div class="scr" data-ch="1">
-            <img src="../assets/tela-inicio.webp" alt="" width="526" height="1138" loading="lazy">
+            <img src="../assets/tela-inicio-t.webp" alt="" width="526" height="1138" loading="lazy">
             <div class="flash-dim"></div>
             <div class="flash" role="img" aria-label="Exemplo de SMS Flash na tela do celular">
               <div class="flash-t">SMS Flash</div>
@@ -739,8 +808,24 @@
               <div class="flash-b">Dispensar</div>
             </div>
           </div>
-          <img class="scr" data-ch="2" src="../assets/tela-sms.webp" alt="SMS da LigueLead com o link chegando na tela bloqueada" width="526" height="1138" loading="lazy">
-          <img class="scr" data-ch="3" src="../assets/tela-rcs.webp" alt="Mensagem RCS da LigueLead com marca verificada, imagem e botão" width="526" height="1138" loading="lazy">
+          <img class="scr" data-ch="2" src="../assets/tela-sms-t.webp" alt="SMS da LigueLead com o link chegando na tela bloqueada" width="526" height="1138" loading="lazy">
+          <img class="scr" data-ch="3" src="../assets/tela-rcs-t.webp" alt="Mensagem RCS da LigueLead com marca verificada, imagem e botão" width="526" height="1138" loading="lazy">
+          <div class="scr" data-ch="4">
+            <img src="../assets/tela-inicio-t.webp" alt="" width="526" height="1138" loading="lazy">
+            <div class="flash-dim"></div>
+            <div class="ovl" role="img" aria-label="Exemplo de ligação com IA: a IA conversa com o cliente e responde às dúvidas">
+              <div class="ovl-h"><i></i>Ligação com IA<small>em chamada</small></div>
+              <div class="ovl-b"><p class="ia">Oi, Ana! Vi que o seu pedido ficou pendente. Posso te ajudar?</p><p class="me">Fiquei em dúvida no frete.</p><p class="ia">Pra sua região ele sai grátis hoje. Te mando o link por SMS?</p></div>
+            </div>
+          </div>
+          <div class="scr" data-ch="5">
+            <img src="../assets/tela-inicio-t.webp" alt="" width="526" height="1138" loading="lazy">
+            <div class="flash-dim"></div>
+            <div class="ovl" role="img" aria-label="Exemplo de número digital: a ligação chega identificada com o número da empresa">
+              <div class="ovl-h"><i></i>Chamada recebida</div>
+              <div class="ovl-n"><b>Sua Empresa</b><span>número digital da sua operação</span><em>Liga e recebe ligações, sem chip</em></div>
+            </div>
+          </div>
         </div></div>
       </div>
       <div>
@@ -748,21 +833,21 @@
           <span class="label"><svg><use href="#i-check"/></svg>Canais de comunicação</span>
           <h2 class="h2">Vários canais, <b>um objetivo:</b> <span class="t">seu cliente ouvir você.</span></h2>
         </div>
-        <div class="chan-list" role="tablist" aria-label="Canais">
-          <button type="button" class="chan on reveal" data-ch="0" role="tab" aria-selected="true"><span class="k">01</span><span><span class="ct">Ligação gravada</span><span class="cp">A sua voz tocando no celular do cliente. Mais de 80% das ligações são atendidas e mais de 60% são ouvidas até o final.</span></span></button>
-          <button type="button" class="chan reveal" data-ch="1" role="tab" aria-selected="false"><span class="k">02</span><span><span class="ct">SMS Flash</span><span class="cp">A mensagem abre por cima de tudo na tela. Seu cliente não tem como não ver.</span></span></button>
-          <button type="button" class="chan reveal" data-ch="2" role="tab" aria-selected="false"><span class="k">03</span><span><span class="ct">SMS</span><span class="cp">Mensagem curta, link clicável e entrega instantânea. Custo por impacto menor que qualquer canal de remarketing.</span></span></button>
-          <button type="button" class="chan reveal" data-ch="3" role="tab" aria-selected="false"><span class="k">04</span><span><span class="ct">RCS</span><span class="cp">A mensagem com a sua marca, imagem e botão, direto no aplicativo de mensagens do celular.</span></span></button>
+        <p class="chan-hint reveal"><svg aria-hidden="true"><use href="#i-tap"/></svg>Toque em cada canal pra ver como ele chega no celular</p>
+        <div class="chan-list" role="tablist" aria-label="Canais e produtos">
+          <button type="button" class="chan on reveal" data-ch="0" role="tab" aria-selected="true"><span class="k">01</span><span><span class="ct">Ligação gravada</span><span class="cp">A sua voz tocando no celular do cliente. Mais de 80% das ligações são atendidas e mais de 60% são ouvidas até o final.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+          <button type="button" class="chan reveal" data-ch="1" role="tab" aria-selected="false"><span class="k">02</span><span><span class="ct">SMS Flash</span><span class="cp">A mensagem abre por cima de tudo na tela. Seu cliente não tem como não ver.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+          <button type="button" class="chan reveal" data-ch="2" role="tab" aria-selected="false"><span class="k">03</span><span><span class="ct">SMS</span><span class="cp">Mensagem curta, link clicável e entrega instantânea. Custo por impacto menor que qualquer canal de remarketing.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+          <button type="button" class="chan reveal" data-ch="3" role="tab" aria-selected="false"><span class="k">04</span><span><span class="ct">RCS</span><span class="cp">A mensagem com a sua marca, imagem e botão, direto no aplicativo de mensagens do celular.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+          <button type="button" class="chan reveal" data-ch="4" role="tab" aria-selected="false"><span class="k">05</span><span><span class="ct">Ligação com IA</span><span class="cp">Uma conversa de verdade no telefone, conduzida por inteligência artificial, pra falar com a sua base sem depender de fila de atendimento.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+          <button type="button" class="chan reveal" data-ch="5" role="tab" aria-selected="false"><span class="k">06</span><span><span class="ct">Número digital</span><span class="cp">O número da sua operação na nuvem, pronto pra ligar e receber ligações sem depender de chip ou aparelho.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
         </div>
-        <p class="chan-note reveal"><b>Se o seu número de WhatsApp cair, a sua ligação e o seu SMS continuam chegando.</b> Infraestrutura própria, homologada pela ANATEL, com escala de 18 milhões de ligações num único dia.</p>
+        <p class="chan-note reveal"><b>Se o seu número de WhatsApp cair, a ligação e o SMS continuam chegando sem banimento e sem bloqueios.</b> Infraestrutura própria, homologada pela ANATEL, com escala de +20 milhões de disparos num único dia.</p>
       </div>
     </div>
 
-    <div class="trust prod">
-      <div class="card reveal"><div class="ic"><svg><use href="#i-ai"/></svg></div><h3>Ligação com IA</h3><p>Uma conversa de verdade no telefone, conduzida por inteligência artificial, para falar com a sua base sem depender de fila de atendimento.</p></div>
-      <div class="card reveal"><div class="ic"><svg><use href="#i-num"/></svg></div><h3>Número digital</h3><p>O número da sua operação na nuvem, pronto para ligar e receber ligações sem depender de chip ou aparelho.</p></div>
-      <div class="card reveal"><div class="ic"><svg><use href="#i-flow"/></svg></div><h3>LigueLead Flow</h3><p>Fluxos automatizados que combinam voz e SMS em sequências inteligentes. A régua roda sozinha.</p></div>
-    </div>
+    <div class="card flowstrip reveal"><div class="ic"><svg><use href="#i-flow"/></svg></div><div><h3>LigueLead Flow</h3><p>Fluxos automatizados que combinam voz e SMS em sequências inteligentes. A régua roda sozinha.</p></div></div>
+
     <div class="eco reveal">
       <div class="eco-copy">
         <span class="label"><svg><use href="#i-check"/></svg>Integrações</span>
@@ -1098,6 +1183,7 @@ document.documentElement.className='js';
   ];
   (function(){
     var nav=$('#howNav'),card=$('#howCard'),alertBox=$('#howAlert');if(!nav||!card)return;
+    var NOTE=alertBox?alertBox.innerHTML:'';if(alertBox)alertBox.parentNode.removeChild(alertBox);
     var CH={L:['i-num','Ligação gravada'],S:['i-sms','SMS'],F:['i-flash','SMS Flash'],R:['i-rcs','RCS'],I:['i-ai','Ligação com IA']};
     function ics(codes){return '<span class="ics">'+codes.split('').map(function(c){return '<span class="cic" title="'+CH[c][1]+'">'+ICON(CH[c][0])+'</span>';}).join('')+'</span>';}
     function names(codes){return codes.split('').map(function(c){return CH[c][1];}).join(' + ');}
@@ -1124,7 +1210,7 @@ document.documentElement.className='js';
     var CUT='<div class="fcut"><span>Daqui pra baixo fica travado no site</span></div>';
     function render(k){
       var s=STRATS[k],h='<div class="how-head"><div><h3>'+s.t+' <span>+ LigueLead</span></h3><p>'+s.sub+'</p></div>'+
-        '<div class="how-legend">'+['L','S','F','R','I'].map(function(c){return '<span><span class="cic">'+ICON(CH[c][0])+'</span>'+CH[c][1]+'</span>';}).join('')+'</div></div><div class="flow">';
+        '<div class="how-legend">'+['L','S','F','R','I'].map(function(c){return '<span><span class="cic">'+ICON(CH[c][0])+'</span>'+CH[c][1]+'</span>';}).join('')+'</div></div>'+(NOTE&&s.g==="Recuperação de vendas"?'<div class="how-note">'+NOTE+'</div>':'')+'<div class="flow">';
       if(s.cols){
         var rest=s.n-s.cols.length;
         var col=function(c,i,extra){return '<div class="fcol'+(extra?' rest':'')+'">'+trig({m:c.m,a:c.a},i,'Régua '+num(i))+c.a.map(act).join('')+'</div>';};
@@ -1143,22 +1229,53 @@ document.documentElement.className='js';
       }
       h+='</div>';
       card.innerHTML=h;
-      if(alertBox)alertBox.hidden=s.g!=="Recuperação de vendas";
       [].forEach.call(nav.querySelectorAll('.how-tab'),function(b){var on=+b.getAttribute('data-k')===k;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');});
       [].forEach.call(nav.querySelectorAll('.how-segb'),function(b){b.classList.toggle('on',b.getAttribute('data-g')===s.g);});
-      [].forEach.call(nav.querySelectorAll('.how-tabs'),function(t){t.hidden=t.getAttribute('data-g')!==s.g;});
+      [].forEach.call(nav.querySelectorAll('.how-tabs'),function(t){var off=t.getAttribute('data-g')!==s.g;t.classList.toggle('off',off);t.setAttribute('aria-hidden',off?'true':'false');});
+      cur=k;place();
+    }
+    /* troca com sensação de "arrastar": o que sai vai para um lado, o que entra vem do outro */
+    var cur=0,busy=false,calm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function place(){
+      var th=nav.querySelector('.how-thumb'),on=nav.querySelector('.how-segb.on');if(!th||!on)return;
+      th.style.width=on.offsetWidth+'px';th.style.transform='translateX('+on.offsetLeft+'px)';
+    }
+    var pending=null;
+    function go(k){
+      if(busy){pending=k;return;}
+      if(k===cur)return;
+      if(calm||!card.animate){render(k);return;}
+      var dir=k>cur?1:-1,sameGroup=STRATS[k].g===STRATS[cur].g,D=44,done=false;
+      busy=true;
+      var tabs=sameGroup?null:nav.querySelector('.how-tabs:not(.off)');
+      var OUT=[{opacity:1,transform:'none'},{opacity:0,transform:'translateX('+(-D*dir)+'px)'}];
+      if(tabs)tabs.animate(OUT,{duration:170,easing:'ease-in',fill:'forwards'});
+      card.animate(OUT,{duration:190,easing:'ease-in',fill:'forwards'});
+      /* a troca acontece por tempo, não pelo fim da animação: assim nunca trava se a aba estiver em segundo plano */
+      setTimeout(function(){
+        if(done)return;done=true;
+        [card,tabs].forEach(function(el){if(el)el.getAnimations().forEach(function(a){a.cancel();});});
+        render(k);
+        var IN=[{opacity:0,transform:'translateX('+(D*dir)+'px)'},{opacity:1,transform:'none'}],O={duration:360,easing:'cubic-bezier(.2,.7,.2,1)'};
+        if(!sameGroup){var nt=nav.querySelector('.how-tabs:not(.off)');if(nt)nt.animate(IN,O);}
+        card.animate(IN,O);
+        setTimeout(function(){busy=false;if(pending!==null){var n=pending;pending=null;go(n);}},370);
+      },195);
     }
     var groups=[],first={},count={};
     STRATS.forEach(function(s,i){if(groups.indexOf(s.g)<0){groups.push(s.g);first[s.g]=i;count[s.g]=0;}count[s.g]++;});
-    nav.innerHTML='<div class="how-seg" role="tablist" aria-label="Tipo de estratégia">'+groups.map(function(g){return '<button type="button" class="how-segb" data-g="'+g+'">'+g+'<small>'+count[g]+'</small></button>';}).join('')+'</div>'+
+    nav.innerHTML='<div class="how-seg" role="tablist" aria-label="Tipo de estratégia"><span class="how-thumb" aria-hidden="true"></span>'+groups.map(function(g){return '<button type="button" class="how-segb" data-g="'+g+'">'+g+'<small>'+count[g]+'</small></button>';}).join('')+'</div>'+
       groups.map(function(g){return '<div class="how-tabs" role="tablist" data-g="'+g+'">'+STRATS.map(function(s,i){return s.g===g?'<button type="button" class="how-tab" role="tab" data-k="'+i+'">'+s.t+'</button>':'';}).join('')+'</div>';}).join('');
+    var tw=document.createElement('div');tw.className='how-tabsw';[].forEach.call(nav.querySelectorAll('.how-tabs'),function(t){tw.appendChild(t);});nav.appendChild(tw);
     nav.addEventListener('click',function(e){
-      var b=e.target.closest('.how-tab');if(b){render(+b.getAttribute('data-k'));return;}
-      var g=e.target.closest('.how-segb');if(g)render(first[g.getAttribute('data-g')]);
+      var b=e.target.closest('.how-tab');if(b){go(+b.getAttribute('data-k'));return;}
+      var g=e.target.closest('.how-segb');if(g&&g.getAttribute('data-g')!==STRATS[cur].g)go(first[g.getAttribute('data-g')]);
     });
     /* o botão de destravar é criado depois do carregamento: leva ao formulário */
     card.addEventListener('click',function(e){var a=e.target.closest('[data-goform]');if(!a)return;e.preventDefault();var c=$('#quizCard'),head=($('header.top')||{}).offsetHeight||0;window.scrollTo({top:window.scrollY+c.getBoundingClientRect().top-head-16,behavior:'smooth'});});
     render(0);
+    requestAnimationFrame(function(){place();var th=nav.querySelector('.how-thumb');if(th)requestAnimationFrame(function(){th.classList.add('anim');});});
+    window.addEventListener('resize',place);
     if(FULL){var bar=document.createElement('div');bar.className='rev-bar';bar.innerHTML='<b>Modo revisão</b><span>Todas as réguas estão completas e destravadas. O visitante do site não vê assim.</span><a href="'+location.pathname+'#como-usar">Ver como o visitante vê</a>';nav.parentNode.parentNode.insertBefore(bar,nav.parentNode);}
   })();
 

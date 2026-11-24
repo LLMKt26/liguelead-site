@@ -93,6 +93,10 @@
   .top-nav{display:flex;align-items:center;gap:28px;font-size:15px;font-weight:500;color:var(--navy)}
   .top-nav a{padding:6px 0;border-bottom:2px solid transparent;transition:border-color .3s var(--ease)}
   .top-nav a:hover{border-bottom-color:var(--teal)}
+  .top-nav{margin-left:auto}
+  .top-nav .nav-login{margin-left:6px;padding:9px 16px;border:1.5px solid var(--navy);border-radius:8px;font-weight:700;font-size:14px;line-height:1;transition:background-color .3s var(--ease),color .3s var(--ease)}
+  .top-nav .nav-login:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+  @media(max-width:1080px) and (min-width:901px){.top-nav{gap:20px;font-size:14.5px}}
   .menu-btn{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;margin-right:-10px;padding:0 10px;background:none;border:none;cursor:pointer}
   .menu-btn span{display:block;height:2px;border-radius:2px;background:var(--navy);transition:transform .25s var(--ease),opacity .25s var(--ease)}
   .menu-btn[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -105,6 +109,9 @@
     .top-nav.open{display:flex}
     .top-nav a{padding:15px 0;border-bottom:1px solid var(--line)}
     .top-nav a:last-child{border-bottom:none}
+    .top-nav{margin-left:0}
+    .top-nav .nav-login{margin:12px 0 4px;padding:14px;text-align:center;font-size:16px;border:1.5px solid var(--navy)}
+    .top-nav .nav-login:last-child{border-bottom:1.5px solid var(--navy)}
     .top-nav a:hover{border-bottom-color:var(--line)}
   }
   @media(max-width:720px){.top .btn{display:none}.top .wrap{height:60px}.top .logo img{height:26px}}
@@ -523,6 +530,7 @@
   /* ---------- faixa de números abaixo do hero ---------- */
   .nums{background:#fff;border-bottom:1px solid var(--line)}
   .big4.light{margin-top:0;border-top:none}
+  @media(min-width:721px){.big4.light>div,.big4.light>div:first-child{text-align:center;padding-left:20px;padding-right:20px}}
   .big4.light>div{border-left-color:var(--line);padding-top:26px;padding-bottom:26px}
   .big4.light .n{color:var(--navy);white-space:nowrap}
   @media(max-width:480px){.big4.light .n{font-size:26px}}
@@ -588,6 +596,53 @@
     .ticker-track{padding:10px 0}
   }
 
+  /* ---------- ajustes de revisão: problema, posicionamento, canais ---------- */
+  .prob-list svg.x{color:#FF5A5F}
+  .prob .btn{margin-top:8px}
+  .prob-kicker{margin-top:22px;font-size:clamp(24px,2.7vw,32px);line-height:1.2;font-weight:300;color:#fff;letter-spacing:-.01em}
+  .prob-kicker span{color:var(--teal);font-weight:700}
+  .donut{position:relative;width:104px;height:104px;margin-bottom:18px}
+  .donut svg{width:100%;height:100%;transform:rotate(-90deg);margin:0 !important}
+  .donut circle{fill:none;stroke-width:11}
+  .donut .bg{stroke:#E9EAEF}
+  .donut .fg{stroke:var(--teal);stroke-linecap:round}
+  .donut b{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:25px;font-weight:700;color:var(--navy);letter-spacing:-.02em}
+  .donut b span{font-size:15px;color:var(--teal-ink);margin-left:1px}
+  .trust .card.safe{background:var(--black);box-shadow:0 0 0 2px var(--teal),0 22px 44px -18px rgba(27,204,174,.5)}
+  .trust .card.safe h3{color:var(--teal);font-size:14px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+  .trust .card.safe .safe-q{font-size:21px;line-height:1.3;font-weight:700;color:#fff;margin-bottom:12px}
+  .trust .card.safe p{color:var(--on-black-muted)}
+  /* canais: palco escuro com o celular inteiro, lista com sinal de que é clicável */
+  .stage{flex:1;position:relative;background:radial-gradient(120% 80% at 50% 0%,#11463F 0%,#0B0B0F 64%);border-radius:24px;padding:44px 24px;display:flex;justify-content:center;align-items:center;overflow:hidden}
+  .phone{width:min(292px,70%);margin-bottom:0}
+  .chan-hint{display:inline-flex;align-items:center;gap:8px;margin:-8px 0 14px;font-size:14px;font-weight:500;color:var(--teal-ink)}
+  .chan-hint svg{width:18px;height:18px;flex:0 0 auto}
+  .chan{grid-template-columns:44px 1fr 22px}
+  .chan:hover{background:#FAFAFB}
+  .chan.on:hover{background:var(--teal-soft)}
+  .chan .cv{width:20px;height:20px;margin-top:5px;color:var(--muted);transition:transform .35s var(--ease),color .35s var(--ease)}
+  .chan.on .cv{transform:rotate(180deg);color:var(--teal-ink)}
+  .chan.on .cp{max-height:200px}
+  .ovl{position:absolute;left:8.5%;right:8.5%;top:17%;border-radius:5cqw;font-family:-apple-system,'SF Pro Text','Segoe UI',system-ui,sans-serif;color:#fff;background:rgba(28,28,32,.97);box-shadow:0 10px 30px rgba(0,0,0,.4);overflow:hidden}
+  .ovl-h{display:flex;align-items:center;gap:2.6cqw;padding:4.2cqw 4.6cqw;border-bottom:1px solid rgba(255,255,255,.12);font-size:4.6cqw;font-weight:600}
+  .ovl-h i{width:2.4cqw;height:2.4cqw;border-radius:50%;background:var(--teal);flex:0 0 auto}
+  .ovl-h small{margin-left:auto;font-size:3.8cqw;font-weight:400;color:#B9B9C2}
+  .ovl-b{padding:4cqw 4.4cqw 4.6cqw;display:flex;flex-direction:column;gap:2.6cqw}
+  .ovl-b p{font-size:4.5cqw;line-height:1.32;padding:3cqw 3.8cqw;border-radius:4cqw;max-width:90%}
+  .ovl-b .ia{background:var(--teal);color:#06231F;align-self:flex-start;border-bottom-left-radius:1cqw}
+  .ovl-b .me{background:#3A3A42;align-self:flex-end;border-bottom-right-radius:1cqw}
+  .ovl-n{padding:5cqw 4.4cqw 5.4cqw;text-align:center}
+  .ovl-n b{display:block;font-size:7.4cqw;font-weight:600;letter-spacing:.01em}
+  .ovl-n span{display:block;font-size:4.3cqw;color:#B9B9C2;margin-top:1.4cqw}
+  .ovl-n em{display:inline-block;margin-top:4cqw;font-style:normal;font-size:4.1cqw;font-weight:600;color:var(--teal);border:1px solid rgba(27,204,174,.5);border-radius:99px;padding:1.6cqw 3.6cqw}
+  .flowstrip{margin-top:28px;display:flex;align-items:center;gap:18px;padding:22px 26px;background:var(--bg);box-shadow:none;border:1px solid var(--line)}
+  .flowstrip .ic{width:48px;height:48px;border-radius:12px;background:var(--black);color:var(--teal);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .flowstrip .ic svg{width:24px;height:24px}
+  .flowstrip h3{font-size:19px;font-weight:700;color:var(--navy);margin-bottom:2px}
+  .flowstrip p{font-size:16px;color:var(--text)}
+  @media(max-width:920px){.chan-visual.inline .stage{padding:26px 16px}.chan-visual.inline .phone{width:min(210px,74%)}}
+  @media(max-width:640px){.chan{grid-template-columns:30px 1fr 20px}.flowstrip{align-items:flex-start;padding:20px}.trust .card.safe .safe-q{font-size:19px}}
+
   /* ---------- barra fixa no celular ---------- */
   .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;align-items:center;gap:14px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(38,38,85,.08);transform:translateY(110%);transition:transform .3s var(--ease)}
   .sticky-cta.on{transform:none}
@@ -608,20 +663,23 @@
   <symbol id="i-flash" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M13 2L4 14h7l-1 8 9-12h-7z"/></symbol>
   <symbol id="i-sms" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 7v5l3 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/></symbol>
+  <symbol id="i-tap" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 11V5.500a1.500 1.500 0 0 1 3 0V10m0-.500a1.500 1.500 0 0 1 3 0V11m0-.300a1.500 1.500 0 0 1 3 0V15a6 6 0 0 1-6 6h-.800a6 6 0 0 1-5-2.700L4.300 14.800a1.500 1.500 0 0 1 2.400-1.800L9 15.500M5 4l1.500 1.500M12 1.500V3M19 4l-1.500 1.500"/></symbol>
   <symbol id="i-ai" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3v3M12 18v3M3 12h3M18 12h3M7 7h10v10H7zM10 10.5v3M14 10.5v3"/></symbol>
   <symbol id="i-num" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
   <symbol id="i-flow" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 4h6v5H4zM14 15h6v5h-6zM7 9v4a3 3 0 0 0 3 3h4M14 6.5h3a3 3 0 0 1 3 3V11"/></symbol>
 </svg>
 
 <!-- TOPO -->
-<header class="top">
+<header class="top" id="topo">
   <div class="wrap">
     <a class="logo" href="#" aria-label="LigueLead"><img src="assets/logo-ll.webp" alt="LigueLead" width="93" height="30"></a>
     <nav class="top-nav" id="topNav" aria-label="Seções">
+      <a href="#topo">Home</a>
       <a href="#infraestrutura">Produtos</a>
       <a href="#metodologia">Metodologia</a>
       <a href="#casos">Clientes</a>
       <a href="#contato" data-goform>Contato</a>
+      <a class="nav-login" href="https://areadocliente.liguelead.app.br/login" target="_blank" rel="noopener">Acessar plataforma</a>
     </nav>
     <a class="btn btn-sm" href="#contato" data-goform>Fale com um especialista</a>
     <button type="button" class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="topNav"><span></span><span></span><span></span></button>
@@ -634,7 +692,7 @@
     <div>
       <span class="bn-band reveal">Infraestrutura de mensageria</span>
       <h1 class="reveal">Feita para quem <mark class="hl">não pode falhar.</mark></h1>
-      <p class="hero-sub reveal">Seus clientes já existem. Eles só não estão te ouvindo. <b>A LigueLead faz a sua mensagem chegar por ligação, SMS e RCS</b> quando e-mail, WhatsApp e anúncio falham.</p>
+      <p class="hero-sub reveal">Seus leads e clientes já existem, mas você está sendo ignorado. <b>A LigueLead faz a sua mensagem chegar por ligação, SMS e RCS</b> quando e-mail, WhatsApp e anúncio falham.</p>
 
       <div class="offer reveal">
         <div><span class="v num">25 mil+</span><span class="u">clientes</span></div>
@@ -692,16 +750,19 @@
     <div class="prob">
       <div class="sec-head reveal" style="margin-bottom:0">
         <span class="label dark"><svg><use href="#i-check"/></svg>O problema real</span>
-        <h2 class="h2">O problema não é o seu produto. <span class="t">É o canal.</span></h2>
+        <h2 class="h2">83% dos seus leads esquecem do seu lançamento <span class="t">antes dele acontecer.</span></h2>
         <p class="lead">Você investe em tráfego, constrói lista, aquece a audiência. E na hora H a maioria não aparece. Não porque não quis. Porque não viu.</p>
-        <a class="link-arrow" href="#metodologia">Conheça a Blindagem de Atenção<svg><use href="#i-arrow"/></svg></a>
+        <a class="btn" href="#metodologia">Conheça a Blindagem de Atenção</a>
       </div>
-      <ul class="prob-list reveal">
-        <li><svg><use href="#i-x"/></svg><div><b>E-mail</b><span>Vai para o spam.</span></div></li>
-        <li><svg><use href="#i-x"/></svg><div><b>WhatsApp</b><span>Tem limite de envio e risco de bloqueio.</span></div></li>
-        <li><svg><use href="#i-x"/></svg><div><b>Remarketing</b><span>Disputa leilão contra mil outros anunciantes.</span></div></li>
+      <div class="reveal">
+        <ul class="prob-list">
+        <li><svg class="x"><use href="#i-x"/></svg><div><b>E-mail</b><span>Vai para o spam.</span></div></li>
+        <li><svg class="x"><use href="#i-x"/></svg><div><b>WhatsApp</b><span>Tem limite de envio e risco de bloqueio.</span></div></li>
+        <li><svg class="x"><use href="#i-x"/></svg><div><b>Remarketing</b><span>Disputa leilão contra mil outros anunciantes.</span></div></li>
         <li><svg><use href="#i-check"/></svg><div><b>Ligação e SMS</b><span>Chegam direto no celular, sem intermediário.</span></div></li>
-      </ul>
+        </ul>
+        <p class="prob-kicker">O problema não é o seu produto. <span>É o canal.</span></p>
+      </div>
     </div>
   </div>
 </section>
@@ -711,11 +772,11 @@
   <div class="wrap">
     <div class="sec-head center reveal">
       <span class="label"><svg><use href="#i-check"/></svg>Posicionamento</span>
-      <h2 class="h2">Não somos uma ferramenta de disparo. <b>Somos a infraestrutura</b> por trás dos maiores lançamentos do Brasil.</h2>
+      <h2 class="h2">Não somos uma ferramenta de disparo.<br><b>Somos a infraestrutura</b> por trás dos maiores lançamentos do Brasil.</h2>
     </div>
     <div class="trust">
-      <div class="card reveal"><img src="assets/foguete-verde.svg" alt="" loading="lazy"><h3>Entregabilidade</h3><p>Sua mensagem chega em 85% da lista em minutos. Não em horas. Não no dia seguinte.</p></div>
-      <div class="card reveal"><img src="assets/cadeado-verde.svg" alt="" loading="lazy"><h3>Segurança</h3><p>Tecnologia e operadora de telefonia próprias, homologação ANATEL e 5 camadas de segurança. Sua base nunca é revendida.</p></div>
+      <div class="card reveal"><div class="donut" role="img" aria-label="85% da lista alcançada em minutos"><svg viewBox="0 0 100 100"><circle class="bg" cx="50" cy="50" r="42"/><circle class="fg" cx="50" cy="50" r="42" pathLength="100" stroke-dasharray="85 100"/></svg><b class="num">85<span>%</span></b></div><h3>Entregabilidade</h3><p>Sua mensagem chega em 85% da lista em minutos. Não em horas. Não no dia seguinte.</p></div>
+      <div class="card reveal safe"><img src="assets/cadeado-verde.svg" alt="" loading="lazy"><h3>Segurança</h3><p class="safe-q">Aqui, seus leads e clientes estão seguros e sua base nunca será revendida.</p><p>Tecnologia e operadora de telefonia próprias, homologação ANATEL e 5 camadas de segurança.</p></div>
       <div class="card reveal"><img src="assets/integracao-verde.svg" alt="" loading="lazy"><h3>Inteligência</h3><p>Dados em tempo real para decidir durante a operação, com suporte humano 7 dias por semana.</p></div>
     </div>
   </div>
@@ -727,9 +788,9 @@
     <div class="chan-grid">
       <div class="chan-visual reveal">
         <div class="stage"><div class="phone" id="phone">
-          <img class="scr on" data-ch="0" src="assets/tela-ligacao.webp" alt="Ligação da LigueLead chegando no celular" width="526" height="1138">
+          <img class="scr on" data-ch="0" src="assets/tela-ligacao-t.webp" alt="Ligação da LigueLead chegando no celular" width="526" height="1138">
           <div class="scr" data-ch="1">
-            <img src="assets/tela-inicio.webp" alt="" width="526" height="1138" loading="lazy">
+            <img src="assets/tela-inicio-t.webp" alt="" width="526" height="1138" loading="lazy">
             <div class="flash-dim"></div>
             <div class="flash" role="img" aria-label="Exemplo de SMS Flash na tela do celular">
               <div class="flash-t">SMS Flash</div>
@@ -737,8 +798,24 @@
               <div class="flash-b">Dispensar</div>
             </div>
           </div>
-          <img class="scr" data-ch="2" src="assets/tela-sms.webp" alt="SMS da LigueLead com o link chegando na tela bloqueada" width="526" height="1138" loading="lazy">
-          <img class="scr" data-ch="3" src="assets/tela-rcs.webp" alt="Mensagem RCS da LigueLead com marca verificada, imagem e botão" width="526" height="1138" loading="lazy">
+          <img class="scr" data-ch="2" src="assets/tela-sms-t.webp" alt="SMS da LigueLead com o link chegando na tela bloqueada" width="526" height="1138" loading="lazy">
+          <img class="scr" data-ch="3" src="assets/tela-rcs-t.webp" alt="Mensagem RCS da LigueLead com marca verificada, imagem e botão" width="526" height="1138" loading="lazy">
+          <div class="scr" data-ch="4">
+            <img src="assets/tela-inicio-t.webp" alt="" width="526" height="1138" loading="lazy">
+            <div class="flash-dim"></div>
+            <div class="ovl" role="img" aria-label="Exemplo de ligação com IA: a IA conversa com o cliente e responde às dúvidas">
+              <div class="ovl-h"><i></i>Ligação com IA<small>em chamada</small></div>
+              <div class="ovl-b"><p class="ia">Oi, Ana! Vi que o seu pedido ficou pendente. Posso te ajudar?</p><p class="me">Fiquei em dúvida no frete.</p><p class="ia">Pra sua região ele sai grátis hoje. Te mando o link por SMS?</p></div>
+            </div>
+          </div>
+          <div class="scr" data-ch="5">
+            <img src="assets/tela-inicio-t.webp" alt="" width="526" height="1138" loading="lazy">
+            <div class="flash-dim"></div>
+            <div class="ovl" role="img" aria-label="Exemplo de número digital: a ligação chega identificada com o número da empresa">
+              <div class="ovl-h"><i></i>Chamada recebida</div>
+              <div class="ovl-n"><b>Sua Empresa</b><span>número digital da sua operação</span><em>Liga e recebe ligações, sem chip</em></div>
+            </div>
+          </div>
         </div></div>
       </div>
       <div>
@@ -746,21 +823,21 @@
           <span class="label"><svg><use href="#i-check"/></svg>Canais de comunicação</span>
           <h2 class="h2">Vários canais, <b>um objetivo:</b> <span class="t">seu cliente ouvir você.</span></h2>
         </div>
-        <div class="chan-list" role="tablist" aria-label="Canais">
-          <button type="button" class="chan on reveal" data-ch="0" role="tab" aria-selected="true"><span class="k">01</span><span><span class="ct">Ligação gravada</span><span class="cp">A sua voz tocando no celular do cliente. Mais de 80% das ligações são atendidas e mais de 60% são ouvidas até o final.</span></span></button>
-          <button type="button" class="chan reveal" data-ch="1" role="tab" aria-selected="false"><span class="k">02</span><span><span class="ct">SMS Flash</span><span class="cp">A mensagem abre por cima de tudo na tela. Seu cliente não tem como não ver.</span></span></button>
-          <button type="button" class="chan reveal" data-ch="2" role="tab" aria-selected="false"><span class="k">03</span><span><span class="ct">SMS</span><span class="cp">Mensagem curta, link clicável e entrega instantânea. Custo por impacto menor que qualquer canal de remarketing.</span></span></button>
-          <button type="button" class="chan reveal" data-ch="3" role="tab" aria-selected="false"><span class="k">04</span><span><span class="ct">RCS</span><span class="cp">A mensagem com a sua marca, imagem e botão, direto no aplicativo de mensagens do celular.</span></span></button>
+        <p class="chan-hint reveal"><svg aria-hidden="true"><use href="#i-tap"/></svg>Toque em cada canal pra ver como ele chega no celular</p>
+        <div class="chan-list" role="tablist" aria-label="Canais e produtos">
+          <button type="button" class="chan on reveal" data-ch="0" role="tab" aria-selected="true"><span class="k">01</span><span><span class="ct">Ligação gravada</span><span class="cp">A sua voz tocando no celular do cliente. Mais de 80% das ligações são atendidas e mais de 60% são ouvidas até o final.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+          <button type="button" class="chan reveal" data-ch="1" role="tab" aria-selected="false"><span class="k">02</span><span><span class="ct">SMS Flash</span><span class="cp">A mensagem abre por cima de tudo na tela. Seu cliente não tem como não ver.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+          <button type="button" class="chan reveal" data-ch="2" role="tab" aria-selected="false"><span class="k">03</span><span><span class="ct">SMS</span><span class="cp">Mensagem curta, link clicável e entrega instantânea. Custo por impacto menor que qualquer canal de remarketing.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+          <button type="button" class="chan reveal" data-ch="3" role="tab" aria-selected="false"><span class="k">04</span><span><span class="ct">RCS</span><span class="cp">A mensagem com a sua marca, imagem e botão, direto no aplicativo de mensagens do celular.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+          <button type="button" class="chan reveal" data-ch="4" role="tab" aria-selected="false"><span class="k">05</span><span><span class="ct">Ligação com IA</span><span class="cp">Uma conversa de verdade no telefone, conduzida por inteligência artificial, pra falar com a sua base sem depender de fila de atendimento.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+          <button type="button" class="chan reveal" data-ch="5" role="tab" aria-selected="false"><span class="k">06</span><span><span class="ct">Número digital</span><span class="cp">O número da sua operação na nuvem, pronto pra ligar e receber ligações sem depender de chip ou aparelho.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
         </div>
-        <p class="chan-note reveal"><b>Se o seu número de WhatsApp cair, a sua ligação e o seu SMS continuam chegando.</b> Infraestrutura própria, homologada pela ANATEL, com escala de 18 milhões de ligações num único dia.</p>
+        <p class="chan-note reveal"><b>Se o seu número de WhatsApp cair, a ligação e o SMS continuam chegando sem banimento e sem bloqueios.</b> Infraestrutura própria, homologada pela ANATEL, com escala de +20 milhões de disparos num único dia.</p>
       </div>
     </div>
 
-    <div class="trust prod">
-      <div class="card reveal"><div class="ic"><svg><use href="#i-ai"/></svg></div><h3>Ligação com IA</h3><p>Uma conversa de verdade no telefone, conduzida por inteligência artificial, para falar com a sua base sem depender de fila de atendimento.</p></div>
-      <div class="card reveal"><div class="ic"><svg><use href="#i-num"/></svg></div><h3>Número digital</h3><p>O número da sua operação na nuvem, pronto para ligar e receber ligações sem depender de chip ou aparelho.</p></div>
-      <div class="card reveal"><div class="ic"><svg><use href="#i-flow"/></svg></div><h3>LigueLead Flow</h3><p>Fluxos automatizados que combinam voz e SMS em sequências inteligentes. A régua roda sozinha.</p></div>
-    </div>
+    <div class="card flowstrip reveal"><div class="ic"><svg><use href="#i-flow"/></svg></div><div><h3>LigueLead Flow</h3><p>Fluxos automatizados que combinam voz e SMS em sequências inteligentes. A régua roda sozinha.</p></div></div>
+
     <div class="eco reveal">
       <div class="eco-copy">
         <span class="label"><svg><use href="#i-check"/></svg>Integrações</span>
