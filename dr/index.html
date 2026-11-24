@@ -309,7 +309,7 @@
   .how{display:flex;flex-direction:column;gap:22px}
   .how-nav{display:flex;flex-direction:column;gap:18px}
   /* 1) escolhe o tipo: dois botões grandes lado a lado */
-  .how-seg{position:relative;display:inline-flex;align-self:flex-start;padding:5px;border-radius:99px;background:var(--black-2);border:1px solid var(--black-line)}
+  .how-seg{position:relative;display:inline-grid;grid-template-columns:1fr 1fr;align-self:flex-start;padding:5px;border-radius:99px;background:var(--black-2);border:1px solid var(--black-line)}
   .how-segb{font-family:inherit;font-size:15.5px;font-weight:700;line-height:1;color:var(--on-black-muted);background:none;border:none;border-radius:99px;padding:13px 24px;cursor:pointer;white-space:nowrap;transition:background-color .25s var(--ease),color .25s var(--ease)}
   .how-segb small{font-weight:300;opacity:.75;margin-left:6px}
   .how-segb:hover{color:#fff}
@@ -322,7 +322,9 @@
   .how-segb:focus-visible,.how-tab:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(27,204,174,.35)}
   /* 2) escolhe a estratégia: linha de texto com sublinhado verde, sem caixas */
   .how-tabs{display:flex;gap:6px 30px;flex-wrap:wrap;border-bottom:1px solid var(--black-line)}
-  .how-tabs[hidden]{display:none}
+  .how-tabsw{display:grid}
+  .how-tabsw>.how-tabs{grid-area:1 / 1;align-content:start}
+  .how-tabs.off{visibility:hidden;pointer-events:none}
   .how-tab{font-family:inherit;font-size:16.5px;font-weight:500;line-height:1.2;color:var(--on-black-muted);background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-1px;padding:10px 0 14px;cursor:pointer;white-space:nowrap;transition:color .2s var(--ease),border-color .2s var(--ease)}
   .how-tab:hover{color:#fff}
   .how-tab.on{color:#fff;font-weight:700;border-bottom-color:var(--teal)}
@@ -405,6 +407,9 @@
   .how-lock .lk{width:44px;height:44px;border-radius:50%;background:var(--black);color:var(--teal);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
   .how-lock .lk svg{width:20px;height:20px}
   .how-locked.side{margin-top:0;min-height:250px}
+  .how-note{display:flex;align-items:center;gap:16px;padding:16px 30px;background:var(--black);color:var(--on-black);font-size:16px;line-height:1.4}
+  .how-note b{color:var(--teal);font-size:clamp(26px,3vw,34px);line-height:1;white-space:nowrap;letter-spacing:-.02em}
+  @media(max-width:640px){.how-note{flex-direction:column;align-items:flex-start;gap:6px;padding:16px 18px;font-size:15px}}
   .how-alert{display:flex;align-items:center;gap:14px;margin-bottom:28px;padding:18px 22px;border:1px solid var(--black-line);border-radius:var(--radius);background:var(--black-2);font-size:16.5px;color:var(--on-black)}
   .how-alert[hidden]{display:none}
   .how-alert b{color:var(--teal);font-size:clamp(26px,3vw,34px);line-height:1;white-space:nowrap;letter-spacing:-.02em}
@@ -1138,6 +1143,7 @@ document.documentElement.className='js';
   ];
   (function(){
     var nav=$('#howNav'),card=$('#howCard'),alertBox=$('#howAlert');if(!nav||!card)return;
+    var NOTE=alertBox?alertBox.innerHTML:'';if(alertBox)alertBox.parentNode.removeChild(alertBox);
     var CH={L:['i-num','Ligação gravada'],S:['i-sms','SMS'],F:['i-flash','SMS Flash'],I:['i-ai','Ligação com IA']};
     function ics(codes){return '<span class="ics">'+codes.split('').map(function(c){return '<span class="cic" title="'+CH[c][1]+'">'+ICON(CH[c][0])+'</span>';}).join('')+'</span>';}
     function names(codes){return codes.split('').map(function(c){return CH[c][1];}).join(' + ');}
@@ -1164,7 +1170,7 @@ document.documentElement.className='js';
     var CUT='<div class="fcut"><span>Daqui pra baixo fica travado no site</span></div>';
     function render(k){
       var s=STRATS[k],h='<div class="how-head"><div><h3>'+s.t+' <span>+ LigueLead</span></h3><p>'+s.sub+'</p></div>'+
-        '<div class="how-legend">'+['L','S','F','I'].map(function(c){return '<span><span class="cic">'+ICON(CH[c][0])+'</span>'+CH[c][1]+'</span>';}).join('')+'</div></div><div class="flow">';
+        '<div class="how-legend">'+['L','S','F','I'].map(function(c){return '<span><span class="cic">'+ICON(CH[c][0])+'</span>'+CH[c][1]+'</span>';}).join('')+'</div></div>'+(NOTE&&s.g==="Recuperação de vendas"?'<div class="how-note">'+NOTE+'</div>':'')+'<div class="flow">';
       if(s.cols){
         var rest=s.n-s.cols.length;
         var col=function(c,i,extra){return '<div class="fcol'+(extra?' rest':'')+'">'+trig({m:c.m,a:c.a},i,'Régua '+num(i))+c.a.map(act).join('')+'</div>';};
@@ -1183,10 +1189,9 @@ document.documentElement.className='js';
       }
       h+='</div>';
       card.innerHTML=h;
-      if(alertBox)alertBox.hidden=s.g!=="Recuperação de vendas";
       [].forEach.call(nav.querySelectorAll('.how-tab'),function(b){var on=+b.getAttribute('data-k')===k;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');});
       [].forEach.call(nav.querySelectorAll('.how-segb'),function(b){b.classList.toggle('on',b.getAttribute('data-g')===s.g);});
-      [].forEach.call(nav.querySelectorAll('.how-tabs'),function(t){t.hidden=t.getAttribute('data-g')!==s.g;});
+      [].forEach.call(nav.querySelectorAll('.how-tabs'),function(t){var off=t.getAttribute('data-g')!==s.g;t.classList.toggle('off',off);t.setAttribute('aria-hidden',off?'true':'false');});
       cur=k;place();
     }
     /* troca com sensação de "arrastar": o que sai vai para um lado, o que entra vem do outro */
@@ -1202,7 +1207,7 @@ document.documentElement.className='js';
       if(calm||!card.animate){render(k);return;}
       var dir=k>cur?1:-1,sameGroup=STRATS[k].g===STRATS[cur].g,D=44,done=false;
       busy=true;
-      var tabs=sameGroup?null:nav.querySelector('.how-tabs:not([hidden])');
+      var tabs=sameGroup?null:nav.querySelector('.how-tabs:not(.off)');
       var OUT=[{opacity:1,transform:'none'},{opacity:0,transform:'translateX('+(-D*dir)+'px)'}];
       if(tabs)tabs.animate(OUT,{duration:170,easing:'ease-in',fill:'forwards'});
       card.animate(OUT,{duration:190,easing:'ease-in',fill:'forwards'});
@@ -1212,7 +1217,7 @@ document.documentElement.className='js';
         [card,tabs].forEach(function(el){if(el)el.getAnimations().forEach(function(a){a.cancel();});});
         render(k);
         var IN=[{opacity:0,transform:'translateX('+(D*dir)+'px)'},{opacity:1,transform:'none'}],O={duration:360,easing:'cubic-bezier(.2,.7,.2,1)'};
-        if(!sameGroup){var nt=nav.querySelector('.how-tabs:not([hidden])');if(nt)nt.animate(IN,O);}
+        if(!sameGroup){var nt=nav.querySelector('.how-tabs:not(.off)');if(nt)nt.animate(IN,O);}
         card.animate(IN,O);
         setTimeout(function(){busy=false;if(pending!==null){var n=pending;pending=null;go(n);}},370);
       },195);
@@ -1221,6 +1226,7 @@ document.documentElement.className='js';
     STRATS.forEach(function(s,i){if(groups.indexOf(s.g)<0){groups.push(s.g);first[s.g]=i;count[s.g]=0;}count[s.g]++;});
     nav.innerHTML='<div class="how-seg" role="tablist" aria-label="Tipo de estratégia"><span class="how-thumb" aria-hidden="true"></span>'+groups.map(function(g){return '<button type="button" class="how-segb" data-g="'+g+'">'+g+'<small>'+count[g]+'</small></button>';}).join('')+'</div>'+
       groups.map(function(g){return '<div class="how-tabs" role="tablist" data-g="'+g+'">'+STRATS.map(function(s,i){return s.g===g?'<button type="button" class="how-tab" role="tab" data-k="'+i+'">'+s.t+'</button>':'';}).join('')+'</div>';}).join('');
+    var tw=document.createElement('div');tw.className='how-tabsw';[].forEach.call(nav.querySelectorAll('.how-tabs'),function(t){tw.appendChild(t);});nav.appendChild(tw);
     nav.addEventListener('click',function(e){
       var b=e.target.closest('.how-tab');if(b){go(+b.getAttribute('data-k'));return;}
       var g=e.target.closest('.how-segb');if(g&&g.getAttribute('data-g')!==STRATS[cur].g)go(first[g.getAttribute('data-g')]);
