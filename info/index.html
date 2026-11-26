@@ -411,6 +411,22 @@
   .how-lock .lk{width:44px;height:44px;border-radius:50%;background:var(--black);color:var(--teal);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
   .how-lock .lk svg{width:20px;height:20px}
   .how-locked.side{margin-top:0;min-height:250px}
+  .how-eye{display:inline-block;margin-bottom:8px;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-ink)}
+  .how-ctx{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+  .how-ctx>div{padding:22px 30px}
+  .how-ctx>div+div{border-left:1px solid var(--line)}
+  .how-ctx b{display:block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--navy);margin-bottom:8px}
+  .how-ctx .warn{background:#FFF8F7}
+  .how-ctx .warn b{color:#C4372F}
+  .how-ctx p{font-size:15.5px;line-height:1.55;color:var(--text)}
+  .how-res{display:flex;gap:10px 22px;align-items:baseline;flex-wrap:wrap;padding:22px 30px;background:var(--teal-soft);border-top:1px solid #CDEFE8}
+  .how-res b{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--teal-ink);white-space:nowrap}
+  .how-res p{flex:1 1 420px;font-size:16px;line-height:1.5;color:var(--navy);font-weight:500}
+  .how-more{margin-top:28px;display:flex;align-items:center;justify-content:space-between;gap:20px 40px;flex-wrap:wrap;padding:30px 34px;border:1px solid var(--black-line);border-radius:var(--radius);background:var(--black-2)}
+  .how-more .k{display:block;font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--teal);margin-bottom:8px}
+  .how-more h3{font-size:clamp(22px,2.4vw,28px);font-weight:700;color:#fff;line-height:1.2;margin-bottom:8px}
+  .how-more p{font-size:16px;color:var(--on-black-muted);max-width:560px}
+  @media(max-width:760px){.how-ctx{grid-template-columns:1fr}.how-ctx>div{padding:18px}.how-ctx>div+div{border-left:none;border-top:1px solid var(--line)}.how-res{padding:18px}.how-more{padding:24px 20px}.how-more .btn{width:100%}}
   .how-note{display:flex;align-items:center;gap:16px;padding:16px 30px;background:var(--black);color:var(--on-black);font-size:16px;line-height:1.4}
   .how-note b{color:var(--teal);font-size:clamp(26px,3vw,34px);line-height:1;white-space:nowrap;letter-spacing:-.02em}
   @media(max-width:640px){.how-note{flex-direction:column;align-items:flex-start;gap:6px;padding:16px 18px;font-size:15px}}
@@ -876,7 +892,6 @@
 </section>
 
 <!-- METODOLOGIA -->
-<div class="tk-wrap" aria-hidden="true" style="background:linear-gradient(180deg,#fff 50%,var(--teal-soft) 50%)"><div class="ticker tilt tilt-r rev"><div class="ticker-track"></div></div></div>
 <section class="sec teal-sec" id="metodologia">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -898,8 +913,8 @@
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="label dark"><svg><use href="#i-check"/></svg>Como usar · Infoprodutores</span>
-      <h2 class="h2">Veja como usar a LigueLead <span class="t">na prática.</span></h2>
-      <p class="lead">São estratégias validadas pelos nossos clientes, podendo ser aplicadas em todos os tamanhos de projeto.</p>
+      <h2 class="h2">Cada tipo de lançamento tem um jeito certo de <span class="t">usar a LigueLead.</span></h2>
+      <p class="lead">Não importa se você faz lançamento clássico, perpétuo ou meteórico. A infraestrutura se adapta ao seu modelo. Escolha o seu e veja o plano de comunicação completo.</p>
       <div class="how-proof">
         <div><b class="num">150 mil<span>+</span></b><p>projetos em que essas estratégias já foram validadas</p></div>
         <div><b class="num">33,8 milhões<span>+</span></b><p>de leads que já passaram por esses funis</p></div>
@@ -909,6 +924,10 @@
     <div class="how reveal">
       <div class="how-nav" id="howNav"></div>
       <div class="how-card" id="howCard" aria-live="polite"></div>
+    </div>
+    <div class="how-more reveal">
+      <div><span class="k">Não achou seu modelo?</span><h3>A gente monta o plano do seu jeito.</h3><p>Cada operação é única. Fale com o comercial e construímos o cronograma específico para o seu modelo em 15 minutos.</p></div>
+      <a class="btn" href="#contato" data-goform>Fale com o comercial</a>
     </div>
   </div>
 </section>
@@ -1118,7 +1137,68 @@ document.documentElement.className='js';
      Etapa: {m: momento, tag: ramo do funil, d: texto de etapa sem ação, a: [ações]}.
      Ação: {c: canais, w: quando, t: título, d: explicação, ex: exemplo de mensagem}. */
   var STRATS=[
-    {g:"Lançamentos e funis",t:"Lançamento interno",sub:"Do aquecimento ao downsell: 12 momentos em que a sua voz e o seu SMS colocam o lead na aula e no carrinho.",n:12,steps:[
+    {g:"Tipos de lançamento",t:"Tradicional",h:"LigueLead no Lançamento Tradicional",eye:"Modelo clássico de CPLs",sub:"Garanta comparecimento em cada CPL e maximize o carrinho. 86% das pessoas que não comparecem simplesmente esqueceram. A LigueLead resolve isso.",how:"O lançamento tradicional (ou interno) segue o modelo de CPLs (Conteúdo de Pré-Lançamento): 3-4 aulas gratuitas que aquecem a audiência antes da abertura do carrinho. É o modelo mais usado no Brasil, popularizado pela Fórmula de Lançamento.",blind:"Entre a captação e a CPL1, até 60% da lista desaparece. Entre as CPLs, o drop-off médio é de 30-40%. No carrinho, quem não viu as aulas não compra. O problema não é interesse, é esquecimento.",res:"Aumento médio de 35% no comparecimento das CPLs. Recuperação de vendas que não aconteceriam sem o canal de voz.",n:6,steps:[
+      {m:"D-7",a:[{c:"S",t:"Lembrete de inscrição + link",d:"Aumentar a base confirmada antes da primeira CPL."}]},
+      {m:"D-1",a:[{c:"L",t:"“Amanhã tem aula. Você está inscrito.”",d:"Garantir lembrança em véspera de CPL1."}]},
+      {m:"D0",a:[{c:"F",t:"“Sua aula começa em 30 min”",d:"Comparecimento imediato no ar."}]},
+      {m:"CPL → CPL",a:[{c:"S",t:"Replay + antecipação da próxima",d:"Manter aquecimento entre as aulas."}]}
+    ],rest:[
+      {m:"Véspera",a:[{c:"L",t:"Pré-abertura de carrinho",d:"Criar expectativa, preparar para compra."}]},
+      {m:"Último dia",a:[{c:"F",t:"“Encerra hoje às 23:59”",d:"Urgência final para recuperação."}]}
+    ]},
+    {g:"Tipos de lançamento",t:"Perpétuo",h:"LigueLead no Perpétuo / Evergreen",eye:"Funil 24/7",sub:"Funil automatizado com entrega garantida 24/7. Cada lead entra no seu próprio tempo, e a sequência roda sozinha.",how:"No perpétuo, cada lead entra no funil no seu próprio tempo. Não existe uma “data do lançamento”. Cada um passa pela mesma jornada, em ritmo individual. A automação é o motor.",blind:"O perpétuo depende de automação que funciona. E-mails vão para spam. WhatsApp tem limite de envio. O funil para de funcionar sem que ninguém perceba. E você só descobre quando a receita cai.",res:"Todo esse fluxo roda no LigueLead Flow sem intervenção humana. Configure uma vez, ele escala sozinho por todos os leads, todos os dias. Ideal para quem já tem base de leads e quer monetizar de forma recorrente.",n:6,steps:[
+      {m:"Hora 0",a:[{c:"S",t:"Boas-vindas + link do conteúdo",d:"Primeiro contato direto imediato à captura."}]},
+      {m:"Hora +4",a:[{c:"L",t:"“Você se inscreveu. Sua aula está disponível.”",d:"Garantir acesso ao conteúdo antes do e-mail chegar."}]},
+      {m:"Dia +1",a:[{c:"S",t:"Conteúdo complementar + link",d:"Nutrição da sequência."}]},
+      {m:"Dia +3",a:[{c:"L",t:"Convite para a oferta",d:"Transição do conteúdo para a venda."}]}
+    ],rest:[
+      {m:"Dia +5",a:[{c:"F",t:"Escassez / deadline",d:"Acionar senso de urgência."}]},
+      {m:"Dia +7",a:[{c:"L",t:"Última chance",d:"Recuperação final antes do funil expirar."}]}
+    ]},
+    {g:"Tipos de lançamento",t:"Meteórico",h:"LigueLead no Lançamento Meteórico",eye:"Grupo fechado + escassez extrema",sub:"Escale pertencimento sem depender 100% do WhatsApp. 60% das pessoas silenciam notificações de grupo. A LigueLead é a camada de garantia.",how:"O meteórico (popularizado por Talles Quinderé) usa grupos fechados no WhatsApp como motor de pertencimento e escassez. Funciona quando o grupo está ativo. Mas o canal mais engajante do mercado é também o menos controlável.",blind:"Grupos silenciados, membros inativos, moderação intensa necessária. Se o grupo esfria, o lançamento morre. Escala limitada pelo número de grupos gerenciáveis. E o grupo é deletado após o Dia D, perdendo o lead.",res:"De “grupo que esfria” para “conversa individual que escala”. Cada pessoa entra no fluxo no seu ritmo, com tom de exclusividade. Escala ilimitada via Flow.",n:4,steps:[
+      {m:"Fase 0",a:[{c:"LS",t:"Antecipação antes de qualquer anúncio",d:"Ativar base existente antes do tráfego pago começar."}]},
+      {m:"Fase 1",a:[{c:"L",t:"Pertencimento individual",d:"Reativar quem não entrou no grupo ou silenciou."}]}
+    ],rest:[
+      {m:"Dia D",a:[{c:"LF",t:"Escassez máxima",d:"Maximizar alcance no momento crítico, junto com o WhatsApp."}]},
+      {m:"Pós",a:[{c:"L",t:"Lista de espera",d:"Reentrada para ciclos futuros."}]}
+    ]},
+    {g:"Tipos de lançamento",t:"Semente",h:"LigueLead no Lançamento Semente",eye:"Validação com base pequena",sub:"Validação rápida com conexão direta. Base pequena, alta proximidade. A ligação gravada transforma o semente em conversa pessoal mesmo com 500 leads.",how:"O semente é o modelo de primeira validação: base pequena (entre 100 e 2.000 pessoas), relação próxima entre expert e audiência, oferta testada rapidamente. Não é escala, é profundidade.",blind:"Por ser pequeno, cada lead perdido dói. Se o expert depender de e-mail e WhatsApp pessoal, atender 500 pessoas vira trabalho manual. A ligação gravada cria sensação de atenção individual em escala.",res:"Percepção de “atendimento VIP” mesmo em escala. Ideal para validar preço, posicionamento e mensagem antes de escalar. Sem Flash no semente: a base é pequena, não precisa de ruptura agressiva. Foco em tom e proximidade.",n:3,steps:[
+      {m:"Convite",a:[{c:"L",t:"Voz do próprio expert",d:"Convite pessoal com tom íntimo."}]},
+      {m:"Confirmação",a:[{c:"S",t:"Link + detalhes",d:"Confirmar interesse e dar acesso."}]}
+    ],rest:[
+      {m:"Oferta",a:[{c:"L",t:"Pitch direto do expert",d:"Conversão com voz humanizada."}]}
+    ]},
+    {g:"Tipos de lançamento",t:"Relâmpago",h:"LigueLead no Lançamento Relâmpago",eye:"Oferta rápida, sem CPL",sub:"Oferta direto no celular, sem CPL, sem aquecimento longo. Para base quente e janelas curtas de 24-48h.",how:"Relâmpago é para quando você já tem base aquecida e quer abrir uma oferta rápida, sem passar por aulas ou aquecimento prolongado. O lead decide em minutos, não dias.",blind:"Janela curta = zero tolerância para mensagem que não chega na hora certa. E-mail em caixa de promoção arruína a janela. Se em 4 horas a base não viu, o lançamento relâmpago virou flop relâmpago.",res:"Taxa de conversão 2-3x maior que relâmpago por e-mail. Ideal para ofertas testadas em base aquecida.",n:4,steps:[
+      {m:"Hora 0",a:[{c:"F",t:"Alerta de oferta",d:"Quebrar atenção imediata."}]},
+      {m:"Hora 0 + 5 min",a:[{c:"S",t:"Link de checkout",d:"Permitir compra imediata."}]}
+    ],rest:[
+      {m:"Hora +1",a:[{c:"L",t:"Pitch do expert (60s)",d:"Voz humaniza e converte os indecisos."}]},
+      {m:"Hora +24",a:[{c:"F",t:"Últimas horas",d:"Final de janela. Urgência crítica."}]}
+    ]},
+    {g:"Tipos de lançamento",t:"Desafio",h:"LigueLead no Lançamento por Desafio",eye:"Lives consecutivas de 5-7 dias",sub:"Garanta presença em todas as lives consecutivas. Desafios de 5-7 dias dependem de presença diária. O drop-off entre dia 1 e dia 5 chega a 70%.",how:"O desafio é um formato de imersão curta, com entrega de resultado ao vivo dia após dia. O desafiante precisa comparecer, fazer a tarefa, voltar no dia seguinte. Quem para no meio, não compra.",blind:"Entre o dia 1 e o dia 5, o drop-off histórico é de 60-70%. A pessoa se inscreveu animada, perdeu um dia, desistiu. A jornada só funciona se você reenergiza todo dia.",res:"Manutenção de 80%+ na taxa de comparecimento entre dia 1 e dia 5. Conversão final eleva substancialmente o ROI do desafio.",n:5,steps:[
+      {m:"D-1",a:[{c:"L",t:"Boas-vindas ao desafio",d:"Preparar para o primeiro dia."}]},
+      {m:"Manhã do dia",a:[{c:"L",t:"Lembrete da live de hoje",d:"Garantir agenda para o horário."}]},
+      {m:"30 min antes",a:[{c:"F",t:"“LIVE COMEÇANDO EM 30 MIN”",d:"Empurrão final pra abrir a live."}]}
+    ],rest:[
+      {m:"Pós-live",a:[{c:"S",t:"Replay + tarefa do dia",d:"Recuperar quem faltou e manter engajamento."}]},
+      {m:"Oferta",a:[{c:"L",t:"Pitch final do expert",d:"Conversão com base já aquecida pelos 5-7 dias."}]}
+    ]},
+    {g:"Tipos de lançamento",t:"High Ticket",h:"LigueLead no Lançamento High Ticket",eye:"Produtos acima de R$2.000",sub:"Qualificação e proximidade em escala. Menos leads, mais qualificação. A ligação gravada com voz do mentor cria conexão que e-mail não consegue.",how:"High ticket é venda de produtos acima de R$2.000 (mentorias, masterminds, cursos premium). O caminho não é volume, é qualificação. Cada lead vale muito, e o processo de venda é consultivo, não performático.",blind:"Automação pura não fecha high ticket. O lead precisa sentir proximidade, autoridade, conexão. Mas ligar manualmente 500 leads não escala. A ligação gravada com voz do próprio mentor resolve esse paradoxo.",res:"Conexão emocional + sensação de atendimento premium em escala. Conversão típica 2-3x superior a fluxo só de e-mail em high ticket. Sem Flash no high ticket: não combina com o tom. Use autoridade e proximidade, não urgência agressiva.",n:4,steps:[
+      {m:"Inscrição",a:[{c:"S",t:"Confirmação + calendário",d:"Qualificar interesse imediato."}]},
+      {m:"Dia +1",a:[{c:"L",t:"Voz do mentor com convite consultivo",d:"Criar conexão direta, não massiva."}]}
+    ],rest:[
+      {m:"Pré-call",a:[{c:"S",t:"Lembrete de call agendada",d:"Garantir comparecimento na sessão 1:1."}]},
+      {m:"Pós-call",a:[{c:"L",t:"Acompanhamento pessoal",d:"Fechar com tom consultivo, não de venda."}]}
+    ]},
+    {g:"Tipos de lançamento",t:"Pago",h:"LigueLead no Lançamento Pago",eye:"Evento pré-lançamento com ingresso",sub:"Maximize a conversão de quem já pagou para entrar. Quem paga para participar do evento tem altíssima intenção. A ligação gravada do expert é o empurrão final.",how:"O lançamento pago vende o acesso ao evento de pré-lançamento (workshop, imersão, masterclass). O lead paga R$47-R$497 para entrar. Isso qualifica intenção de forma violenta. Na hora do pitch da oferta principal, a conversão é altíssima.",blind:"Quem pagou espera entrega. Se o workshop começa e metade não aparece, o expert perde autoridade. A comunicação precisa ser cirúrgica para garantir presença e manter percepção de valor.",res:"Presença no workshop pago próxima de 85% (vs. 50-60% sem a infraestrutura). Conversão final na oferta principal tipicamente 2x superior a lançamentos gratuitos.",n:5,steps:[
+      {m:"Inscrição paga",a:[{c:"L",t:"Boas-vindas do expert",d:"Elevar percepção de valor imediatamente pós-pagamento."}]},
+      {m:"Dia antes",a:[{c:"S",t:"Lembrete do workshop",d:"Garantir agendamento na memória."}]},
+      {m:"1h antes",a:[{c:"F",t:"“Workshop começa em 1h”",d:"Alerta final pra compor na live."}]}
+    ],rest:[
+      {m:"Dia da oferta",a:[{c:"L",t:"Convite do expert para a oferta",d:"Voz humanizada no momento da decisão."}]},
+      {m:"Deadline",a:[{c:"F",t:"“Oferta exclusiva encerra hoje”",d:"Urgência final da janela exclusiva."}]}
+    ]},
+    {g:"Funis completos",t:"Lançamento interno",sub:"Do aquecimento ao downsell: 12 momentos em que a sua voz e o seu SMS colocam o lead na aula e no carrinho.",n:12,steps:[
       {m:"Dias antes",a:[{c:"FLS",w:"14h00",t:"Acorde a lista que você já pagou pra ter",d:"Antes de gastar com tráfego novo, reative os leads antigos. O Flash avisa que vem novidade, a ligação com a sua voz faz o convite e o SMS entrega o link de inscrição.",ex:["SMS","Ana, faz tempo que a gente não se fala. Quinta, 20h, eu abro uma aula nova e gratuita, e quem já é da minha lista entra antes: [link]"]}]},
       {m:"1 dia antes",a:[{c:"L",w:"14h00",t:"Alinhamento de expectativas",d:"Uma ligação sua na véspera, contando o que vai acontecer e por que vale estar lá. É o que transforma inscrito em presente.",ex:["Ligação","Oi, aqui é a Marina. Tô te ligando porque amanhã, às 20h, eu abro a aula 1 e vou mostrar, na minha tela, os 3 erros que travam quem tenta vender online e como sair deles ainda esta semana. Não vai ficar gravado. Coloca o alarme agora, que eu te espero lá."]}]},
       {m:"Todos os CPLs",a:[
@@ -1138,7 +1218,7 @@ document.documentElement.className='js';
       {m:"Recuperação",a:[{c:"L",w:"Integrado ao checkout",t:"A ligação da régua de recuperação",d:"PIX, boleto, cartão recusado ou carrinho abandonado: a ligação entra sozinha, minutos depois."},{c:"S",w:"Integrado ao checkout",t:"O link de volta",d:"O SMS leva o link certo pra cada caso."}]},
       {m:"Oferta downsell",a:[{c:"L",w:"1 semana após o fechamento do carrinho",t:"Uma segunda chance pra quem não comprou",d:"Uma semana depois, a ligação apresenta uma oferta de entrada pra quem ficou de fora."},{c:"S",w:"1 semana após o fechamento do carrinho",t:"O link do downsell",d:"O SMS leva o link da oferta de entrada."}]}
     ]},
-    {g:"Lançamentos e funis",t:"Lançamento pago",sub:"Do ingresso vendido ao pitch: onde a LigueLead entra pra o comprador aparecer e comprar de novo.",n:9,steps:[
+    {g:"Funis completos",t:"Lançamento pago",sub:"Do ingresso vendido ao pitch: onde a LigueLead entra pra o comprador aparecer e comprar de novo.",n:9,steps:[
       {m:"Lista de leads antigos",a:[{c:"FLS",t:"Reativação de listas antigas",d:"Comece vendendo ingresso pra quem já te conhece. Flash, ligação e SMS levam a base antiga direto pra página de vendas.",ex:["SMS","Ana, o primeiro lote da imersão abriu agora e, até 23h59, ele é só de quem já é da casa. Depois disso, vira lote 2: [link]"]}]},
       {m:"Anúncio",d:"Seu tráfego segue como já é."},
       {m:"Página de vendas",a:[{c:"SL",t:"Boas-vindas com presente",d:"Comprou o ingresso? O SMS entrega um presente e a ligação dá as boas-vindas. O comprador chega no evento mais consciente e mais perto da oferta principal."}]},
@@ -1150,7 +1230,7 @@ document.documentElement.className='js';
       {m:"Checkout ou aplicação high ticket",d:"O comprador vai pro checkout ou aplica pro high ticket."},
       {m:"Recuperação de vendas",a:[{c:"LS",t:"Régua de recuperação automática pra low ticket",d:"PIX, boleto, cartão recusado e carrinho abandonado entram na régua sozinhos, com ligação e SMS em minutos."}]}
     ]},
-    {g:"Lançamentos e funis",t:"Sessão estratégica",sub:"Pra quem vende em conversa: o lead pede uma sessão com o seu time, o SDR qualifica e o closer fecha na call. A LigueLead faz ele atender o telefone e aparecer no horário.",n:8,steps:[
+    {g:"Funis completos",t:"Sessão estratégica",sub:"Pra quem vende em conversa: o lead pede uma sessão com o seu time, o SDR qualifica e o closer fecha na call. A LigueLead faz ele atender o telefone e aparecer no horário.",n:8,steps:[
       {m:"Lista de leads antigos",a:[{c:"FLS",t:"Reative quem já levantou a mão",d:"Flash, ligação e SMS convidam a base antiga a pedir uma sessão com o seu time. Agenda cheia sem depender só de anúncio."}]},
       {m:"Anúncio",d:"Seu tráfego segue como já é."},
       {m:"Página de captura",d:"A página continua a mesma."},
@@ -1165,7 +1245,7 @@ document.documentElement.className='js';
       {m:"Call com o closer",a:[{c:"L",w:"1h antes",t:"Lembrete com a sua voz",d:"Uma hora antes, a ligação lembra do compromisso. Menos cadeira vazia na agenda do closer."},{c:"S",w:"30 min antes",t:"O link da sala",d:"O SMS chega com o link, pra ele entrar no horário sem procurar."}]},
       {m:"Oferta",d:"O closer apresenta a oferta."}
     ]},
-    {g:"Lançamentos e funis",t:"Funil de webinário",sub:"Do grupo ao closer: como fazer o inscrito lembrar, entrar na sala e chegar na call.",n:9,steps:[
+    {g:"Funis completos",t:"Funil de webinário",sub:"Do grupo ao closer: como fazer o inscrito lembrar, entrar na sala e chegar na call.",n:9,steps:[
       {m:"Anúncio",d:"Seu tráfego segue como já é."},
       {m:"Página de captura",d:"A página continua a mesma."},
       {m:"Grupo do WhatsApp",a:[{c:"LF",t:"Recados importantes no WhatsApp",d:"Ligação e Flash avisam o que acabou de ser postado no grupo. O recado importante não se perde no meio das mensagens."}]},
@@ -1177,7 +1257,7 @@ document.documentElement.className='js';
       {m:"Call com o closer",a:[{c:"L",w:"1h antes",t:"Lembrete com a sua voz",d:"Uma hora antes, a ligação lembra do compromisso. Menos cadeira vazia na agenda do closer."},{c:"S",w:"30 min antes",t:"O link da sala",d:"O SMS chega com o link, pra ele entrar no horário sem procurar."}]},
       {m:"Oferta",d:"O closer apresenta a oferta."}
     ]},
-    {g:"Lançamentos e funis",t:"Funil de live",sub:"Um caminho pra quem comprou e outro pra quem não comprou, cada um com a comunicação certa.",n:14,steps:[
+    {g:"Funis completos",t:"Funil de live",sub:"Um caminho pra quem comprou e outro pra quem não comprou, cada um com a comunicação certa.",n:14,steps:[
       {m:"Anúncio",d:"Seu tráfego segue como já é."},
       {m:"Página de captura",d:"A página continua a mesma."},
       {m:"Página de obrigado",d:"O lead confirma a inscrição."},
@@ -1198,7 +1278,7 @@ document.documentElement.className='js';
       {m:"Call com o closer",tag:"Não vendeu",a:[{c:"L",w:"1h antes",t:"Lembrete com a sua voz",d:"Uma hora antes, a ligação lembra do compromisso. Menos cadeira vazia na agenda do closer."},{c:"S",w:"30 min antes",t:"O link da sala",d:"O SMS chega com o link, pra ele entrar no horário sem procurar."}]},
       {m:"Oferta",tag:"Não vendeu",d:"O closer apresenta a oferta."}
     ]},
-    {g:"Lançamentos e funis",t:"Evento presencial",sub:"Do convite ao NPS: a LigueLead enche a sala, organiza o dia e cuida do pós-evento.",n:8,steps:[
+    {g:"Funis completos",t:"Evento presencial",sub:"Do convite ao NPS: a LigueLead enche a sala, organiza o dia e cuida do pós-evento.",n:8,steps:[
       {m:"Convite para alunos",a:[{c:"FLS",t:"Oferta exclusiva em primeira mão",d:"Seus alunos ficam sabendo antes de todo mundo. Flash, ligação e SMS abrem a pré-venda só pra eles.",ex:["SMS","Ana, aluno entra na frente: a pré-venda do evento presencial abriu só pra vocês e vai até domingo. Escolha seu lugar antes do público: [link]"]}]},
       {m:"Convite para leads antigos",a:[{c:"FLS",t:"Uma oferta atraente e personalizada",d:"Use os leads que você já pagou pra encher a sala, com uma oferta feita pra quem já te conhece."}]},
       {m:"Boas-vindas",a:[{c:"L",t:"Parabenizar quem comprou",d:"A sua voz confirmando a compra e contando o que esperar do evento. A ansiedade vira expectativa."}]},
@@ -1294,8 +1374,8 @@ document.documentElement.className='js';
     var FULL=/[?&]completo=1/.test(location.search);
     var CUT='<div class="fcut"><span>Daqui pra baixo fica travado no site</span></div>';
     function render(k){
-      var s=STRATS[k],h='<div class="how-head"><div><h3>'+s.t+' <span>+ LigueLead</span></h3><p>'+s.sub+'</p></div>'+
-        '<div class="how-legend">'+['L','S','F'].map(function(c){return '<span><span class="cic">'+ICON(CH[c][0])+'</span>'+CH[c][1]+'</span>';}).join('')+'</div></div>'+(NOTE&&s.g==="Recuperação de vendas"?'<div class="how-note">'+NOTE+'</div>':'')+'<div class="flow">';
+      var s=STRATS[k],h='<div class="how-head"><div>'+(s.eye?'<span class="how-eye">'+s.eye+'</span>':'')+(s.h?'<h3>'+s.h+'</h3>':'<h3>'+s.t+' <span>+ LigueLead</span></h3>')+'<p>'+s.sub+'</p></div>'+
+        '<div class="how-legend">'+['L','S','F'].map(function(c){return '<span><span class="cic">'+ICON(CH[c][0])+'</span>'+CH[c][1]+'</span>';}).join('')+'</div></div>'+(NOTE&&s.g==="Recuperação de vendas"?'<div class="how-note">'+NOTE+'</div>':'')+(s.how?'<div class="how-ctx"><div><b>Como funciona</b><p>'+s.how+'</p></div><div class="warn"><b>O ponto cego desse modelo</b><p>'+s.blind+'</p></div></div>':'')+'<div class="flow">';
       if(s.cols){
         var rest=s.n-s.cols.length;
         var col=function(c,i,extra){return '<div class="fcol'+(extra?' rest':'')+'">'+trig({m:c.m,a:c.a},i,'Régua '+num(i))+c.a.map(act).join('')+'</div>';};
@@ -1312,7 +1392,7 @@ document.documentElement.className='js';
         h+='<div class="how-locked"><div class="blur" aria-hidden="true">'+f+'</div>'+lock((left===1?'Falta 1 etapa':'Faltam '+left+' etapas')+' deste fluxo, com o canal, o horário e a mensagem de cada uma.')+'</div>';
         }
       }
-      h+='</div>';
+      h+='</div>'+(s.res?'<div class="how-res"><b>Resultados típicos</b><p>'+s.res+'</p></div>':'');
       card.innerHTML=h;
       [].forEach.call(nav.querySelectorAll('.how-tab'),function(b){var on=+b.getAttribute('data-k')===k;b.classList.toggle('on',on);b.setAttribute('aria-selected',on?'true':'false');});
       [].forEach.call(nav.querySelectorAll('.how-segb'),function(b){b.classList.toggle('on',b.getAttribute('data-g')===s.g);});
@@ -1351,6 +1431,7 @@ document.documentElement.className='js';
     STRATS.forEach(function(s,i){if(groups.indexOf(s.g)<0){groups.push(s.g);first[s.g]=i;count[s.g]=0;}count[s.g]++;});
     nav.innerHTML='<div class="how-seg" role="tablist" aria-label="Tipo de estratégia"><span class="how-thumb" aria-hidden="true"></span>'+groups.map(function(g){return '<button type="button" class="how-segb" data-g="'+g+'">'+g+'<small>'+count[g]+'</small></button>';}).join('')+'</div>'+
       groups.map(function(g){return '<div class="how-tabs" role="tablist" data-g="'+g+'">'+STRATS.map(function(s,i){return s.g===g?'<button type="button" class="how-tab" role="tab" data-k="'+i+'">'+s.t+'</button>':'';}).join('')+'</div>';}).join('');
+    nav.querySelector('.how-seg').style.gridTemplateColumns='repeat('+groups.length+',1fr)';
     var tw=document.createElement('div');tw.className='how-tabsw';[].forEach.call(nav.querySelectorAll('.how-tabs'),function(t){tw.appendChild(t);});nav.appendChild(tw);
     nav.addEventListener('click',function(e){
       var b=e.target.closest('.how-tab');if(b){go(+b.getAttribute('data-k'));return;}

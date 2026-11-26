@@ -673,12 +673,12 @@
 <header class="top" id="topo">
   <div class="wrap">
     <a class="logo" href="#" aria-label="LigueLead"><img src="assets/logo-ll.webp" alt="LigueLead" width="93" height="30"></a>
-    <nav class="top-nav" id="topNav" aria-label="Seções">
+    <nav class="top-nav" id="topNav" aria-label="Páginas">
       <a href="#topo">Home</a>
-      <a href="#infraestrutura">Produtos</a>
-      <a href="#metodologia">Metodologia</a>
-      <a href="#casos">Clientes</a>
-      <a href="#contato" data-goform>Contato</a>
+      <a href="produtos/">Produtos</a>
+      <a href="metodologia/">Metodologia</a>
+      <a href="clientes/">Clientes</a>
+      <a href="contato/">Contato</a>
       <a class="nav-login" href="https://areadocliente.liguelead.app.br/login" target="_blank" rel="noopener">Acessar plataforma</a>
     </nav>
     <a class="btn btn-sm" href="#contato" data-goform>Fale com um especialista</a>
@@ -870,7 +870,6 @@
 </section>
 
 <!-- METODOLOGIA -->
-<div class="tk-wrap" aria-hidden="true" style="background:linear-gradient(180deg,#fff 50%,var(--teal-soft) 50%)"><div class="ticker tilt tilt-r rev"><div class="ticker-track"></div></div></div>
 <section class="sec teal-sec" id="metodologia">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -1112,7 +1111,7 @@ document.documentElement.className='js';
     box.scrollIntoView({behavior:"smooth",block:"center"});
     updateSticky();
   }
-  renderStep();
+  if(body)renderStep();
 
   /* ===== como usar: estratégias na prática (fonte: apresentação LL 2026) =====
      Canais: L = ligação gravada, S = SMS, F = SMS Flash.
@@ -1198,6 +1197,7 @@ document.documentElement.className='js';
   /* ===== botões de CTA: levam ao card do formulário ===== */
   [].forEach.call(document.querySelectorAll('[data-goform]'),function(a){
     a.addEventListener('click',function(ev){
+      if(!$('#quizCard'))return; /* página sem formulário: o link leva à página de contato */
       ev.preventDefault();
       var card=$('#quizCard'),head=($('header.top')||{}).offsetHeight||0;
       window.scrollTo({top:window.scrollY+card.getBoundingClientRect().top-head-16,behavior:'smooth'});
@@ -1214,7 +1214,7 @@ document.documentElement.className='js';
   /* ===== barra fixa no celular ===== */
   var sticky=$('#stickyCta'),heroEl=$('.hero'),cardEl=$('#quizCard'),closeEl=$('.closing');
   function updateSticky(){
-    if(!sticky)return;
+    if(!sticky||!cardEl||!heroEl||!closeEl){if(sticky&&!cardEl){var on=window.scrollY>500;sticky.classList.toggle('on',on);sticky.setAttribute('aria-hidden',on?'false':'true');}return;}
     var vh=window.innerHeight,hr=heroEl.getBoundingClientRect(),cr=cardEl.getBoundingClientRect(),fr=closeEl.getBoundingClientRect();
     var formVisible=cr.top<vh&&cr.bottom>0, closingVisible=fr.top<vh;
     var on=!confirmed&&hr.bottom<0&&!formVisible&&!closingVisible;
