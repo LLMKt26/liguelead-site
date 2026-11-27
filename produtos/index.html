@@ -652,13 +652,26 @@
   .pd-hero h1 .t{color:var(--teal);font-weight:700}
   .pd-hero .lead{color:var(--on-black-muted);margin-top:18px}
   .pd-nav{position:sticky;top:69px;z-index:50;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 10px 24px -18px rgba(38,38,85,.28)}
-  .pd-nav .wrap{display:flex;gap:30px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .pd-nav .wrap::-webkit-scrollbar{display:none}
+  .pd-nav .wrap{position:relative}
+  .pd-nav-t{display:none}
+  .pd-nav-l{display:flex;flex-wrap:nowrap;gap:30px}
   .pd-nav a{position:relative;flex:0 0 auto;padding:16px 0 15px;color:var(--muted);font-size:15px;font-weight:500;line-height:1.1;white-space:nowrap;transition:color .25s var(--ease)}
   .pd-nav a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;border-radius:3px 3px 0 0;background:var(--teal);transform:scaleX(0);transition:transform .3s var(--ease)}
   .pd-nav a:hover{color:var(--navy)}
   .pd-nav a.on{color:var(--navy);font-weight:700}
   .pd-nav a.on::after{transform:scaleX(1)}
+  @media(max-width:1020px){
+    .pd-nav-t{display:flex;align-items:center;gap:10px;width:100%;padding:14px 0;background:none;border:none;font-family:inherit;text-align:left;cursor:pointer;color:var(--navy)}
+    .pd-nav-t span{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+    .pd-nav-t b{font-size:16px;font-weight:700;color:var(--navy);padding-left:10px;border-left:2px solid var(--teal);line-height:1.2}
+    .pd-nav-t svg{width:20px;height:20px;margin-left:auto;color:var(--navy);transition:transform .3s var(--ease)}
+    .pd-nav-t[aria-expanded="true"] svg{transform:rotate(180deg)}
+    .pd-nav-l{display:none;flex-direction:column;gap:0;position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 22px 34px -18px rgba(38,38,85,.3);padding:2px 24px 10px}
+    .pd-nav.open .pd-nav-l{display:flex}
+    .pd-nav a{padding:14px 0 14px 14px;font-size:16.5px;border-top:1px solid var(--line);white-space:normal}
+    .pd-nav a::after{left:0;right:auto;top:11px;bottom:11px;width:3px;height:auto;border-radius:3px;transform:scaleY(0)}
+    .pd-nav a.on::after{transform:scaleY(1)}
+  }
   .pd{background:#fff;scroll-margin-top:124px}
   .pd.alt{background:var(--bg)}
   .pd-sim{background:#fff;padding-top:0;scroll-margin-top:124px}
@@ -819,9 +832,7 @@
     .pd-rgrid{grid-template-columns:1fr 1fr}
   }
   @media(max-width:640px){
-    .pd-nav .wrap{gap:22px;padding-right:44px}
-    .pd-nav::after{content:"";position:absolute;right:0;top:0;bottom:1px;width:44px;background:linear-gradient(90deg,rgba(255,255,255,0),#fff 75%);pointer-events:none}
-    .pd-nav a{padding:14px 0 13px;font-size:14.5px}
+    .pd-nav-l{padding:2px 20px 10px}
     .pd-top{margin-bottom:24px}
     .pd-big{grid-template-columns:1fr}
     .pd-big li{display:grid;grid-template-columns:118px 1fr;gap:12px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}
@@ -900,15 +911,18 @@
 </section>
 <nav class="pd-nav" id="pdNav" aria-label="Produtos nesta página">
   <div class="wrap">
-    <a href="#resumo">Resumo</a>
-    <a href="#ligacao">Ligação</a>
-    <a href="#sms">SMS</a>
-    <a href="#flash">SMS Flash</a>
-    <a href="#simulador">Simulador</a>
-    <a href="#rcs">RCS</a>
-    <a href="#mais">IA e número digital</a>
-    <a href="#flow">Flow</a>
-    <a href="#regras">Regras gerais</a>
+    <button type="button" class="pd-nav-t" id="pdNavT" aria-expanded="false" aria-controls="pdNavL"><span>Nesta página</span><b id="pdNavC">Resumo</b><svg aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+    <div class="pd-nav-l" id="pdNavL">
+      <a href="#resumo">Resumo</a>
+      <a href="#ligacao">Ligação</a>
+      <a href="#sms">SMS</a>
+      <a href="#flash">SMS Flash</a>
+      <a href="#simulador">Simulador</a>
+      <a href="#rcs">RCS</a>
+      <a href="#mais">IA e número digital</a>
+      <a href="#flow">Flow</a>
+      <a href="#regras">Regras gerais</a>
+    </div>
   </div>
 </nav>
 
@@ -1665,17 +1679,18 @@ document.documentElement.className='js';
     var links=[].slice.call(nav.querySelectorAll('a'));
     var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
     var cur=-1;
+    var lab=document.getElementById('pdNavC'),tog=document.getElementById('pdNavT');
+    function shut(){nav.classList.remove('open');if(tog)tog.setAttribute('aria-expanded','false');}
+    if(tog)tog.addEventListener('click',function(){var o=!nav.classList.contains('open');nav.classList.toggle('open',o);tog.setAttribute('aria-expanded',o?'true':'false');});
+    links.forEach(function(a){a.addEventListener('click',shut);});
+    document.addEventListener('click',function(e){if(!nav.contains(e.target))shut();});
     function mark(){
       var y=window.scrollY+150,i=-1;
       secs.forEach(function(s,k){if(s&&s.getBoundingClientRect().top+window.scrollY<=y)i=k;});
       if(i===cur)return;
       cur=i;
       links.forEach(function(a,k){a.classList.toggle('on',k===i);});
-      if(i>=0){
-        var a=links[i],box=nav.querySelector('.wrap');
-        var to=a.offsetLeft-(box.clientWidth-a.offsetWidth)/2;
-        if(box.scrollTo)box.scrollTo({left:Math.max(0,to),behavior:'smooth'});else box.scrollLeft=Math.max(0,to);
-      }
+      if(lab&&i>=0)lab.textContent=links[i].textContent;
     }
     var hd=document.querySelector('header.top');
     function stick(){if(hd)nav.style.top=(hd.offsetHeight-1)+'px';}
