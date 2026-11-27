@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>LigueLead | Produtos: ligação, SMS, RCS, ligação com IA e número digital</title>
-<meta name="description" content="Os canais e produtos da LigueLead: ligação gravada, SMS, SMS Flash, RCS, ligação com IA, número digital, Flow e integrações." />
+<title>LigueLead | Produtos: por que usar, como usar e as regras de cada canal</title>
+<meta name="description" content="Ligação gravada, SMS, SMS Flash e RCS em detalhe: por que usar, como usar, tempo de áudio, limite de caracteres, link, horário e cobrança." />
 <meta name="theme-color" content="#0B0B0F" />
 <link rel="icon" type="image/png" href="../icone-ll.png" />
 <link rel="apple-touch-icon" href="../icone-ll.png" />
@@ -645,6 +645,165 @@
 
   .top-nav a.cur{border-bottom-color:var(--teal)}
   .pg-first{padding-top:clamp(40px,4.5vw,64px)}
+  /* ---------- página de produtos (detalhe de cada canal) ---------- */
+  .pd-hero{background:var(--black);color:var(--on-black);padding:clamp(44px,5.5vw,76px) 0 clamp(36px,4.5vw,56px)}
+  .pd-hero h1{margin-top:20px;font-size:clamp(31px,4.5vw,52px);line-height:1.09;font-weight:300;color:#fff;letter-spacing:-.015em;max-width:920px;text-wrap:balance}
+  .pd-hero h1 b{font-weight:700}
+  .pd-hero h1 .t{color:var(--teal);font-weight:700}
+  .pd-hero .lead{color:var(--on-black-muted);margin-top:18px}
+  .pd-nav{position:sticky;top:69px;z-index:50;background:rgba(11,11,15,.96);border-top:1px solid var(--black-line);border-bottom:1px solid var(--black-line)}
+  .pd-nav .wrap{display:flex;gap:8px;overflow-x:auto;padding-top:11px;padding-bottom:11px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .pd-nav .wrap::-webkit-scrollbar{display:none}
+  .pd-nav a{flex:0 0 auto;padding:9px 16px;border-radius:99px;border:1px solid var(--black-line);color:var(--on-black);font-size:14px;font-weight:500;line-height:1.1;white-space:nowrap;transition:background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+  .pd-nav a:hover{border-color:var(--teal)}
+  .pd-nav a.on{background:var(--teal);border-color:var(--teal);color:var(--black);font-weight:700}
+  .pd{background:#fff;scroll-margin-top:124px}
+  .pd.alt{background:var(--bg)}
+  .pd-sim{background:#fff;padding-top:0;scroll-margin-top:124px}
+  .pd-k{display:inline-block;font-size:14px;font-weight:700;letter-spacing:.08em;color:var(--teal-ink);border:1.5px solid var(--teal);border-radius:99px;padding:5px 13px 4px;line-height:1}
+  .pd-top{display:grid;grid-template-columns:1fr 340px;gap:56px;align-items:center;margin-bottom:36px}
+  .pd-intro{display:flex;flex-direction:column;align-items:flex-start;gap:18px}
+  .pd-big{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:0;width:100%;margin-top:10px;border-top:1px solid var(--line)}
+  .pd-big li{padding:18px 18px 0 0}
+  .pd-big li+li{padding-left:18px;border-left:1px solid var(--line)}
+  .pd-big b{display:block;font-size:clamp(24px,2.7vw,34px);line-height:1.05;color:var(--navy);letter-spacing:-.02em}
+  .pd-big span{display:block;margin-top:6px;font-size:14.5px;line-height:1.35;color:var(--muted)}
+  .pd-shot{display:flex}
+  .pd-shot .stage{padding:30px 20px}
+  .pd-shot .phone{width:min(230px,74%)}
+  .pd-cols,.pd-extra,.pd-duo{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .pd-extra{margin-top:20px}
+  .pd-card{padding:30px 30px 32px}
+  .pd.alt .pd-card,.pd .pd-card{border:1px solid var(--line);box-shadow:none}
+  .pd-card h3{font-size:21px;line-height:1.25;font-weight:700;color:var(--navy);margin-bottom:16px}
+  .pd-card p{font-size:16.5px}
+  .pd-check{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .pd-check li{display:grid;grid-template-columns:22px 1fr;gap:12px;font-size:16.5px;line-height:1.45}
+  .pd-check svg{width:20px;height:20px;margin-top:2px;color:var(--teal)}
+  .pd-check b,.pd-steps b{color:var(--navy)}
+  .pd-steps{list-style:none;counter-reset:st;display:flex;flex-direction:column;gap:14px}
+  .pd-steps li{counter-increment:st;display:grid;grid-template-columns:30px 1fr;gap:12px;font-size:16.5px;line-height:1.45}
+  .pd-steps li::before{content:counter(st);width:30px;height:30px;border-radius:50%;background:var(--black);color:var(--teal);font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .pd-rules{margin-top:20px;background:var(--black);color:var(--on-black);border-radius:24px;padding:34px 36px 36px}
+  .pd-rules-h{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+  .pd-rules-h .bn-band{transform:rotate(-1.6deg)}
+  .pd-rules-h h3{font-size:clamp(22px,2.4vw,28px);line-height:1.2;font-weight:700;color:#fff}
+  .pd-rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--black-line);border:1px solid var(--black-line);border-radius:16px;overflow:hidden}
+  .pd-rgrid>div{background:var(--black-2);padding:22px 22px 24px}
+  .pd-rgrid b{display:block;font-size:20px;line-height:1.2;color:var(--teal);margin-bottom:8px;letter-spacing:-.005em}
+  .pd-rgrid span{display:block;font-size:15.5px;line-height:1.45;color:var(--on-black-muted)}
+  .pd-tip{margin-top:20px;font-size:16px;line-height:1.5;color:var(--on-black-muted);padding-left:16px;border-left:3px solid var(--teal)}
+  .pd-tip b{color:#fff}
+  .pd-chain{list-style:none;counter-reset:ch;display:flex;flex-direction:column}
+  .pd-chain li{counter-increment:ch;position:relative;display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:center;padding:9px 0;font-size:16.5px;font-weight:500;color:var(--navy);line-height:1.35}
+  .pd-chain li::before{content:counter(ch);position:relative;z-index:1;width:28px;height:28px;border-radius:8px;background:var(--teal-soft);border:1.5px solid var(--teal);color:var(--teal-ink);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .pd-chain li+li::after{content:"";position:absolute;left:13px;top:-9px;width:2px;height:18px;background:var(--teal);opacity:.45}
+  .pd-also{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);font-size:16px;line-height:1.5}
+  .pd-also b{color:var(--navy)}
+  .pd-more{display:inline-flex;align-items:center;gap:8px;margin-top:18px;font-size:15.5px;font-weight:700;color:var(--purple);transition:gap .25s var(--ease)}
+  .pd-more:hover{gap:12px}
+  .pd-more svg{width:16px;height:16px;flex:0 0 auto}
+  .pd-quiet{margin-top:10px;color:var(--muted)}
+  .gi{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:var(--black);color:var(--teal);flex:0 0 auto}
+  .gi svg{width:20px;height:20px}
+  .gi.big{width:48px;height:48px;border-radius:12px;margin-bottom:18px}
+  .gi.big svg{width:24px;height:24px}
+  /* resumo */
+  .glance{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .glance .card{padding:26px 26px 26px;border:1px solid var(--line);box-shadow:none;display:flex;flex-direction:column}
+  .glance h3{display:flex;align-items:center;gap:12px;font-size:21px;font-weight:700;color:var(--navy);margin-bottom:8px}
+  .glance dl div{padding:13px 0;border-top:1px solid var(--line)}
+  .glance dl div:first-child{border-top:none}
+  .glance dt{font-size:12.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .glance dd{font-size:16px;line-height:1.4;color:var(--text)}
+  .glance dd b{color:var(--navy)}
+  .glance .pd-more{margin-top:auto;padding-top:14px}
+  /* calculadora de áudio e mensagens de exemplo */
+  .calc label{display:block;font-size:16px;color:var(--text);margin-bottom:12px}
+  .calc label b{color:var(--navy)}
+  .calc input[type=range]{width:100%;height:28px;accent-color:var(--purple);cursor:pointer}
+  .calc-res{margin-top:12px;font-size:17px}
+  .calc-res b{font-size:28px;color:var(--navy);letter-spacing:-.01em;margin-right:4px}
+  .calc-note{margin-top:10px;font-size:14.5px !important;color:var(--muted)}
+  .msg{position:relative;background:#E9E9EB;color:#111;border-radius:18px 18px 18px 4px;padding:14px 16px 14px;font-family:-apple-system,'SF Pro Text','Segoe UI',system-ui,sans-serif;font-size:16px;font-weight:400;line-height:1.4;max-width:420px}
+  .msg-c{display:block;margin-top:10px;font-size:13px;font-weight:600;color:var(--teal-ink);font-family:'Crack',system-ui,sans-serif}
+  /* simulador */
+  .sim{display:grid;grid-template-columns:.85fr 1.15fr;gap:44px;align-items:center;background:var(--black);color:var(--on-black);border-radius:24px;padding:44px 44px 44px 48px}
+  .sim-copy{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+  .sim-copy .h2{color:#fff;font-size:clamp(27px,3.2vw,38px)}
+  .sim-copy p{font-size:16.5px;color:var(--on-black-muted)}
+  .sim-copy .sim-note{font-size:14px;padding-top:14px;border-top:1px solid var(--black-line)}
+  .sim-box{background:var(--black-2);border:1px solid var(--black-line);border-radius:18px;padding:22px}
+  .sim-seg{display:inline-grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;background:var(--black);border:1px solid var(--black-line);border-radius:99px;margin-bottom:16px}
+  .sim-seg button{font-family:inherit;font-size:14.5px;font-weight:700;color:var(--on-black-muted);background:none;border:none;border-radius:99px;padding:10px 20px;cursor:pointer;line-height:1;transition:background-color .25s var(--ease),color .25s var(--ease)}
+  .sim-seg button.on{background:var(--teal);color:var(--black)}
+  .sim-box textarea{display:block;width:100%;resize:vertical;min-height:132px;background:#fff;color:#111;border:2px solid transparent;border-radius:12px;padding:14px 16px;font-family:-apple-system,'SF Pro Text','Segoe UI',system-ui,sans-serif;font-size:16px;line-height:1.45}
+  .sim-box textarea:focus{outline:none;border-color:var(--teal)}
+  .sim-nums{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+  .sim-nums>div{background:var(--black);border:1px solid var(--black-line);border-radius:12px;padding:14px 12px;text-align:center}
+  .sim-nums b{display:block;font-size:28px;line-height:1;color:#fff;letter-spacing:-.02em}
+  .sim-nums b.warn{color:#FFB547}
+  .sim-nums span{display:block;margin-top:6px;font-size:13px;line-height:1.25;color:var(--on-black-muted)}
+  .sim-alerts{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:14px}
+  .sim-alerts li{display:grid;grid-template-columns:10px 1fr;gap:10px;align-items:baseline;font-size:14.5px;line-height:1.4;color:var(--on-black)}
+  .sim-alerts li::before{content:"";width:8px;height:8px;border-radius:50%;background:#FFB547;transform:translateY(-1px)}
+  .sim-alerts li.ok::before{background:var(--teal)}
+  .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  /* flow */
+  .flowb{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:fb}
+  .flowb>div{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:20px 18px 22px}
+  .flowb>div:first-child{background:var(--black);border-color:var(--black)}
+  .flowb>div:first-child b{color:#fff}
+  .flowb>div:first-child p{color:var(--on-black-muted)}
+  .flowb>div+div::before{content:"";position:absolute;left:-15px;top:34px;width:15px;height:2px;background:var(--teal)}
+  .flowb .fk{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--black);background:var(--teal);border-radius:4px;padding:4px 8px 3px;line-height:1;margin-bottom:12px}
+  .flowb b{display:block;font-size:17px;line-height:1.25;color:var(--navy);margin-bottom:6px}
+  .flowb p{font-size:15px;line-height:1.45;color:var(--text)}
+  .pd-gen{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pd-gen .pd-card h3{font-size:19px;margin-bottom:10px}
+  .pd-gen .pd-card p{font-size:16px}
+  @media(max-width:1020px){
+    .flowb{grid-template-columns:1fr;gap:12px}
+    .flowb>div+div::before{left:28px;top:-13px;width:2px;height:13px}
+    .sim{grid-template-columns:1fr;gap:28px;padding:36px 32px}
+  }
+  @media(max-width:920px){
+    .pd-top{grid-template-columns:1fr;gap:28px}
+    .pd-shot .stage{padding:26px 16px}
+    .pd-shot .phone{width:min(210px,58%)}
+    .pd-cols,.pd-extra,.pd-duo{grid-template-columns:1fr}
+    .glance,.pd-gen{grid-template-columns:1fr}
+    .pd-rgrid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:640px){
+    .pd-nav{top:69px}
+    .pd-nav .wrap{padding-top:9px;padding-bottom:9px}
+    .pd-nav a{padding:8px 13px;font-size:13.5px}
+    .pd-top{margin-bottom:24px}
+    .pd-big{grid-template-columns:1fr}
+    .pd-big li{display:grid;grid-template-columns:118px 1fr;gap:12px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}
+    .pd-big li:first-child{border-top:none}
+    .pd-big li+li{padding-left:0;border-left:none}
+    .pd-big b{font-size:23px}
+    .pd-big span{margin-top:0}
+    .pd-card{padding:22px 20px 24px}
+    .pd-card h3{font-size:19.5px;margin-bottom:14px}
+    .pd-check li,.pd-steps li,.pd-card p{font-size:16px}
+    .pd-rules{padding:24px 16px 22px;border-radius:18px}
+    .pd-rules-h{margin-bottom:18px;gap:12px}
+    .pd-rgrid{grid-template-columns:1fr}
+    .pd-rgrid>div{padding:16px 16px 18px}
+    .pd-rgrid b{font-size:18.5px;margin-bottom:5px}
+    .pd-tip{font-size:15.5px}
+    .glance .card{padding:22px 20px}
+    .sim{padding:26px 16px 18px;border-radius:18px}
+    .sim-box{padding:14px}
+    .sim-seg{display:grid;width:100%}
+    .sim-nums{gap:8px}
+    .sim-nums>div{padding:12px 6px}
+    .sim-nums b{font-size:24px}
+    .sim-nums span{font-size:12px}
+  }
   /* ---------- barra fixa no celular ---------- */
   .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;align-items:center;gap:14px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(38,38,85,.08);transform:translateY(110%);transition:transform .3s var(--ease)}
   .sticky-cta.on{transform:none}
@@ -689,60 +848,412 @@
 </header>
 
 <!-- INFRAESTRUTURA: CANAIS, PRODUTOS E INTEGRAÇÕES -->
-<section class="sec" id="infraestrutura" style="background:#fff">
+<section class="pd-hero" id="infraestrutura">
   <div class="wrap">
-    <div class="chan-grid">
-      <div class="chan-visual reveal">
-        <div class="stage"><div class="phone" id="phone">
-          <img class="scr on" data-ch="0" src="../assets/tela-ligacao-t.webp" alt="Ligação da LigueLead chegando no celular" width="526" height="1138">
-          <div class="scr" data-ch="1">
-            <img src="../assets/tela-inicio-t.webp" alt="" width="526" height="1138" loading="lazy">
-            <div class="flash-dim"></div>
-            <div class="flash" role="img" aria-label="Exemplo de SMS Flash na tela do celular">
-              <div class="flash-t">SMS Flash</div>
-              <div class="flash-m">Opa, Ana! Seu cupom de 15% vale só até hoje, 23h59.</div>
-              <div class="flash-b">Dispensar</div>
-            </div>
-          </div>
-          <img class="scr" data-ch="2" src="../assets/tela-sms-t.webp" alt="SMS da LigueLead com o link chegando na tela bloqueada" width="526" height="1138" loading="lazy">
-          <img class="scr" data-ch="3" src="../assets/tela-rcs-t.webp" alt="Mensagem RCS da LigueLead com marca verificada, imagem e botão" width="526" height="1138" loading="lazy">
-          <div class="scr" data-ch="4">
-            <img src="../assets/tela-inicio-t.webp" alt="" width="526" height="1138" loading="lazy">
-            <div class="flash-dim"></div>
-            <div class="ovl" role="img" aria-label="Exemplo de ligação com IA: a IA conversa com o cliente e responde às dúvidas">
-              <div class="ovl-h"><i></i>Ligação com IA<small>em chamada</small></div>
-              <div class="ovl-b"><p class="ia">Oi, Ana! Vi que o seu pedido ficou pendente. Posso te ajudar?</p><p class="me">Fiquei em dúvida no frete.</p><p class="ia">Pra sua região ele sai grátis hoje. Te mando o link por SMS?</p></div>
-            </div>
-          </div>
-          <div class="scr" data-ch="5">
-            <img src="../assets/tela-inicio-t.webp" alt="" width="526" height="1138" loading="lazy">
-            <div class="flash-dim"></div>
-            <div class="ovl" role="img" aria-label="Exemplo de número digital: a ligação chega identificada com o número da empresa">
-              <div class="ovl-h"><i></i>Chamada recebida</div>
-              <div class="ovl-n"><b>Sua Empresa</b><span>número digital da sua operação</span><em>Liga e recebe ligações, sem chip</em></div>
-            </div>
-          </div>
-        </div></div>
+    <span class="label dark"><svg><use href="#i-check"/></svg>Produtos</span>
+    <h1>Tudo sobre os nossos canais: <b>por que usar, como usar</b> e <span class="t">as regras de cada um.</span></h1>
+    <p class="lead">Tempo de áudio, limite de caracteres, link, horário e cobrança. O que você precisa saber antes de disparar, num lugar só.</p>
+  </div>
+</section>
+<nav class="pd-nav" id="pdNav" aria-label="Produtos nesta página">
+  <div class="wrap">
+    <a href="#resumo">Resumo</a>
+    <a href="#ligacao">Ligação gravada</a>
+    <a href="#sms">SMS</a>
+    <a href="#flash">SMS Flash</a>
+    <a href="#simulador">Simulador</a>
+    <a href="#rcs">RCS</a>
+    <a href="#mais">Ligação com IA e número digital</a>
+    <a href="#flow">Flow e integrações</a>
+    <a href="#regras">Regras gerais</a>
+  </div>
+</nav>
+
+<!-- resumo -->
+<section class="sec pd" id="resumo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label"><svg><use href="#i-check"/></svg>Resumo</span>
+      <h2 class="h2">As regras <b>num relance.</b></h2>
+      <p class="lead">Os três canais que você dispara sozinho pela plataforma, lado a lado. O detalhe de cada um vem logo abaixo.</p>
+    </div>
+    <div class="glance">
+      <article class="card reveal">
+        <h3><span class="gi"><svg><use href="#i-num"/></svg></span>Ligação gravada</h3>
+        <dl>
+          <div><dt>Como chega</dt><dd>O celular toca e a pessoa ouve o seu áudio</dd></div>
+          <div><dt>Tamanho</dt><dd>Sem limite de tempo de áudio</dd></div>
+          <div><dt>Cobrança</dt><dd><b>1 crédito a cada 30 segundos</b>, só se a pessoa atender</dd></div>
+          <div><dt>Link</dt><dd>Não tem. Mande o link por SMS na sequência</dd></div>
+          <div><dt>Horário</dt><dd>Das 8h às 22h, todos os dias</dd></div>
+        </dl>
+        <a class="pd-more" href="#ligacao">Ver tudo da ligação<svg><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card reveal">
+        <h3><span class="gi"><svg><use href="#i-sms"/></svg></span>SMS</h3>
+        <dl>
+          <div><dt>Como chega</dt><dd>Na caixa de mensagens, de um número curto</dd></div>
+          <div><dt>Tamanho</dt><dd><b>160 caracteres</b> por crédito</dd></div>
+          <div><dt>Cobrança</dt><dd>Por mensagem disparada. Texto longo vira mais de um SMS</dd></div>
+          <div><dt>Link</dt><dd>Clicável. Use o encurtador pra medir os cliques</dd></div>
+          <div><dt>Horário</dt><dd>Qualquer horário</dd></div>
+        </dl>
+        <a class="pd-more" href="#sms">Ver tudo do SMS<svg><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card reveal">
+        <h3><span class="gi"><svg><use href="#i-flash"/></svg></span>SMS Flash</h3>
+        <dl>
+          <div><dt>Como chega</dt><dd>Abre por cima de tudo na tela, sem a pessoa tocar em nada</dd></div>
+          <div><dt>Tamanho</dt><dd><b>Até 160 caracteres</b></dd></div>
+          <div><dt>Cobrança</dt><dd>Por mensagem disparada</dd></div>
+          <div><dt>Link</dt><dd><b>Não é clicável.</b> Não adianta mandar link</dd></div>
+          <div><dt>Horário</dt><dd>Qualquer horário</dd></div>
+        </dl>
+        <a class="pd-more" href="#flash">Ver tudo do SMS Flash<svg><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ligação gravada -->
+<section class="sec pd alt" id="ligacao">
+  <div class="wrap">
+    <div class="pd-top">
+      <div class="pd-intro reveal">
+        <span class="pd-k">01</span>
+        <h2 class="h2">Ligação gravada: <b>a sua voz</b> <span class="t">tocando no celular do cliente.</span></h2>
+        <p class="lead">O celular toca, a pessoa atende e ouve a sua mensagem. Você atinge mais de 80% da lista em poucos minutos, com mais de 60% das pessoas ouvindo o áudio até o final.</p>
+        <ul class="pd-big">
+          <li><b>30 s</b><span>cada crédito cobre 30 segundos de ligação</span></li>
+          <li><b>8h às 22h</b><span>horário permitido, todos os dias</span></li>
+          <li><b>R$ 0</b><span>se a pessoa não atender, você não paga</span></li>
+        </ul>
       </div>
-      <div>
-        <div class="sec-head reveal" style="margin-bottom:28px">
-          <span class="label"><svg><use href="#i-check"/></svg>Canais de comunicação</span>
-          <h2 class="h2">Quatro canais. <b>Um objetivo:</b> <span class="t">sua audiência ouvir você.</span></h2>
+      <div class="pd-shot reveal"><div class="stage"><div class="phone"><img class="scr on" src="../assets/tela-ligacao-t.webp" alt="Ligação da LigueLead chegando no celular" width="526" height="1138"></div></div></div>
+    </div>
+
+    <div class="pd-cols">
+      <article class="card pd-card reveal">
+        <h3>Por que usar</h3>
+        <ul class="pd-check">
+          <li><svg><use href="#i-check"/></svg><span><b>Você só paga pelas ligações atendidas.</b> Chamou e ninguém atendeu, não consome crédito.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Bina inteligente.</b> A ligação chega com o mesmo DDD de quem recebe, e isso aumenta o atendimento.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Novas tentativas automáticas</b> pra quem não atendeu, sem custo a mais.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>A voz do especialista</b>, gravada por você ou gerada por IA a partir de um texto.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Relatório em tempo real</b> e escala de mais de 3 milhões de chamadas por hora.</span></li>
+        </ul>
+      </article>
+      <article class="card pd-card reveal">
+        <h3>Como usar</h3>
+        <ol class="pd-steps">
+          <li><span><b>Crie o template de ligação</b> e escolha de onde vem o áudio: arquivo pronto, gravação pelo navegador ou texto convertido em voz por IA.</span></li>
+          <li><span><b>Ouça a prévia.</b> A plataforma já mostra a duração e quantos créditos cada ligação atendida vai consumir.</span></li>
+          <li><span><b>Crie o envio:</b> campanha, tags do público, dia e janela de horário.</span></li>
+          <li><span><b>Defina tentativas e intervalo</b> e confirme. O disparo roda sozinho.</span></li>
+        </ol>
+      </article>
+    </div>
+
+    <div class="pd-rules reveal">
+      <div class="pd-rules-h"><span class="bn-band">Regras</span><h3>Regras da ligação gravada</h3></div>
+      <div class="pd-rgrid">
+        <div><b>Sem limite</b><span>de tempo de áudio. Só lembre que áudio mais longo consome mais crédito.</span></div>
+        <div><b>1 crédito = 30 s</b><span>A contagem começa quando a pessoa atende, não quando a chamada sai.</span></div>
+        <div><b>8h às 22h</b><span>Janela permitida pela ANATEL, todos os dias. Fora dela a plataforma bloqueia o agendamento.</span></div>
+        <div><b>1 a 5 tentativas</b><span>por lead que não atendeu. O padrão é 3.</span></div>
+        <div><b>5, 10, 15 ou 30 min</b><span>de intervalo entre uma tentativa e outra. O padrão é 10 minutos.</span></div>
+        <div><b>MP3, WAV ou OGG</b><span>são os formatos aceitos quando você envia o arquivo de áudio pronto.</span></div>
+      </div>
+      <p class="pd-tip"><b>Dica de ouro:</b> áudio de até 30 segundos custa 1 crédito por ligação atendida. Passou de 30, entra no segundo crédito. Na voz gerada por IA, siglas e nomes próprios podem soar estranhos: ouça a prévia antes de salvar.</p>
+    </div>
+
+    <div class="pd-extra">
+      <article class="card pd-card reveal">
+        <h3>A estrutura de ligação que funciona</h3>
+        <ol class="pd-chain">
+          <li>Hook</li><li>Saudação e identificação</li><li>Avisar que é gravação</li><li>Motivo da ligação</li><li>Informações importantes, como horário e link</li><li>Promessa poderosa</li><li>CTA único</li>
+        </ol>
+      </article>
+      <article class="card pd-card reveal">
+        <h3>Calcule o custo do seu áudio</h3>
+        <div class="calc" id="calcAudio">
+          <label for="audSec">Duração do áudio: <b id="audOut">30 segundos</b></label>
+          <input type="range" id="audSec" min="5" max="180" step="5" value="30">
+          <p class="calc-res"><b id="audCred">1 crédito</b> por ligação atendida</p>
+          <p class="calc-note">Ligação não atendida não consome crédito.</p>
         </div>
-        <p class="chan-hint reveal"><svg aria-hidden="true"><use href="#i-tap"/></svg>Toque em cada canal pra ver como ele chega no celular</p>
-        <div class="chan-list" role="tablist" aria-label="Canais e produtos">
-          <button type="button" class="chan on reveal" data-ch="0" role="tab" aria-selected="true"><span class="k">01</span><span><span class="ct">Ligação gravada</span><span class="cp">A sua voz tocando no celular do cliente. Mais de 80% das ligações são atendidas e mais de 60% são ouvidas até o final.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
-          <button type="button" class="chan reveal" data-ch="1" role="tab" aria-selected="false"><span class="k">02</span><span><span class="ct">SMS Flash</span><span class="cp">A mensagem abre por cima de tudo na tela. Seu cliente não tem como não ver.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
-          <button type="button" class="chan reveal" data-ch="2" role="tab" aria-selected="false"><span class="k">03</span><span><span class="ct">SMS</span><span class="cp">Mensagem curta, link clicável e entrega instantânea. Custo por impacto menor que qualquer canal de remarketing.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
-          <button type="button" class="chan reveal" data-ch="3" role="tab" aria-selected="false"><span class="k">04</span><span><span class="ct">RCS</span><span class="cp">A mensagem com a sua marca, imagem e botão, direto no aplicativo de mensagens do celular.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
-          <button type="button" class="chan reveal" data-ch="4" role="tab" aria-selected="false"><span class="k">05</span><span><span class="ct">Ligação com IA</span><span class="cp">Uma conversa de verdade no telefone, conduzida por inteligência artificial, pra falar com a sua base sem depender de fila de atendimento.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
-          <button type="button" class="chan reveal" data-ch="5" role="tab" aria-selected="false"><span class="k">06</span><span><span class="ct">Número digital</span><span class="cp">O número da sua operação na nuvem, pronto pra ligar e receber ligações sem depender de chip ou aparelho.</span></span><svg class="cv" aria-hidden="true"><use href="#i-chev-d"/></svg></button>
+        <div class="pd-also"><b>Ligação com interação.</b> A pessoa responde no teclado do celular ("tecle 1") e a ligação pode enviar um SMS com o link, encerrar a chamada ou tirar o número da sua lista.</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SMS -->
+<section class="sec pd" id="sms">
+  <div class="wrap">
+    <div class="pd-top">
+      <div class="pd-intro reveal">
+        <span class="pd-k">02</span>
+        <h2 class="h2">SMS: <b>o link clicável</b> <span class="t">que chega em segundos.</span></h2>
+        <p class="lead">Faça lembretes, leve a sua audiência pro link certo e gere muitos cliques investindo muito pouco. Mensagem curta, direta e com entrega instantânea.</p>
+        <ul class="pd-big">
+          <li><b>160</b><span>caracteres por crédito</span></li>
+          <li><b>24 h</b><span>pode ser enviado em qualquer horário</span></li>
+          <li><b>5 dígitos</b><span>remetente de número curto</span></li>
+        </ul>
+      </div>
+      <div class="pd-shot reveal"><div class="stage"><div class="phone"><img class="scr on" src="../assets/tela-sms-t.webp" alt="SMS da LigueLead com o link chegando na tela bloqueada" width="526" height="1138" loading="lazy"></div></div></div>
+    </div>
+
+    <div class="pd-cols">
+      <article class="card pd-card reveal">
+        <h3>Por que usar</h3>
+        <ul class="pd-check">
+          <li><svg><use href="#i-check"/></svg><span><b>Link clicável.</b> O seu CTA e o seu link chegam juntos, de forma rápida.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Envio instantâneo</b>, com capacidade de milhões de mensagens por hora.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Você não coloca os seus números em risco.</b> O envio sai de um número curto de 5 dígitos.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Mensagem com o nome do lead</b>, pra soar como conversa e não como disparo.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Cliques medidos</b> em cada link encurtado.</span></li>
+        </ul>
+      </article>
+      <article class="card pd-card reveal">
+        <h3>Como usar</h3>
+        <ol class="pd-steps">
+          <li><span><b>Crie o template de SMS</b> e escreva a mensagem. O contador mostra os caracteres e quantos SMS serão cobrados.</span></li>
+          <li><span><b>Encurte o link</b> na própria plataforma. Ele sai com o domínio ligue.ly e conta os cliques.</span></li>
+          <li><span><b>Confira a prévia</b> de como a mensagem chega no celular.</span></li>
+          <li><span><b>Crie o envio:</b> campanha, tags do público, dia e horário.</span></li>
+        </ol>
+      </article>
+    </div>
+
+    <div class="pd-rules reveal">
+      <div class="pd-rules-h"><span class="bn-band">Regras</span><h3>Regras do SMS</h3></div>
+      <div class="pd-rgrid">
+        <div><b>160 caracteres</b><span>por crédito. Passou disso, a mensagem quebra em mais de um SMS cobrado.</span></div>
+        <div><b>Link encurtado</b><span>ocupa cerca de 22 caracteres. Um link longo pode comer mais de 80.</span></div>
+        <div><b>Acentos, símbolos e emojis</b><span>Evite o excesso. Alguns aparelhos trocam esses caracteres por símbolos aleatórios.</span></div>
+        <div><b>{name}</b><span>vira o nome do lead. Escreva a variável em letras minúsculas e use só o primeiro nome na lista.</span></div>
+        <div><b>Mensagem com link</b><span>pode passar por aprovação antes do disparo, o que leva de 30 minutos a 6 horas. Agende com folga.</span></div>
+        <div><b>1 disparo por envio</b><span>Diferente da ligação, o SMS não tem nova tentativa e é cobrado por mensagem disparada.</span></div>
+      </div>
+      <p class="pd-tip"><b>Descadastro automático:</b> quem responde SAIR, PARE, PARAR ou STOP entra na sua blocklist e não recebe mais os seus envios.</p>
+    </div>
+
+    <div class="pd-extra">
+      <article class="card pd-card reveal">
+        <h3>A estrutura de SMS que funciona</h3>
+        <ol class="pd-chain">
+          <li>Identificação do especialista ou do projeto em CAIXA ALTA</li><li>Mensagem objetiva</li><li>CTA único e específico</li><li>Link encurtado pra medir</li>
+        </ol>
+      </article>
+      <article class="card pd-card reveal">
+        <h3>Exemplo pronto</h3>
+        <div class="msg" data-count>LIGUELEAD: Ana, sua aula comeca hoje as 20h. Garanta seu lugar na sala: ligue.ly/aula</div>
+        <p class="calc-note">Sem acento e sem emoji de propósito: assim a mensagem chega igual em qualquer aparelho.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SMS Flash -->
+<section class="sec pd alt" id="flash">
+  <div class="wrap">
+    <div class="pd-top">
+      <div class="pd-intro reveal">
+        <span class="pd-k">03</span>
+        <h2 class="h2">SMS Flash: <b>o famoso</b> <span class="t">trava-tela.</span></h2>
+        <p class="lead">A mensagem abre por cima de tudo, sem a pessoa precisar entrar na caixa de mensagens. Perfeito pra ações de emergência, quando você precisa da atenção da sua audiência agora.</p>
+        <ul class="pd-big">
+          <li><b>160</b><span>caracteres é o limite da mensagem</span></li>
+          <li><b>Sem link</b><span>o Flash não permite clique</span></li>
+          <li><b>1 por dia</b><span>é o máximo recomendado por pessoa</span></li>
+        </ul>
+      </div>
+      <div class="pd-shot reveal"><div class="stage"><div class="phone">
+        <div class="scr on">
+          <img src="../assets/tela-inicio-t.webp" alt="" width="526" height="1138" loading="lazy">
+          <div class="flash-dim"></div>
+          <div class="flash" role="img" aria-label="Exemplo de SMS Flash na tela do celular">
+            <div class="flash-t">SMS Flash</div>
+            <div class="flash-m">LIGUELEAD: a aula COMECA AGORA. Abra o link que te mandamos por SMS.</div>
+            <div class="flash-b">Dispensar</div>
+          </div>
         </div>
-        <p class="chan-note reveal"><b>Se o seu número de WhatsApp cair, a ligação e o SMS continuam chegando sem banimento e sem bloqueios.</b> Infraestrutura própria, homologada pela ANATEL, com escala de +20 milhões de disparos num único dia.</p>
+      </div></div></div>
+    </div>
+
+    <div class="pd-cols">
+      <article class="card pd-card reveal">
+        <h3>Por que usar</h3>
+        <ul class="pd-check">
+          <li><svg><use href="#i-check"/></svg><span><b>Atenção imediata.</b> A mensagem aparece como um aviso na tela e a pessoa lê na hora.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Feito pra urgência:</b> a aula que começa agora, o carrinho que fecha hoje, o último lembrete.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Envio instantâneo</b>, com capacidade de milhões de mensagens por hora.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Você não coloca os seus números em risco.</b> O envio sai de um número curto de 5 dígitos.</span></li>
+        </ul>
+      </article>
+      <article class="card pd-card reveal">
+        <h3>Como usar</h3>
+        <ol class="pd-steps">
+          <li><span><b>Crie o template de SMS Flash.</b> O editor é o mesmo do SMS, com contador de caracteres.</span></li>
+          <li><span><b>Escreva texto simples</b>, curto e com um único pedido.</span></li>
+          <li><span><b>Crie o envio</b> ou agende pra data e hora exatas em que a mensagem precisa aparecer.</span></li>
+          <li><span><b>Combine com o SMS:</b> o Flash chama a atenção e o SMS leva o link.</span></li>
+        </ol>
+      </article>
+    </div>
+
+    <div class="pd-rules reveal">
+      <div class="pd-rules-h"><span class="bn-band">Regras</span><h3>Regras do SMS Flash</h3></div>
+      <div class="pd-rgrid">
+        <div><b>Até 160 caracteres</b><span>Vá direto ao ponto. No Flash, menos texto funciona melhor.</span></div>
+        <div><b>Link não é clicável</b><span>O Flash só aceita texto simples. Não adianta mandar link.</span></div>
+        <div><b>Sem caracteres especiais</b><span>Símbolos como @ % $ * podem não aparecer direito em alguns aparelhos.</span></div>
+        <div><b>A mensagem não fica salva</b><span>Ela some depois que a pessoa lê ou dispensa. Por isso o pedido precisa ser claro.</span></div>
+        <div><b>1 por pessoa por dia</b><span>Não existe limite técnico de envios, mas essa é a recomendação pra não cansar a base.</span></div>
+        <div><b>Nem todo aparelho exibe</b><span>Alguns celulares não mostram SMS Flash. Considere isso no planejamento.</span></div>
       </div>
     </div>
 
-    <div class="card flowstrip reveal"><div class="ic"><svg><use href="#i-flow"/></svg></div><div><h3>LigueLead Flow</h3><p>Fluxos automatizados que combinam voz e SMS em sequências inteligentes. A régua roda sozinha.</p></div></div>
+    <div class="pd-extra">
+      <article class="card pd-card reveal">
+        <h3>A estrutura de SMS Flash que funciona</h3>
+        <ol class="pd-chain">
+          <li>Identificação do especialista ou do projeto em CAIXA ALTA</li><li>Palavras em CAIXA ALTA pra destacar</li><li>Mensagem de urgência</li><li>CTA único e específico</li>
+        </ol>
+      </article>
+      <article class="card pd-card reveal">
+        <h3>Exemplo pronto</h3>
+        <div class="msg" data-count>LIGUELEAD: a aula COMECA AGORA. Abra o link que te mandamos por SMS e entre na sala.</div>
+        <p class="calc-note">Nada de link aqui: no Flash ele não abre. O link vai no SMS.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- simulador -->
+<section class="sec pd-sim" id="simulador">
+  <div class="wrap">
+    <div class="sim reveal">
+      <div class="sim-copy">
+        <span class="label dark"><svg><use href="#i-check"/></svg>Simulador</span>
+        <h2 class="h2">Teste a sua mensagem <span class="t">antes de enviar.</span></h2>
+        <p>Escreva o seu texto e veja na hora quantos caracteres ele tem, quantos SMS serão cobrados e o que pode atrapalhar a entrega.</p>
+        <p class="sim-note">É uma estimativa pela regra de 160 caracteres por crédito. O valor final aparece na plataforma, na hora de agendar.</p>
+      </div>
+      <div class="sim-box">
+        <div class="sim-seg" role="tablist" aria-label="Tipo de mensagem">
+          <button type="button" class="on" data-kind="sms" role="tab" aria-selected="true">SMS</button>
+          <button type="button" data-kind="flash" role="tab" aria-selected="false">SMS Flash</button>
+        </div>
+        <label class="sr" for="simTxt">Sua mensagem</label>
+        <textarea id="simTxt" rows="5" spellcheck="false">LIGUELEAD: Ana, sua aula comeca hoje as 20h. Garanta seu lugar na sala: ligue.ly/aula</textarea>
+        <div class="sim-nums">
+          <div><b id="simChars">0</b><span>caracteres</span></div>
+          <div><b id="simParts">1</b><span id="simPartsL">SMS cobrado</span></div>
+          <div><b id="simLeft">160</b><span id="simLeftL">até o próximo SMS</span></div>
+        </div>
+        <ul class="sim-alerts" id="simAlerts" aria-live="polite"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RCS -->
+<section class="sec pd" id="rcs">
+  <div class="wrap">
+    <div class="pd-top">
+      <div class="pd-intro reveal">
+        <span class="pd-k">04</span>
+        <h2 class="h2">RCS: a mensagem <b>com a sua marca,</b> <span class="t">imagem e botão.</span></h2>
+        <p class="lead">A evolução do SMS. A mesma caixa de mensagens do celular passa a receber imagem, vídeo, botão de ação e a sua marca verificada, com nome, logo e cor.</p>
+        <ul class="pd-big">
+          <li><b>R$ 0</b><span>pra habilitar. Você só paga os envios</span></li>
+          <li><b>30 dias</b><span>antes da campanha é o prazo seguro pra pedir</span></li>
+          <li><b>1</b><span>solicitação ativa por marca</span></li>
+        </ul>
+      </div>
+      <div class="pd-shot reveal"><div class="stage"><div class="phone"><img class="scr on" src="../assets/tela-rcs-t.webp" alt="Mensagem RCS da LigueLead com marca verificada, imagem e botão" width="526" height="1138" loading="lazy"></div></div></div>
+    </div>
+
+    <div class="pd-cols">
+      <article class="card pd-card reveal">
+        <h3>Por que usar</h3>
+        <ul class="pd-check">
+          <li><svg><use href="#i-check"/></svg><span><b>Marca verificada.</b> A pessoa vê o nome, o logo e a cor da sua empresa, com cara de canal oficial.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Formato rico:</b> imagem, vídeo e botões de ação na mesma mensagem.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Chega no aplicativo de mensagens</b> que já vem no celular, sem instalar nada.</span></li>
+          <li><svg><use href="#i-check"/></svg><span><b>Engajamento muito maior que o do SMS.</b> O custo por envio é mais alto e vale pras campanhas de maior valor.</span></li>
+        </ul>
+      </article>
+      <article class="card pd-card reveal">
+        <h3>Como usar</h3>
+        <ol class="pd-steps">
+          <li><span><b>Peça a habilitação</b> na plataforma, em 4 etapas: empresa, identidade, contato e testes.</span></li>
+          <li><span><b>Google e operadoras analisam.</b> Leva de alguns dias úteis a duas semanas.</span></li>
+          <li><span><b>Valide nos aparelhos de teste</b> do seu time, já com a marca verificada.</span></li>
+          <li><span><b>Aprovado,</b> o RCS aparece como canal na hora de criar o envio, junto de ligação, SMS e SMS Flash.</span></li>
+        </ol>
+      </article>
+    </div>
+
+    <div class="pd-rules reveal">
+      <div class="pd-rules-h"><span class="bn-band">Regras</span><h3>O que você precisa pra habilitar o RCS</h3></div>
+      <div class="pd-rgrid">
+        <div><b>Logo 224 × 224 px</b><span>PNG ou JPG quadrado, com no máximo 50 KB.</span></div>
+        <div><b>Banner 1440 × 448 px</b><span>PNG ou JPG horizontal, com no máximo 200 KB.</span></div>
+        <div><b>Descrição de até 100 caracteres</b><span>explicando pra que serve o canal, mais a cor principal da marca.</span></div>
+        <div><b>Política de privacidade e termos de uso</b><span>publicados no seu site. Sem os dois links, a aprovação não anda.</span></div>
+        <div><b>Contatos corporativos</b><span>Telefone, e-mail e site de atendimento da empresa. Nada de contato pessoal.</span></div>
+        <div><b>Android com Google Mensagens</b><span>é onde o RCS aparece. Em outro aplicativo de SMS, a mensagem chega como SMS comum.</span></div>
+      </div>
+      <p class="pd-tip"><b>Sem pressa no dia do disparo:</b> a aprovação depende de análise externa. Comece o processo com pelo menos 30 dias de antecedência da campanha.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ligação com IA e número digital -->
+<section class="sec pd alt" id="mais">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="pd-k">05</span>
+      <h2 class="h2">Também na <b>mesma infraestrutura.</b></h2>
+    </div>
+    <div class="pd-duo">
+      <article class="card pd-card reveal">
+        <span class="gi big"><svg><use href="#i-ai"/></svg></span>
+        <h3>Ligação com IA</h3>
+        <p>Uma conversa de verdade no telefone, conduzida por inteligência artificial, pra falar com a sua base sem depender de fila de atendimento.</p>
+        <p class="pd-quiet">A IA atende, responde às dúvidas e conduz a pessoa até o próximo passo.</p>
+        <a class="pd-more" href="../contato/" data-goform>Quero ver funcionando na minha operação<svg><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card pd-card reveal">
+        <span class="gi big"><svg><use href="#i-num"/></svg></span>
+        <h3>Número digital</h3>
+        <p>O número da sua operação na nuvem, pronto pra ligar e receber ligações sem depender de chip ou aparelho.</p>
+        <p class="pd-quiet">A ligação chega identificada com o número da sua empresa.</p>
+        <a class="pd-more" href="../contato/" data-goform>Quero um número pra minha operação<svg><use href="#i-arrow"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- flow e integrações -->
+<section class="sec pd" id="flow">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="pd-k">06</span>
+      <h2 class="h2">LigueLead Flow: <b>a régua</b> <span class="t">roda sozinha.</span></h2>
+      <p class="lead">Fluxos automatizados que combinam voz e SMS em sequências inteligentes. Você desenha uma vez e cada lead percorre o caminho certo, na hora certa.</p>
+    </div>
+    <div class="flowb reveal">
+      <div><span class="fk">Início</span><b>Gatilho de entrada</b><p>O lead entra no fluxo por uma tag ou por uma integração com as suas ferramentas.</p></div>
+      <div><span class="fk">Ação</span><b>Ligação, SMS ou SMS Flash</b><p>O disparo acontece sozinho. A ação também pode marcar o lead com uma tag.</p></div>
+      <div><span class="fk">Atraso</span><b>Espera inteligente</b><p>Um tempo de espera ou uma data e hora específicas antes do próximo passo.</p></div>
+      <div><span class="fk">Condição</span><b>Caminhos diferentes</b><p>O fluxo se divide por regra. Exemplo: quem digitou 1 na ligação recebe o SMS com o link.</p></div>
+      <div><span class="fk">Webhook</span><b>Dados pra fora</b><p>Envia as informações do lead pros seus sistemas e pode ligar um fluxo no outro.</p></div>
+    </div>
 
     <div class="eco reveal">
       <div class="eco-copy">
@@ -757,6 +1268,25 @@
         <div class="eco-run b"><ul><li><img src="../assets/integ/lpqv.webp" alt="" width="34" height="34" decoding="async"><span>LPQV</span></li><li><img src="../assets/integ/lunacheckout.webp" alt="" width="34" height="34" decoding="async"><span>Luna Checkout</span></li><li><img src="../assets/integ/make.webp" alt="" width="34" height="34" decoding="async"><span>Make</span></li><li><img src="../assets/integ/manychat.webp" alt="" width="34" height="34" decoding="async"><span>ManyChat</span></li><li><img src="../assets/integ/monetizze.webp" alt="" width="34" height="34" decoding="async"><span>Monetizze</span></li><li><img src="../assets/integ/n8n.webp" alt="" width="34" height="34" decoding="async"><span>n8n</span></li><li><img src="../assets/integ/ngx.webp" alt="" width="34" height="34" decoding="async"><span>NGX</span></li><li><img src="../assets/integ/pagarme.webp" alt="" width="34" height="34" decoding="async"><span>Pagar.me</span></li><li><img src="../assets/integ/paggue.webp" alt="" width="34" height="34" decoding="async"><span>Paggue</span></li><li><img src="../assets/integ/payt.webp" alt="" width="34" height="34" decoding="async"><span>Payt</span></li><li><img src="../assets/integ/perfectpay.webp" alt="" width="34" height="34" decoding="async"><span>Perfect Pay</span></li><li><img src="../assets/integ/pipedrive.webp" alt="" width="34" height="34" decoding="async"><span>Pipedrive</span></li><li><img src="../assets/integ/rdstation.webp" alt="" width="34" height="34" decoding="async"><span>RD Station</span></li><li><img src="../assets/integ/rifei.webp" alt="" width="34" height="34" decoding="async"><span>Rifei</span></li><li><img src="../assets/integ/smartico.webp" alt="" width="34" height="34" decoding="async"><span>Smartico</span></li><li><img src="../assets/integ/sprinthub.webp" alt="" width="34" height="34" decoding="async"><span>SprintHub</span></li><li><img src="../assets/integ/tallyso.webp" alt="" width="34" height="34" decoding="async"><span>Tally</span></li><li><img src="../assets/integ/temapay.webp" alt="" width="34" height="34" decoding="async"><span>Tema Pay</span></li><li><img src="../assets/integ/ticto.webp" alt="" width="34" height="34" decoding="async"><span>Ticto</span></li><li><img src="../assets/integ/tribopay.webp" alt="" width="34" height="34" decoding="async"><span>TriboPay</span></li><li><img src="../assets/integ/upfunnels.webp" alt="" width="34" height="34" decoding="async"><span>Upfunnels</span></li><li><img src="../assets/integ/vegacheckout.webp" alt="" width="34" height="34" decoding="async"><span>Vega Checkout</span></li><li><img src="../assets/integ/voomp.webp" alt="" width="34" height="34" decoding="async"><span>Voomp</span></li><li><img src="../assets/integ/wix.webp" alt="" width="34" height="34" decoding="async"><span>Wix</span></li><li><img src="../assets/integ/woocommerce.webp" alt="" width="34" height="34" decoding="async"><span>WooCommerce</span></li><li><img src="../assets/integ/wordpresscf7.webp" alt="" width="34" height="34" decoding="async"><span>WordPress CF7</span></li><li><img src="../assets/integ/yampi.webp" alt="" width="34" height="34" decoding="async"><span>Yampi</span></li><li><img src="../assets/integ/yever.webp" alt="" width="34" height="34" decoding="async"><span>Yever</span></li><li><img src="../assets/integ/zapier.webp" alt="" width="34" height="34" decoding="async"><span>Zapier</span></li><li aria-hidden="true"><img src="../assets/integ/lpqv.webp" alt="" width="34" height="34" decoding="async"><span>LPQV</span></li><li aria-hidden="true"><img src="../assets/integ/lunacheckout.webp" alt="" width="34" height="34" decoding="async"><span>Luna Checkout</span></li><li aria-hidden="true"><img src="../assets/integ/make.webp" alt="" width="34" height="34" decoding="async"><span>Make</span></li><li aria-hidden="true"><img src="../assets/integ/manychat.webp" alt="" width="34" height="34" decoding="async"><span>ManyChat</span></li><li aria-hidden="true"><img src="../assets/integ/monetizze.webp" alt="" width="34" height="34" decoding="async"><span>Monetizze</span></li><li aria-hidden="true"><img src="../assets/integ/n8n.webp" alt="" width="34" height="34" decoding="async"><span>n8n</span></li><li aria-hidden="true"><img src="../assets/integ/ngx.webp" alt="" width="34" height="34" decoding="async"><span>NGX</span></li><li aria-hidden="true"><img src="../assets/integ/pagarme.webp" alt="" width="34" height="34" decoding="async"><span>Pagar.me</span></li><li aria-hidden="true"><img src="../assets/integ/paggue.webp" alt="" width="34" height="34" decoding="async"><span>Paggue</span></li><li aria-hidden="true"><img src="../assets/integ/payt.webp" alt="" width="34" height="34" decoding="async"><span>Payt</span></li><li aria-hidden="true"><img src="../assets/integ/perfectpay.webp" alt="" width="34" height="34" decoding="async"><span>Perfect Pay</span></li><li aria-hidden="true"><img src="../assets/integ/pipedrive.webp" alt="" width="34" height="34" decoding="async"><span>Pipedrive</span></li><li aria-hidden="true"><img src="../assets/integ/rdstation.webp" alt="" width="34" height="34" decoding="async"><span>RD Station</span></li><li aria-hidden="true"><img src="../assets/integ/rifei.webp" alt="" width="34" height="34" decoding="async"><span>Rifei</span></li><li aria-hidden="true"><img src="../assets/integ/smartico.webp" alt="" width="34" height="34" decoding="async"><span>Smartico</span></li><li aria-hidden="true"><img src="../assets/integ/sprinthub.webp" alt="" width="34" height="34" decoding="async"><span>SprintHub</span></li><li aria-hidden="true"><img src="../assets/integ/tallyso.webp" alt="" width="34" height="34" decoding="async"><span>Tally</span></li><li aria-hidden="true"><img src="../assets/integ/temapay.webp" alt="" width="34" height="34" decoding="async"><span>Tema Pay</span></li><li aria-hidden="true"><img src="../assets/integ/ticto.webp" alt="" width="34" height="34" decoding="async"><span>Ticto</span></li><li aria-hidden="true"><img src="../assets/integ/tribopay.webp" alt="" width="34" height="34" decoding="async"><span>TriboPay</span></li><li aria-hidden="true"><img src="../assets/integ/upfunnels.webp" alt="" width="34" height="34" decoding="async"><span>Upfunnels</span></li><li aria-hidden="true"><img src="../assets/integ/vegacheckout.webp" alt="" width="34" height="34" decoding="async"><span>Vega Checkout</span></li><li aria-hidden="true"><img src="../assets/integ/voomp.webp" alt="" width="34" height="34" decoding="async"><span>Voomp</span></li><li aria-hidden="true"><img src="../assets/integ/wix.webp" alt="" width="34" height="34" decoding="async"><span>Wix</span></li><li aria-hidden="true"><img src="../assets/integ/woocommerce.webp" alt="" width="34" height="34" decoding="async"><span>WooCommerce</span></li><li aria-hidden="true"><img src="../assets/integ/wordpresscf7.webp" alt="" width="34" height="34" decoding="async"><span>WordPress CF7</span></li><li aria-hidden="true"><img src="../assets/integ/yampi.webp" alt="" width="34" height="34" decoding="async"><span>Yampi</span></li><li aria-hidden="true"><img src="../assets/integ/yever.webp" alt="" width="34" height="34" decoding="async"><span>Yever</span></li><li aria-hidden="true"><img src="../assets/integ/zapier.webp" alt="" width="34" height="34" decoding="async"><span>Zapier</span></li></ul></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- regras gerais -->
+<section class="sec pd alt" id="regras">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label"><svg><use href="#i-check"/></svg>Regras gerais</span>
+      <h2 class="h2">O que vale <b>pra todos os canais.</b></h2>
+    </div>
+    <div class="pd-gen">
+      <article class="card pd-card reveal"><h3>Blocklist protege a sua base</h3><p>Quem está na blocklist sai do envio automaticamente, sem consumir crédito. O contato entra por pedido de descadastro, por adição manual ou quando a operadora rejeita o número.</p></article>
+      <article class="card pd-card reveal"><h3>Template: escreva uma vez, use sempre</h3><p>O template guarda o tipo e o conteúdo da mensagem. A cada envio você só escolhe o público, a campanha e o horário. O tipo do template não muda depois de salvo.</p></article>
+      <article class="card pd-card reveal"><h3>Público por tags, sem repetição</h3><p>Você pode somar várias tags no mesmo envio. Se o lead estiver em mais de uma, ele recebe uma mensagem só.</p></article>
+      <article class="card pd-card reveal"><h3>Janela de horário</h3><p>Todo envio tem horário de início e horário limite. O que não rodou até o limite continua no dia seguinte, dentro da mesma janela.</p></article>
+      <article class="card pd-card reveal"><h3>Teste antes de escalar</h3><p>Template novo? Dispare primeiro pra uma tag pequena, com 10 a 20 contatos seus, e confira se tudo chega como você espera.</p></article>
+      <article class="card pd-card reveal"><h3>Campanhas organizam o resultado</h3><p>Cada envio fica dentro de uma campanha. Depois, o relatório mostra o desempenho de tudo que fez parte da mesma ação.</p></article>
+    </div>
+    <div class="sec-cta reveal"><a class="btn" href="../contato/" data-goform>Fale com um especialista</a></div>
   </div>
 </section>
 
@@ -1067,6 +1597,99 @@ document.documentElement.className='js';
     function onBp(){place();if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches)play();else stop();}
     if(mq.addEventListener)mq.addEventListener('change',onBp);else if(mq.addListener)mq.addListener(onBp);
     onBp();
+  })();
+
+  /* ===== página de produtos: atalhos, custo do áudio e simulador de mensagem ===== */
+  (function(){
+    var nav=document.getElementById('pdNav');
+    if(!nav)return;
+    var links=[].slice.call(nav.querySelectorAll('a'));
+    var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));});
+    var cur=-1;
+    function mark(){
+      var y=window.scrollY+150,i=-1;
+      secs.forEach(function(s,k){if(s&&s.getBoundingClientRect().top+window.scrollY<=y)i=k;});
+      if(i===cur)return;
+      cur=i;
+      links.forEach(function(a,k){a.classList.toggle('on',k===i);});
+      if(i>=0){
+        var a=links[i],box=nav.querySelector('.wrap');
+        var to=a.offsetLeft-(box.clientWidth-a.offsetWidth)/2;
+        if(box.scrollTo)box.scrollTo({left:Math.max(0,to),behavior:'smooth'});else box.scrollLeft=Math.max(0,to);
+      }
+    }
+    window.addEventListener('scroll',mark,{passive:true});
+    window.addEventListener('resize',mark);
+    mark();
+
+    /* custo do áudio: 1 crédito a cada 30 segundos */
+    var rng=document.getElementById('audSec');
+    if(rng){
+      var out=document.getElementById('audOut'),cred=document.getElementById('audCred');
+      var upA=function(){
+        var s=+rng.value,m=Math.floor(s/60),r=s%60,c=Math.ceil(s/30);
+        out.textContent=m?(m+' min'+(r?' e '+r+' s':'')):(s+' segundos');
+        cred.textContent=c+(c===1?' crédito':' créditos');
+      };
+      rng.addEventListener('input',upA);upA();
+    }
+
+    function parts(n){return Math.max(1,Math.ceil(n/160));}
+    /* contagem nas mensagens de exemplo */
+    [].forEach.call(document.querySelectorAll('.msg[data-count]'),function(m){
+      var n=m.textContent.length,p=parts(n),c=document.createElement('span');
+      c.className='msg-c';c.textContent=n+' caracteres · '+p+(p===1?' crédito':' créditos');
+      m.appendChild(c);
+    });
+
+    /* simulador */
+    var ta=document.getElementById('simTxt');
+    if(!ta)return;
+    var kind='sms',segs=[].slice.call(document.querySelectorAll('.sim-seg button'));
+    var elC=document.getElementById('simChars'),elP=document.getElementById('simParts'),elPL=document.getElementById('simPartsL'),
+        elL=document.getElementById('simLeft'),elLL=document.getElementById('simLeftL'),al=document.getElementById('simAlerts');
+    var EX={sms:'LIGUELEAD: Ana, sua aula comeca hoje as 20h. Garanta seu lugar na sala: ligue.ly/aula',
+            flash:'LIGUELEAD: a aula COMECA AGORA. Abra o link que te mandamos por SMS e entre na sala.'};
+    var touched=false;
+    function li(t,ok){var e=document.createElement('li');if(ok)e.className='ok';e.textContent=t;return e;}
+    function upS(){
+      var v=ta.value,n=v.length,p=parts(n);
+      elC.textContent=n;
+      al.innerHTML='';
+      var acc=/[À-ɏ]/.test(v),emo=/[←-⯿\u{1F000}-\u{1FAFF}]/u.test(v),
+          link=/(https?:\/\/|www\.|[a-z0-9-]+\.(com|ly|br|net|io|me|app)\b)/i.test(v),
+          sym=kind==='flash'?/[@%$*#&<>{}\[\]\\^~|]/.test(v):/[<>\[\]\\^~|]/.test(v);
+      if(kind==='flash'){
+        elP.textContent=n>160?'+'+(n-160):'OK';
+        elP.classList.toggle('warn',n>160);
+        elPL.textContent=n>160?'caracteres a mais':'dentro do limite';
+        elL.textContent=Math.max(0,160-n);elLL.textContent='caracteres livres';
+        if(n>160)al.appendChild(li('Passou de 160 caracteres. No SMS Flash, encurte a mensagem.'));
+        if(link)al.appendChild(li('Tem link no texto. No SMS Flash o link não é clicável: mande o link por SMS.'));
+        if(/\{[a-z]+\}/i.test(v))al.appendChild(li('Variável como {name} é recurso do SMS. No Flash, escreva o texto final.'));
+      }else{
+        elP.textContent=p;elP.classList.toggle('warn',p>1);
+        elPL.textContent=p===1?'SMS cobrado':'SMS cobrados';
+        elL.textContent=p*160-n;elLL.textContent='até o próximo SMS';
+        if(p>1)al.appendChild(li('A mensagem passou de 160 caracteres e será cobrada como '+p+' SMS por contato.'));
+        if(link&&!/ligue\.ly/i.test(v))al.appendChild(li('Use o encurtador da plataforma: o link curto ocupa cerca de 22 caracteres e mede os cliques.'));
+        if(link)al.appendChild(li('Mensagem com link pode passar por aprovação antes do disparo. Agende com folga.'));
+        if(/\{[A-Za-z]*[A-Z][A-Za-z]*\}/.test(v))al.appendChild(li('Escreva a variável em letras minúsculas: {name}.'));
+        else if(/\{name\}/.test(v))al.appendChild(li('{name} vira o nome de cada lead, então o tamanho final muda de pessoa pra pessoa.'));
+      }
+      if(emo)al.appendChild(li('Tem emoji no texto. Alguns aparelhos trocam emoji por símbolos aleatórios.'));
+      if(acc)al.appendChild(li('Tem acento ou cedilha. Em alguns aparelhos eles viram símbolos estranhos: prefira escrever sem.'));
+      if(sym)al.appendChild(li('Tem símbolo especial no texto. Ele pode não aparecer direito em todos os aparelhos.'));
+      if(!al.children.length&&n>0)al.appendChild(li('Tudo certo: texto simples, dentro do limite.',true));
+    }
+    segs.forEach(function(b){b.addEventListener('click',function(){
+      kind=b.getAttribute('data-kind');
+      segs.forEach(function(x){var on=x===b;x.classList.toggle('on',on);x.setAttribute('aria-selected',on?'true':'false');});
+      if(!touched)ta.value=EX[kind];
+      upS();
+    });});
+    ta.addEventListener('input',function(){touched=true;upS();});
+    upS();
   })();
 
   /* ===== clientes (foto + nome) ===== */
