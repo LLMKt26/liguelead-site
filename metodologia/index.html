@@ -715,6 +715,11 @@
     .bl-d0{font-size:16px;margin-top:24px}
     .bl-obs{margin-top:22px}
   }
+  /* menu do quadro */
+  .top-nav{gap:24px}
+  .top-nav a,.top .btn-sm{white-space:nowrap}
+  @media(max-width:1240px) and (min-width:901px){.top-nav{gap:16px;font-size:14.5px}.top .wrap{gap:14px}.top .btn-sm{padding:11px 14px;font-size:13.5px}.top-nav .nav-login{padding:9px 12px;font-size:13.5px;margin-left:2px}}
+  @media(max-width:1140px) and (min-width:901px){.top .wrap>.btn-sm{display:none}}
   /* ---------- barra fixa no celular ---------- */
   .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;align-items:center;gap:14px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(38,38,85,.08);transform:translateY(110%);transition:transform .3s var(--ease)}
   .sticky-cta.on{transform:none}
@@ -747,9 +752,11 @@
     <a class="logo" href="../" aria-label="LigueLead"><img src="../assets/logo-ll.webp" alt="LigueLead" width="93" height="30"></a>
     <nav class="top-nav" id="topNav" aria-label="Páginas">
       <a href="../">Home</a>
+      <a href="../quem-somos/">Quem somos</a>
       <a href="../produtos/">Produtos</a>
-      <a href="../metodologia/" class="cur" aria-current="page">Metodologia</a>
       <a href="../clientes/">Clientes</a>
+      <a href="../metodologia/" class="cur" aria-current="page">Metodologia</a>
+      <a href="../#revenda">Revenda</a>
       <a href="../contato/">Contato</a>
       <a class="nav-login" href="https://areadocliente.liguelead.app.br/login" target="_blank" rel="noopener">Acessar plataforma</a>
     </nav>
@@ -850,7 +857,7 @@
         <span class="foot-badge">Homologada pela ANATEL</span>
       </div>
       <div><h4>Produto</h4><a href="../produtos/">Ligação gravada</a><a href="../produtos/">SMS</a><a href="../produtos/">SMS Flash</a><a href="../produtos/">RCS</a><a href="../produtos/">Ligação com IA</a><a href="../produtos/">Número digital</a></div>
-      <div><h4>Empresa</h4><a href="../metodologia/">Blindagem de Atenção</a><a href="../#publicos">Para o seu negócio</a><a href="../clientes/">Clientes</a><a href="../#revenda">Revenda</a></div>
+      <div><h4>Empresa</h4><a href="../quem-somos/">Quem somos</a><a href="../metodologia/">Blindagem de Atenção</a><a href="../#publicos">Para o seu negócio</a><a href="../clientes/">Clientes</a><a href="../#revenda">Revenda</a></div>
       <div><h4>Falar com a gente</h4><a href="../contato/" data-goform>Contato</a><a href="https://liguelead.com.br/termos-de-uso/" target="_blank" rel="noopener">Termos de uso</a><a href="https://liguelead.com.br/politica-privacidade/" target="_blank" rel="noopener">Política de privacidade</a></div>
     </div>
     <div class="foot-top"><span>© 2026 LigueLead. Todos os direitos reservados.</span><span>CNPJ 40.288.544/0001-15</span></div>
