@@ -779,6 +779,32 @@
   .sim-ph [hidden]{display:none}
   @media(max-width:1180px){.sim{grid-template-columns:1fr 236px;gap:28px 32px}.sim-copy{grid-column:1 / -1}}
   @media(max-width:760px){.sim{grid-template-columns:1fr}.sim-ph .phone{max-width:230px}}
+  /* simulador no celular: tudo numa tela só */
+  @media(max-width:760px){
+    .sim{gap:16px;padding:22px 12px 14px}
+    .sim-copy{gap:10px;padding:0 6px}
+    .sim-copy .h2{font-size:24px}
+    .sim-copy p{font-size:15px}
+    .sim-copy .sim-note{font-size:12.5px;padding-top:10px}
+    .sim-box{padding:12px;scroll-margin-top:122px}
+    .sim-seg{margin-bottom:10px}
+    .sim-seg button{padding:9px 12px}
+    .sim-box .sim-ph{display:block;position:relative;height:176px;margin:0 0 10px;padding-top:12px;overflow:hidden;border-radius:12px;border:1px solid var(--black-line);background:radial-gradient(120% 90% at 50% 0%,#11463F 0%,#0B0B0F 72%)}
+    .sim-box .sim-ph::after{content:"";position:absolute;left:0;right:0;bottom:0;height:22px;background:linear-gradient(180deg,rgba(11,11,15,0),#0B0B0F);pointer-events:none}
+    .sim-box .sim-ph .phone{width:212px;max-width:none;margin:-24px auto 0}
+    .sim-box .sim-ph>p{display:none}
+    .sim-box .sim-ph .smsn{top:9%}
+    .sim-box .sim-ph .flash{top:9.5%}
+    .sim-box .sim-ph .flash-m{max-height:27cqw}
+    .sim-box .sim-ph .smsn-m{-webkit-line-clamp:5}
+    .sim-box textarea{min-height:86px;height:86px;padding:11px 13px;line-height:1.38}
+    .sim-nums{margin-top:10px;gap:6px}
+    .sim-nums>div{padding:8px 4px 9px;border-radius:10px}
+    .sim-nums b{font-size:20px}
+    .sim-nums span{margin-top:3px;font-size:11.5px}
+    .sim-alerts{margin-top:10px;gap:6px}
+    .sim-alerts li{font-size:13.5px}
+  }
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   /* flow */
   .flowhero{display:grid;grid-template-columns:.82fr 1.18fr;gap:28px 56px;align-items:center}
@@ -1808,6 +1834,17 @@ document.documentElement.className='js';
       upS();
     });});
     ta.addEventListener('input',function(){touched=true;upS();});
+    /* no celular a meia tela do aparelho fica logo acima do campo de texto; a barra fixa some enquanto o simulador está na tela */
+    var phBox=document.querySelector('.sim-ph'),simBox=document.querySelector('.sim-box'),simEl=document.querySelector('.sim'),mqS=window.matchMedia('(max-width:760px)');
+    function placePh(){
+      if(!phBox||!simBox||!simEl)return;
+      if(mqS.matches){var ref=simBox.querySelector('label.sr');if(phBox.parentNode!==simBox)simBox.insertBefore(phBox,ref);}
+      else if(phBox.parentNode!==simEl)simEl.appendChild(phBox);
+    }
+    if(mqS.addEventListener)mqS.addEventListener('change',placePh);else if(mqS.addListener)mqS.addListener(placePh);
+    placePh();
+    var stk=document.getElementById('stickyCta');
+    if(stk&&simBox&&'IntersectionObserver' in window){new IntersectionObserver(function(es){stk.style.visibility=es[0].isIntersecting?'hidden':'';},{threshold:.25}).observe(simBox);}
     upS();
   })();
 
