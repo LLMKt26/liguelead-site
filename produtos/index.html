@@ -763,6 +763,22 @@
   .sim-alerts li{display:grid;grid-template-columns:10px 1fr;gap:10px;align-items:baseline;font-size:14.5px;line-height:1.4;color:var(--on-black)}
   .sim-alerts li::before{content:"";width:8px;height:8px;border-radius:50%;background:#FFB547;transform:translateY(-1px)}
   .sim-alerts li.ok::before{background:var(--teal)}
+  /* simulador: celular ao vivo */
+  .sim{grid-template-columns:.78fr 1.06fr 236px;gap:34px;padding:44px 40px 44px 44px}
+  .sim-ph{display:flex;flex-direction:column;align-items:center;gap:12px}
+  .sim-ph .phone{width:100%;max-width:236px;margin:0}
+  .sim-ph>p{font-size:13px;font-weight:500;color:var(--on-black-muted);text-align:center}
+  .sim-ph .flash{top:30%;left:11%;right:11%}
+  .sim-ph .flash-m{white-space:pre-wrap;overflow-wrap:anywhere;max-height:52cqw;overflow:hidden}
+  .smsn{position:absolute;left:9%;right:9%;top:15%;background:rgba(246,246,248,.94);color:#111;border-radius:5cqw;padding:3.4cqw 4cqw 4cqw;font-family:-apple-system,'SF Pro Text','Segoe UI',system-ui,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+  .smsn-h{display:flex;align-items:center;gap:2cqw;font-size:3.3cqw;color:#55555C;margin-bottom:1.6cqw}
+  .smsn-h i{width:4.6cqw;height:4.6cqw;border-radius:1.2cqw;background:#34C759;flex:0 0 auto}
+  .smsn-h span{font-weight:600;letter-spacing:.02em;text-transform:uppercase}
+  .smsn-h em{margin-left:auto;font-style:normal}
+  .smsn-m{font-size:3.9cqw;line-height:1.32;white-space:pre-wrap;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:7;overflow:hidden}
+  .sim-ph [hidden]{display:none}
+  @media(max-width:1180px){.sim{grid-template-columns:1fr 236px;gap:28px 32px}.sim-copy{grid-column:1 / -1}}
+  @media(max-width:760px){.sim{grid-template-columns:1fr}.sim-ph .phone{max-width:230px}}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   /* flow */
   .flowhero{display:grid;grid-template-columns:.82fr 1.18fr;gap:28px 56px;align-items:center}
@@ -821,7 +837,7 @@
   @media(max-width:1020px){
     .flowb{grid-template-columns:1fr;gap:12px}
     .flowb>div+div::before{left:28px;top:-13px;width:2px;height:13px}
-    .sim{grid-template-columns:1fr;gap:28px;padding:36px 32px}
+    .sim{padding:36px 32px}
   }
   @media(max-width:920px){
     .pd-top{grid-template-columns:1fr;gap:28px}
@@ -1203,7 +1219,7 @@
       <div class="sim-copy">
         <span class="label dark"><svg><use href="#i-check"/></svg>Simulador</span>
         <h2 class="h2">Teste a sua mensagem <span class="t">antes de enviar.</span></h2>
-        <p>Escreva o seu texto e veja na hora quantos caracteres ele tem, quantos SMS serão cobrados e o que pode atrapalhar a entrega.</p>
+        <p>Escreva o seu texto e veja na hora como ele chega no celular, quantos caracteres tem, quantos SMS serão cobrados e o que pode atrapalhar a entrega.</p>
         <p class="sim-note">É uma estimativa pela regra de 160 caracteres por crédito. O valor final aparece na plataforma, na hora de agendar.</p>
       </div>
       <div class="sim-box">
@@ -1219,6 +1235,15 @@
           <div><b id="simLeft">160</b><span id="simLeftL">até o próximo SMS</span></div>
         </div>
         <ul class="sim-alerts" id="simAlerts" aria-live="polite"></ul>
+      </div>
+      <div class="sim-ph" aria-hidden="true">
+        <div class="phone"><div class="scr on">
+          <img src="../assets/tela-inicio-t.webp" alt="" width="526" height="1138" loading="lazy">
+          <div class="flash-dim" id="simDim"></div>
+          <div class="flash" id="simFlash"><div class="flash-t">SMS Flash</div><div class="flash-m" id="simFlashM"></div><div class="flash-b">Dispensar</div></div>
+          <div class="smsn" id="simSms"><div class="smsn-h"><i></i><span>Mensagens</span><em>agora</em></div><div class="smsn-m" id="simSmsM"></div></div>
+        </div></div>
+        <p id="simPhL">Assim o SMS chega na tela</p>
       </div>
     </div>
   </div>
@@ -1739,10 +1764,13 @@ document.documentElement.className='js';
     var EX={sms:'LIGUELEAD: Ana, sua aula comeca hoje as 20h. Garanta seu lugar na sala: ligue.ly/aula',
             flash:'LIGUELEAD: a aula COMECA AGORA. Abra o link que te mandamos por SMS e entre na sala.'};
     var touched=false;
+    var phF=document.getElementById('simFlash'),phD=document.getElementById('simDim'),phS=document.getElementById('simSms'),phFM=document.getElementById('simFlashM'),phSM=document.getElementById('simSmsM'),phL=document.getElementById('simPhL');
     function li(t,ok){var e=document.createElement('li');if(ok)e.className='ok';e.textContent=t;return e;}
     function upS(){
       var v=ta.value,n=v.length,p=parts(n);
       elC.textContent=n;
+      var fl=kind==='flash',show=v||'Sua mensagem aparece aqui.';
+      if(phF){phF.hidden=!fl;phD.hidden=!fl;phS.hidden=fl;phFM.textContent=show;phSM.textContent=show;phL.textContent=fl?'Assim o SMS Flash abre por cima da tela':'Assim o SMS chega na tela';}
       al.innerHTML='';
       var acc=/[À-ɏ]/.test(v),emo=/[←-⯿\u{1F000}-\u{1FAFF}]/u.test(v),
           link=/(https?:\/\/|www\.|[a-z0-9-]+\.(com|ly|br|net|io|me|app)\b)/i.test(v),
