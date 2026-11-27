@@ -750,11 +750,36 @@
   .sim-alerts li.ok::before{background:var(--teal)}
   .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
   /* flow */
-  .flowshot{margin:0 0 24px}
-  .flowshot-s{border:1px solid var(--line);border-radius:18px;overflow:hidden;background:#fff;box-shadow:var(--shadow)}
+  .flowshot{position:relative;margin:0 0 24px;padding:44px 44px 34px;border-radius:24px;overflow:hidden;background:radial-gradient(90% 70% at 50% 0%,#11463F 0%,#0B0B0F 68%);color:var(--on-black)}
+  .fwin{position:relative;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 0 0 1px rgba(255,255,255,.14),0 40px 80px -30px rgba(0,0,0,.8),0 0 90px -20px rgba(27,204,174,.45)}
+  .fwin-bar{display:flex;align-items:center;gap:7px;height:38px;padding:0 14px;background:#16161C;border-bottom:1px solid var(--black-line)}
+  .fwin-bar i{width:10px;height:10px;border-radius:50%;background:#3A3A44}
+  .fwin-bar span{display:inline-flex;align-items:center;gap:8px;margin-left:auto;font-size:12.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal)}
+  .fwin-bar span b{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(27,204,174,.22)}
+  .flowshot-s{background:#fff}
   .flowshot img{display:block;width:100%;height:auto}
-  .flowshot figcaption{margin-top:12px;font-size:15px;color:var(--muted)}
-  @media(max-width:760px){.flowshot-s{overflow-x:auto;-webkit-overflow-scrolling:touch}.flowshot img{width:920px;max-width:none}.flowshot figcaption::before{content:"Arraste a imagem pro lado pra ver o fluxo inteiro. ";font-weight:500;color:var(--teal-ink)}}
+  .flowshot figcaption{display:grid;grid-template-columns:1fr auto;gap:20px 40px;align-items:center;margin-top:30px}
+  .flowshot figcaption p{font-size:19px;line-height:1.35;font-weight:700;color:#fff;max-width:420px}
+  .flowshot figcaption p span{display:block;font-weight:300;color:var(--on-black-muted)}
+  .flowshot figcaption ul{list-style:none;display:flex;gap:0}
+  .flowshot figcaption li{padding:2px 26px;border-left:1px solid var(--black-line);max-width:170px}
+  .flowshot figcaption li:last-child{padding-right:0}
+  .flowshot figcaption li b{display:block;font-size:34px;line-height:1;color:var(--teal);letter-spacing:-.02em}
+  .flowshot figcaption li span{display:block;margin-top:6px;font-size:14px;line-height:1.3;color:var(--on-black-muted)}
+  @media(max-width:980px){.flowshot{padding:30px 28px 28px}.flowshot figcaption{grid-template-columns:1fr}.flowshot figcaption li:first-child{padding-left:0;border-left:none}}
+  @media(max-width:760px){
+    .flowshot{padding:18px 16px 22px;border-radius:18px}
+    .flowshot-s{overflow-x:auto;-webkit-overflow-scrolling:touch}
+    .flowshot img{width:940px;max-width:none}
+    .flowshot figcaption{margin-top:20px;gap:16px}
+    .flowshot figcaption p{font-size:17px}
+    .flowshot figcaption p::after{content:"Arraste a imagem pro lado pra ver o fluxo inteiro.";display:block;margin-top:8px;font-size:14px;font-weight:500;color:var(--teal)}
+    .flowshot figcaption ul{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px 0}
+    .flowshot figcaption li{padding:0 12px;max-width:none}
+    .flowshot figcaption li:last-child{grid-column:1 / -1;padding:14px 0 0;border-left:none;border-top:1px solid var(--black-line);display:flex;align-items:baseline;gap:10px}
+    .flowshot figcaption li b{font-size:28px}
+    .flowshot figcaption li:last-child span{margin-top:0}
+  }
   .flowb{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;counter-reset:fb}
   .flowb>div{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:20px 18px 22px}
   .flowb>div:first-child{background:var(--black);border-color:var(--black)}
@@ -1253,8 +1278,19 @@
       <p class="lead">Fluxos automatizados que combinam voz e SMS em sequências inteligentes. Você desenha uma vez e cada lead percorre o caminho certo, na hora certa.</p>
     </div>
     <figure class="flowshot reveal">
-      <div class="flowshot-s"><img src="../assets/flow-print.webp" alt="Tela do LigueLead Flow com um fluxo publicado: lista de entrada, esperas com data e hora e ações de SMS, ligação e SMS Flash em sequência até o fim da jornada" width="1918" height="944" loading="lazy"></div>
-      <figcaption>Um fluxo de verdade rodando na LigueLead: um mês inteiro de SMS, ligações e SMS Flash agendados, do bloco inicial ao fim da jornada.</figcaption>
+      <div class="fwin">
+        <div class="fwin-bar" aria-hidden="true"><i></i><i></i><i></i><span><b></b>Flow publicado</span></div>
+        <div class="flowshot-s"><img src="../assets/flow-print.webp" alt="Tela do LigueLead Flow com um fluxo publicado: lista de entrada, esperas com data e hora e ações de SMS, ligação e SMS Flash em sequência até o fim da jornada" width="1858" height="875" loading="lazy"></div>
+      </div>
+      <figcaption>
+        <p>Um fluxo de verdade rodando na LigueLead. <span>O mês inteiro agendado de uma vez só.</span></p>
+        <ul>
+          <li><b>12</b><span>SMS</span></li>
+          <li><b>8</b><span>ligações</span></li>
+          <li><b>6</b><span>SMS Flash</span></li>
+          <li><b>1</b><span>fluxo, do início ao fim da jornada</span></li>
+        </ul>
+      </figcaption>
     </figure>
     <div class="flowb reveal">
       <div><span class="fk">Início</span><b>Gatilho de entrada</b><p>O lead entra no fluxo por uma tag ou por uma integração com as suas ferramentas.</p></div>
