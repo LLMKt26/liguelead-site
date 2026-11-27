@@ -882,7 +882,7 @@
         <h3><span class="gi"><svg><use href="#i-num"/></svg></span>Ligação gravada</h3>
         <dl>
           <div><dt>Como chega</dt><dd>O celular toca e a pessoa ouve o seu áudio</dd></div>
-          <div><dt>Tamanho</dt><dd>Sem limite de tempo de áudio</dd></div>
+          <div><dt>Tamanho</dt><dd>Ideal: áudio de <b>até 25 segundos</b></dd></div>
           <div><dt>Cobrança</dt><dd><b>1 crédito a cada 30 segundos</b>, só se a pessoa atender</dd></div>
           <div><dt>Link</dt><dd>Não tem. Mande o link por SMS na sequência</dd></div>
           <div><dt>Horário</dt><dd>Das 8h às 22h, todos os dias</dd></div>
@@ -924,7 +924,7 @@
         <h2 class="h2">Ligação gravada: <b>a sua voz</b> <span class="t">tocando no celular do cliente.</span></h2>
         <p class="lead">O celular toca, a pessoa atende e ouve a sua mensagem. Você atinge mais de 80% da lista em poucos minutos, com mais de 60% das pessoas ouvindo o áudio até o final.</p>
         <ul class="pd-big">
-          <li><b>30 s</b><span>cada crédito cobre 30 segundos de ligação</span></li>
+          <li><b>25 s</b><span>é o tempo ideal do áudio pra gastar só 1 crédito</span></li>
           <li><b>8h às 22h</b><span>horário permitido, todos os dias</span></li>
           <li><b>R$ 0</b><span>se a pessoa não atender, você não paga</span></li>
         </ul>
@@ -957,14 +957,14 @@
     <div class="pd-rules reveal">
       <div class="pd-rules-h"><span class="bn-band">Regras</span><h3>Regras da ligação gravada</h3></div>
       <div class="pd-rgrid">
-        <div><b>Sem limite</b><span>de tempo de áudio. Só lembre que áudio mais longo consome mais crédito.</span></div>
-        <div><b>1 crédito = 30 s</b><span>A contagem começa quando a pessoa atende, não quando a chamada sai.</span></div>
+        <div><b>Ideal: 25 segundos</b><span>de áudio. Sobram 5 segundos de folga pra ligação terminar sem cobrar o segundo crédito.</span></div>
+        <div><b>1 crédito = 30 s</b><span>de ligação. A contagem começa quando a pessoa atende. Não há limite de duração: áudio mais longo só consome mais crédito.</span></div>
         <div><b>8h às 22h</b><span>Janela permitida pela ANATEL, todos os dias. Fora dela a plataforma bloqueia o agendamento.</span></div>
         <div><b>1 a 5 tentativas</b><span>por lead que não atendeu. O padrão é 3.</span></div>
         <div><b>5, 10, 15 ou 30 min</b><span>de intervalo entre uma tentativa e outra. O padrão é 10 minutos.</span></div>
         <div><b>MP3, WAV ou OGG</b><span>são os formatos aceitos quando você envia o arquivo de áudio pronto.</span></div>
       </div>
-      <p class="pd-tip"><b>Dica de ouro:</b> áudio de até 30 segundos custa 1 crédito por ligação atendida. Passou de 30, entra no segundo crédito. Na voz gerada por IA, siglas e nomes próprios podem soar estranhos: ouça a prévia antes de salvar.</p>
+      <p class="pd-tip"><b>Dica de ouro:</b> a ligação pode durar até 30 segundos pra descontar 1 crédito só, mas o ideal é gravar a mensagem com 25 segundos. Assim você tem 5 segundos de folga pra ligação terminar sem cobrar o segundo crédito. Na voz gerada por IA, siglas e nomes próprios podem soar estranhos: ouça a prévia antes de salvar.</p>
     </div>
 
     <div class="pd-extra">
@@ -977,10 +977,10 @@
       <article class="card pd-card reveal">
         <h3>Calcule o custo do seu áudio</h3>
         <div class="calc" id="calcAudio">
-          <label for="audSec">Duração do áudio: <b id="audOut">30 segundos</b></label>
-          <input type="range" id="audSec" min="5" max="180" step="5" value="30">
+          <label for="audSec">Duração do áudio: <b id="audOut">25 segundos</b></label>
+          <input type="range" id="audSec" min="5" max="180" step="5" value="25">
           <p class="calc-res"><b id="audCred">1 crédito</b> por ligação atendida</p>
-          <p class="calc-note">Ligação não atendida não consome crédito.</p>
+          <p class="calc-note" id="audHint">Tempo ideal: 5 segundos de folga pra ligação terminar dentro de 1 crédito.</p>
         </div>
         <div class="pd-also"><b>Ligação com interação.</b> A pessoa responde no teclado do celular ("tecle 1") e a ligação pode enviar um SMS com o link, encerrar a chamada ou tirar o número da sua lista.</div>
       </article>
@@ -1630,6 +1630,11 @@ document.documentElement.className='js';
         var s=+rng.value,m=Math.floor(s/60),r=s%60,c=Math.ceil(s/30);
         out.textContent=m?(m+' min'+(r?' e '+r+' s':'')):(s+' segundos');
         cred.textContent=c+(c===1?' crédito':' créditos');
+        var hint=document.getElementById('audHint'),lim=c*30;
+        if(hint)hint.textContent=s===25?'Tempo ideal: 5 segundos de folga pra ligação terminar dentro de 1 crédito.'
+          :s===lim?'No limite de '+lim+' segundos. Deixe 5 segundos de folga ('+(lim-5)+' s) pra ligação terminar sem cobrar mais um crédito.'
+          :s<25?'Dentro de 1 crédito, com folga. Ligação não atendida não consome crédito.'
+          :'Com folga pra ligação terminar dentro de '+c+' créditos. Ligação não atendida não consome crédito.';
       };
       rng.addEventListener('input',upA);upA();
     }
