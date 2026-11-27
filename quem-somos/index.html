@@ -888,6 +888,43 @@
   .top-nav a,.top .btn-sm{white-space:nowrap}
   @media(max-width:1240px) and (min-width:901px){.top-nav{gap:16px;font-size:14.5px}.top .wrap{gap:14px}.top .btn-sm{padding:11px 14px;font-size:13.5px}.top-nav .nav-login{padding:9px 12px;font-size:13.5px;margin-left:2px}}
   @media(max-width:1140px) and (min-width:901px){.top .wrap>.btn-sm{display:none}}
+  /* ---------- quem somos: conteúdo da apresentação ---------- */
+  .qs-sobre{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+  .qs-sobre>div:first-child{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+  .qs-sobre>div:first-child p{font-size:17.5px;color:var(--text);max-width:560px}
+  .qs-faz{background:var(--black);color:var(--on-black);border-radius:24px;padding:36px 34px 38px;box-shadow:0 30px 70px -34px rgba(27,204,174,.5)}
+  .qs-faz h3{font-size:clamp(22px,2.4vw,28px);line-height:1.22;font-weight:300;color:#fff;margin:20px 0 18px}
+  .qs-faz h3 span{color:var(--teal);font-weight:700}
+  .qs-faz p{font-size:16.5px;line-height:1.5;color:var(--on-black-muted)}
+  .qs-faz p+p{margin-top:12px}
+  .qs-imp{background:var(--black);color:var(--on-black)}
+  .qs-imp .h2{color:#fff;max-width:900px}
+  .qs-imp-g{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .qs-imp-g>div{background:var(--black-2);border:1px solid var(--black-line);border-radius:16px;padding:26px 22px 28px}
+  .qs-imp-g h3{font-size:24px;font-weight:700;color:var(--teal);letter-spacing:-.01em;margin-bottom:10px}
+  .qs-imp-g p{font-size:16.5px;line-height:1.45;color:var(--on-black)}
+  .qs-gente{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:30px 16px}
+  .qs-gente li{display:flex;flex-direction:column;align-items:center;text-align:center}
+  .qs-gente img{width:96px;height:96px;border-radius:50%;margin-bottom:12px;box-shadow:0 0 0 3px #fff,0 0 0 5px var(--teal)}
+  .qs-gente b{font-size:16px;line-height:1.25;color:var(--navy)}
+  .qs-gente span{margin-top:3px;font-size:13.5px;line-height:1.3;color:var(--muted)}
+  .qs-emp{margin-top:56px;background:var(--bg);border:1px solid var(--line);border-radius:24px;padding:36px 34px 38px}
+  .qs-emp h3{font-size:clamp(22px,2.6vw,30px);font-weight:300;color:var(--navy);margin-bottom:28px;text-align:center}
+  .qs-emp h3 span{font-weight:700;color:var(--teal-ink)}
+  .qs-emp ul{list-style:none;display:grid;grid-template-columns:repeat(8,1fr);gap:22px 16px;justify-items:center}
+  .qs-emp img{width:84px;height:84px;border-radius:50%;box-shadow:0 6px 16px -8px rgba(38,38,85,.35)}
+  @media(max-width:1020px){.qs-imp-g{grid-template-columns:1fr 1fr}.qs-emp ul{grid-template-columns:repeat(6,1fr)}.qs-gente{grid-template-columns:repeat(4,1fr)}}
+  @media(max-width:920px){.qs-sobre{grid-template-columns:1fr;gap:30px}}
+  @media(max-width:640px){
+    .qs-faz{padding:26px 20px 28px;border-radius:18px}
+    .qs-imp-g{grid-template-columns:1fr}
+    .qs-imp-g>div{padding:20px 20px 22px}
+    .qs-gente{grid-template-columns:1fr 1fr;gap:24px 10px}
+    .qs-gente img{width:84px;height:84px}
+    .qs-emp{padding:26px 14px 28px;border-radius:18px;margin-top:40px}
+    .qs-emp ul{grid-template-columns:repeat(4,1fr);gap:16px 8px}
+    .qs-emp img{width:64px;height:64px}
+  }
   /* ---------- barra fixa no celular ---------- */
   .sticky-cta{position:fixed;left:0;right:0;bottom:0;z-index:70;display:none;align-items:center;gap:14px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(38,38,85,.08);transform:translateY(110%);transition:transform .3s var(--ease)}
   .sticky-cta.on{transform:none}
@@ -946,6 +983,28 @@
   </div>
 </section>
 
+<!-- sobre (canva) -->
+<section class="sec qs" id="sobre">
+  <div class="wrap">
+    <div class="qs-sobre">
+      <div class="reveal">
+        <span class="label"><svg><use href="#i-check"/></svg>Quem somos</span>
+        <h2 class="h2">Uma plataforma de automação de <b>marketing e vendas.</b></h2>
+        <p>A LigueLead é uma plataforma de automação de marketing e vendas, que apoiou mais de 30 mil lançamentos só em 2024.</p>
+        <p>Fundada há 4 anos, vem revolucionando o mercado de marketing digital com estratégias inovadoras de engajamento, retenção de audiência e conversão em vendas.</p>
+        <p>Somos referência no mercado, ajudando negócios digitais a escalar seus resultados com técnicas de comunicação automatizada.</p>
+      </div>
+      <div class="qs-faz reveal">
+        <span class="bn-band">O que fazemos</span>
+        <h3>Automatizamos processos de marketing e vendas que permitem <span>escala</span> e <span>alavancagem de faturamento.</span></h3>
+        <p>Levamos sua mensagem para 100% da sua audiência de forma individual, personalizada e rápida.</p>
+        <p>Seja para disparos em massa, fluxos automáticos individualizados ou por integração, use os recursos com maior alcance do Brasil!</p>
+        <p>Sem precisar se preocupar com bloqueio de números e sem precisar gastar seu tempo com ferramentas complicadas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- alcance -->
 <section class="sec qs" id="alcance" style="background:#fff">
   <div class="wrap">
@@ -965,6 +1024,37 @@
       <a class="card reveal" href="../produtos/#flash"><span class="k">03</span><h3>SMS Flash</h3><p class="s">A mensagem que trava a tela.</p><p>Sobreposição total. Para comunicações de máxima urgência onde atenção imediata é inegociável.</p><span class="pd-more">Conhecer o canal<svg><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" href="../produtos/#flow"><span class="k">04</span><h3>LigueLead Flow</h3><p class="s">Automação que orquestra todos os canais.</p><p>Motor de automação que combina voz + SMS em fluxos sequenciais com condições, delays inteligentes, tags e integrações.</p><span class="pd-more">Conhecer o canal<svg><use href="#i-arrow"/></svg></span></a>
     </div>
+  </div>
+</section>
+
+<!-- impacto e clientes (canva) -->
+<section class="sec qs qs-imp" id="impacto">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label dark"><svg><use href="#i-check"/></svg>Impacto de fazer LigueLead</span>
+      <h2 class="h2">Aumente em até 400% dos seus leads avançando pelo seu funil <span class="t">e venda muito mais com menos esforço.</span></h2>
+    </div>
+    <div class="qs-imp-g">
+      <div class="reveal"><h3>Reativação</h3><p>Reative listas de leads antigos com alcance direcionado</p></div>
+      <div class="reveal"><h3>Engajamento</h3><p>Blinde a atenção da sua audiência e tenha mais alcance</p></div>
+      <div class="reveal"><h3>Vendas</h3><p>Vende mais quem se comunica melhor</p></div>
+      <div class="reveal"><h3>Recuperação</h3><p>Pare de deixar dinheiro na mesa</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec qs" id="clientes" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="label"><svg><use href="#i-check"/></svg>Clientes</span>
+      <h2 class="h2">Contribuímos com muitos <b>negócios digitais.</b></h2>
+    </div>
+    <ul class="qs-gente reveal"><li><img src="../assets/qs/p01.webp" alt="" width="132" height="132" loading="lazy"><b>Cadu Neiva</b><span>Estrategista de tráfego e mentor</span></li><li><img src="../assets/qs/p02.webp" alt="" width="132" height="132" loading="lazy"><b>Rossandro Klinjey</b><span>Psicólogo e empreendedor digital</span></li><li><img src="../assets/qs/p03.webp" alt="" width="132" height="132" loading="lazy"><b>Marcus Marques</b><span>Grupo Acelerador</span></li><li><img src="../assets/qs/p04.webp" alt="" width="132" height="132" loading="lazy"><b>Pablo Marçal</b><span>Grupo Marçal</span></li><li><img src="../assets/qs/p05.webp" alt="" width="132" height="132" loading="lazy"><b>Bianca Andrade</b><span>Boca Rosa</span></li><li><img src="../assets/qs/p06.webp" alt="" width="132" height="132" loading="lazy"><b>Paulo Vieira</b><span>Desenvolvimento pessoal</span></li><li><img src="../assets/qs/p07.webp" alt="" width="132" height="132" loading="lazy"><b>Betina Rudolph</b><span>Negócios digitais</span></li><li><img src="../assets/qs/p08.webp" alt="" width="132" height="132" loading="lazy"><b>Caito Maia</b><span>Chilli Beans</span></li><li><img src="../assets/qs/p09.webp" alt="" width="132" height="132" loading="lazy"><b>Katia Damasceno</b><span>Educação sexual</span></li><li><img src="../assets/qs/p10.webp" alt="" width="132" height="132" loading="lazy"><b>Thiago Nigro</b><span>Grupo Primo</span></li><li><img src="../assets/qs/p11.webp" alt="" width="132" height="132" loading="lazy"><b>Erico Rocha</b><span>Marketing digital e negócios</span></li><li><img src="../assets/qs/p12.webp" alt="" width="132" height="132" loading="lazy"><b>Vitor Metaforando</b><span>Análise comportamental</span></li><li><img src="../assets/qs/p13.webp" alt="" width="132" height="132" loading="lazy"><b>Felipe Neto</b><span>YouTube</span></li><li><img src="../assets/qs/p14.webp" alt="" width="132" height="132" loading="lazy"><b>Camila Farani</b><span>Empresária e investidora</span></li><li><img src="../assets/qs/p15.webp" alt="" width="132" height="132" loading="lazy"><b>Wendell Carvalho</b><span>Desenvolvimento pessoal</span></li><li><img src="../assets/qs/p16.webp" alt="" width="132" height="132" loading="lazy"><b>Nathalia Arcuri</b><span>Me Poupe</span></li><li><img src="../assets/qs/p17.webp" alt="" width="132" height="132" loading="lazy"><b>Thiago Finch</b><span>Marketing digital</span></li><li><img src="../assets/qs/p18.webp" alt="" width="132" height="132" loading="lazy"><b>Ruth Gonçalves</b><span>Mentora</span></li><li><img src="../assets/qs/p19.webp" alt="" width="132" height="132" loading="lazy"><b>Peter Jordan</b><span>Youtuber</span></li><li><img src="../assets/qs/p20.webp" alt="" width="132" height="132" loading="lazy"><b>Neil Patel</b><span>Marketing de conteúdo e SEO</span></li></ul>
+    <div class="qs-emp reveal">
+      <h3>Contribuímos também com <span>grandes empresas.</span></h3>
+      <ul><li><img src="../assets/qs/e01.webp" alt="Hashtag Treinamentos" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e02.webp" alt="Felipe Neto" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e03.webp" alt="Ânima Comunidade" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e04.webp" alt="Febracis" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e05.webp" alt="VTurb" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e06.webp" alt="Locaweb" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e07.webp" alt="Fluency Academy" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e08.webp" alt="Solfácil" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e09.webp" alt="Bold" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e10.webp" alt="HiperCap Brasil" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e11.webp" alt="G4 Educação" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e12.webp" alt="" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e13.webp" alt="Exame" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e14.webp" alt="Bagy" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e15.webp" alt="Sólides" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e16.webp" alt="Gupy" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e17.webp" alt="Cogna" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e18.webp" alt="Familhão" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e19.webp" alt="Espaçolaser" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e20.webp" alt="iFood" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e21.webp" alt="Adapta" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e22.webp" alt="Instituto Conhecimento Liberta" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e23.webp" alt="Finclass" width="120" height="120" loading="lazy"></li><li><img src="../assets/qs/e24.webp" alt="V4 Company" width="120" height="120" loading="lazy"></li></ul>
+    </div>
+    <div class="sec-cta reveal"><a class="btn" href="../clientes/">Ver resultados dos clientes</a></div>
   </div>
 </section>
 
